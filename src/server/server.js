@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyparser = require('body-parser');
+var db = require('./db');
 
 app.use(bodyparser.urlencoded({extended : true}));
 app.use(bodyparser.json());
