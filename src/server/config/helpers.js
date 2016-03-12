@@ -16,6 +16,10 @@ module.exports = {
   // Dummy function to test routes
   testy: function (req, res, next) {
     res.json("Route Succesful");
+  },
+
+  handleCommit: function (req, res, next) {
+    res.json("You made a POST to /api/commits/");
   }
 
   // Tolken handler, not sure if will use

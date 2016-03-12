@@ -14,7 +14,7 @@ module.exports = function (app, express) {
   app.get('/api/setup/:userId/:projectId', helpers.testy);
 
   // 'Commit' interaction
-  app.post('/api/commits/:userId/:projectId', helpers.testy);
+  app.post('/api/commits/', helpers.handleCommit);
 
   // Error handling
   app.use(helpers.errorLogger);
