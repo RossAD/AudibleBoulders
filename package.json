@@ -4,6 +4,7 @@
   "description": "A sublime plugin for Git Workflow",
   "main": "",
   "scripts": {
+    "start" : "node src/server/server.js"
   },
   "repository": {
     "type": "git",
