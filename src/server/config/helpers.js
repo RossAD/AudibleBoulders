@@ -1,5 +1,5 @@
 // var jwt = require('jwt-simple');
-
+var db = require('./db');
 
 module.exports = {
   errorLogger: function (error, req, res, next) {
@@ -19,6 +19,14 @@ module.exports = {
   },
 
   handleCommit: function (req, res, next) {
+    var users_id = req.body.users_id;
+    var projects_id = req.body.projects_id;
+    var last_pulled_commit = req.body.last_pulled_commit;
+    var diffs = req.body.diffs;
+    console.log("got req.body.users_id:", req.body.users_id);
+    console.log("got req.body.projects_id:", req.body.projects_id);
+    console.log("got req.body.last_pulled_commit:", req.body.last_pulled_commit);
+    console.log("got req.body.diffs:", req.body.diffs);
     res.json("You made a POST to /api/commits/");
   }
 
