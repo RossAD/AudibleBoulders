@@ -4,13 +4,19 @@
   "description": "A sublime plugin for Git Workflow",
   "main": "",
   "scripts": {
-    "start": "nodemon src/server/server.js",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:dev": "webpack-dev-server --inline --content-base public/ --history-api-fallback",
+    "start:prod": "npm run build && node server.bundle.js",
+    "build:client": "webpack",
+    "build:server": "webpack --config webpack.server.config.js",
+    "build": "npm run build:client && npm run build:server",
     "dropDB": "mysql -u root -p < server/dropDB.sql",
     "initDB": "mysql -u root -p < src/server/schema.sql",
     "openDB": "mysql -u root -p app",
     "lint": "eslint src"
   },
   "pre-commit": [
+    "lint"
   ],
   "repository": {
     "type": "git",
@@ -24,7 +30,11 @@
   "homepage": "http://www.gitspy.com/",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "passport": "^0.3.2",
+    "passport-github2": "^0.1.10",
     "morgan": "^1.6.1",
     "mysql": "^2.4.2",
     "nodemon": "^1.8.1",
