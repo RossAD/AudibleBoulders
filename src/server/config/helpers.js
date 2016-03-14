@@ -1,5 +1,9 @@
 // var jwt = require('jwt-simple');
 var db = require('../db');
+var passport = require('passport');
+var githubstrategy = require('passport-github2').Strategy;
+var session = require('express-session');
+var keys = require('keys.js');
 
 module.exports = {
   errorLogger: function (error, req, res, next) {
