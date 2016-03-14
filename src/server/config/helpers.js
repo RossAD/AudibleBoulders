@@ -28,6 +28,25 @@ module.exports = {
     console.log("got req.body.last_pulled_commit:", req.body.last_pulled_commit);
     console.log("got req.body.diffs:", req.body.diffs);
     res.json("You made a POST to /api/commits/");
+
+    // 1) find or create an entry in users_projects table, return its record id
+    // 2) delete all entries from diffs table where users_projects_id matches above
+    // 3) iterate through req.body.diffs, make a new entry in diffs table for each
+
+    var queryStr = "SELECT id FROM users_projects WHERE users_id='" + users_id.toString() + "' AND projects_id='" + projects_id.toString() + "'";
+    console.log("queryStr:", queryStr);
+
+    db.query(queryStr, function(err, results) {
+      if (err) {
+        throw new Error(err);
+        return;
+      }
+      if (results.length === 0) {
+
+      } else if (results.length > 0) {
+        var users_projects_id = results[0];
+      }
+    });
   }
 
   // Tolken handler, not sure if will use
