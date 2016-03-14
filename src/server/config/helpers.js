@@ -1,5 +1,5 @@
 // var jwt = require('jwt-simple');
-var db = require('./db');
+var db = require('../db');
 
 module.exports = {
   errorLogger: function (error, req, res, next) {
