@@ -1,3 +1,6 @@
+/*jslint node: true */
+"use strict";
+
 // var jwt = require('jwt-simple');
 var db = require('../db');
 
@@ -39,7 +42,6 @@ module.exports = {
     db.query(queryStr, function(err, results) {
       if (err) {
         throw new Error(err);
-        return;
       }
       if (results.length === 0) {
 
