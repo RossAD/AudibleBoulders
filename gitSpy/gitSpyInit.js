@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var postCommitPath = '../.git/hooks/post-commit';
+var postCommitPath = './.git/hooks/post-commit';
 // var postMergePath = '../.git/hooks/post-merge';
 var runGitSpy = '#!/bin/sh node gitSpy/gitSpy.js';
 

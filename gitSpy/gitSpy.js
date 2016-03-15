@@ -1,4 +1,4 @@
-var ImageToAscii = require('image-to-ascii');
+// var ImageToAscii = require('image-to-ascii');
 var spawnSync = require('child_process').spawnSync;
 
 function parseHash(commit) {
@@ -51,10 +51,10 @@ var data = {
   diffs: diffs
 };
 runChildProcess('curl',
-  ['-X', 'POST', '-H', 'Content-Type: application/json', '-d', data, 'http://localhost:3000/api/items'],
+  ['-X', 'POST', '-H', 'Content-Type: application/json', '-d', data, 'http://localhost:8080/api/commits'],
   'utf-8');
 
 /** console log cute ascii art **/
-ImageToAscii('https://s-media-cache-ak0.pinimg.com/236x/2d/8e/e8/2d8ee815146390d567706f2c7b5c2916.jpg', function(err, converted) {
-    console.log(err || converted);
-});
+// ImageToAscii('https://s-media-cache-ak0.pinimg.com/236x/2d/8e/e8/2d8ee815146390d567706f2c7b5c2916.jpg', function(err, converted) {
+//     console.log(err || converted);
+// });
