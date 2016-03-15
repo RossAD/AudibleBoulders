@@ -1,3 +1,6 @@
+/*jslint node: true */
+"use strict";
+
 var helpers = require('./helpers.js');
 
 module.exports = function (app, express) {
