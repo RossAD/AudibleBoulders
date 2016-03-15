@@ -2,7 +2,7 @@ var fs = require('fs');
 
 var postCommitPath = './.git/hooks/post-commit';
 // var postMergePath = '../.git/hooks/post-merge';
-var runGitSpy = '#!/bin/sh node gitSpy/gitSpy.js';
+var runGitSpy = '#!/bin/sh\nnode gitSpy/gitSpy.js';
 
 if (!fs.existsSync(postCommitPath)) {
   var postCommit = fs.openSync(postCommitPath, 'w');
