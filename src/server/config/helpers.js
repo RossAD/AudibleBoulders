@@ -4,6 +4,10 @@
 // var jwt = require('jwt-simple');
 var db = require('../db');
 
+var createUsersProjectsEntry = function() {
+  console.log('createUsersProjectsEntry called');
+};
+
 module.exports = {
   errorLogger: function (error, req, res, next) {
     // log the error then send it to the next middleware in
@@ -41,11 +45,14 @@ module.exports = {
 
     db.query(queryStr, function(err, results) {
       if (err) {
+        console.log("there was an error from db.query");
         throw new Error(err);
       }
       if (results.length === 0) {
-
+        console.log("db.query came back with result length 0");
+        createUsersProjectsEntry();
       } else if (results.length > 0) {
+        console.log("db.query got users_projects_id", results[0]);
         var users_projects_id = results[0];
       }
     });
