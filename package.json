@@ -8,9 +8,10 @@
     "dropDB": "mysql -u root -p < server/dropDB.sql",
     "initDB": "mysql -u root -p < src/server/schema.sql",
     "openDB": "mysql -u root -p app",
-    "lint": "eslint src"
+    "lint": "jshint src"
   },
   "pre-commit": [
+    "lint"
   ],
   "repository": {
     "type": "git",
@@ -37,8 +38,6 @@
     "fs": "0.0.2"
   },
   "devDependencies": {
-    "eslint": "^2.4.0",
-    "eslint-config-airbnb": "^6.1.0",
     "grunt": "^0.4.4",
     "grunt-contrib-concat": "^0.3.0",
     "grunt-contrib-cssmin": "^0.9.0",
@@ -49,7 +48,7 @@
     "grunt-mocha-test": "^0.10.0",
     "grunt-nodemon": "^0.2.1",
     "grunt-shell": "^0.6.4",
-    "grunt-git": "^0.3.7",
+    "jshint": "^2.9.1",
     "pre-commit": "^1.1.2"
   }
 }
