@@ -38,34 +38,46 @@ passport.deserializeUser(function (userId, done) {
   }
 });
 
+// Test route
+app.get('/', function(req, res, next){
+  res.json("You Made It!!!!!!!!!!!!!!!!!!!!!!", res);
+});
 // Configure Passport
 passport.use(new githubstrategy({
   clientID: keys.github.id,
   clientSecret: keys.github.secret,
   // URL to redirect to on login
-  callbackUrl: 'https://www.getpostman.com/oauth2/callback'
+  callbackUrl: 'http://localhost:8080/login/github_callback'
 },
 function (accessToken, refreshToken, profile, done) {
   // DB query to create profile id, change to access DB
-  console.log("Success?!?!??!?!?!?!");
+  console.log("profile?!?!??!?!?!?!  ", profile);
   users[profile.id] = profile;
   done(null, users[profile.id]);
 }));
 
 // GITHUB LOGIN
-app.get('/login/github', passport.authenticate('github'));
+app.get('/login/github', passport.authenticate('github', { scope: [ 'user:email' ] }));
 
 app.get('/login/github_callback', passport.authenticate('github', {
-  successRedirect: '/github/profile',
-  failureRedirect: '/github/failure'
-}));
+  failureRedirect: 'https://www.amazon.com'
+}),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/', res.body);
+  });
 
 app.get('/github/profile', checkPermission, function (req, res) {
-  res.send("Success!!!!!!!!!!!");
+  res.send(req.user);
 });
 
 app.get('/github/failure', function (req, res) {
   res.send("Authentication failed.");
+});
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
 });
 
 function checkPermission (req, res, next) {
