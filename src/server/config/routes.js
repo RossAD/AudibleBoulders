@@ -3,7 +3,7 @@
 
 var helpers = require('./helpers.js');
 
-module.exports = function (app, express) {
+module.exports = function (app) {
   // 'helpers.testy' is a placeholder to test routing, replace with appropriate functions
 
   // Interact with users

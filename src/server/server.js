@@ -3,8 +3,7 @@
 
 var express = require('express');
 var app = express();
-var path = require('path');
-var compression = require('compression');
+
 var bodyparser = require('body-parser');
 var keys = require('./config/keys.js');
 var passport = require('passport');

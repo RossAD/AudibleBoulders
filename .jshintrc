@@ -21,9 +21,7 @@
    * =================
    */
 
-  // Force all variable names to use either camelCase style or UPPER_CASE
-  // with underscores.
-  "camelcase": true,
+  "predef": [ "MY_GLOBAL" ],
 
   // Prohibit use of == and != in favor of === and !==.
   "eqeqeq": true,
@@ -34,14 +32,8 @@
   // Prohibit use of a variable before it is defined.
   "latedef": true,
 
-  // Enforce line length to 100 characters
-  "maxlen": 100,
-
   // Require capitalized names for constructor functions.
   "newcap": true,
-
-  // Enforce use of single quotation marks for strings.
-  "quotmark": "single",
 
   // Enforce placing 'use strict' at the top function scope
   "strict": true,
@@ -50,7 +42,7 @@
   "undef": true,
 
   // Warn when variables are defined but never used.
-  "unused": true,
+  "unused": false,
 
   /*
    * RELAXING OPTIONS
@@ -59,3 +51,4 @@
 
   // Suppress warnings about == null comparisons.
   "eqnull": true
+}
