@@ -47,7 +47,7 @@ var diffs = formatDiffs(gitDiff);
 /** send POST request to server **/
 var data = {
   users_id: "users_id", // TODO REPLACE WITH keys.user_id
-  projects_id: "projects_id", // TODO REPLACE WITH keys.project_id
+  dashboards_id: "dashboards_id", // TODO REPLACE WITH keys.project_id
   last_pulled_commit: lastPullHash,
   diffs: diffs
 };
