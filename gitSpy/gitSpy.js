@@ -1,5 +1,6 @@
 // var ImageToAscii = require('image-to-ascii');
 var spawnSync = require('child_process').spawnSync;
+var keys = require('./USER_KEYS');
 
 function parseHash(commit) {
   var HASH_LENGTH = 40;
@@ -45,8 +46,8 @@ var diffs = formatDiffs(gitDiff);
 
 /** send POST request to server **/
 var data = {
-  users_id: "users_id",
-  projects_id: "projects_id",
+  users_id: "users_id", // TODO REPLACE WITH keys.user_id
+  projects_id: "projects_id", // TODO REPLACE WITH keys.project_id
   last_pulled_commit: lastPullHash,
   diffs: diffs
 };
