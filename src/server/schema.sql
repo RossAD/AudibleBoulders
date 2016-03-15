@@ -2,45 +2,56 @@ CREATE DATABASE app;
 
 USE app;
 
+DROP TABLE IF EXISTS "users";
+
 CREATE TABLE users (
   id int NOT NULL AUTO_INCREMENT,
   github_username varchar(39) NOT NULL UNIQUE,
   name varchar(256),
   signature varchar(200),
+  token varchar(200)
   PRIMARY KEY (id)
 );
 
-CREATE TABLE projects (
+DROP TABLE IF EXISTS "dashboards";
+
+CREATE TABLE dashboards (
   id int NOT NULL AUTO_INCREMENT,
-  repo varchar(200) NOT NULL,
+  repo_link varchar(200) NOT NULL,
   branch varchar(200),
+  org_name varchar(200),
+  repo_name varchar(200),
   last_commit varchar(200),
   PRIMARY KEY (id)
 );
 
-CREATE TABLE users_projects (
+DROP TABLE IF EXISTS "users_dashboards";
+
+CREATE TABLE users_dashboards (
   id int NOT NULL AUTO_INCREMENT,
   users_id int NOT NULL,
-  projects_id int NOT NULL,
+  dashboards_id int NOT NULL,
   set_up tinyint,
   up_to_date tinyint,
   last_pulled_commit varchar(200),
   PRIMARY KEY (id),
   FOREIGN KEY (users_id)
     REFERENCES users(id),
-  FOREIGN KEY (projects_id)
-    REFERENCES projects(id)
+  FOREIGN KEY (dashboards_id)
+    REFERENCES dashboards(id)
 );
+
+DROP TABLE IF EXISTS "dffs";
 
 CREATE TABLE diffs (
   id int NOT NULL AUTO_INCREMENT,
-  users_projects_id int NOT NULL,
+  users_dashboards_id int NOT NULL,
   file varchar(200),
   mod_type varchar(20),
   commit_message varchar(200),
   PRIMARY KEY (id),
-  FOREIGN KEY (users_projects_id)
-    REFERENCES users_projects(id)
+  FOREIGN KEY (users_dashboards_id)
+    REFERENCES users_dashboards(id)
 );
 
 
