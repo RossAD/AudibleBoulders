@@ -39,9 +39,9 @@ passport.deserializeUser(function (userId, done) {
 });
 
 // Test route
-app.get('/', function(req, res, next){
-  res.json("You Made It!!!!!!!!!!!!!!!!!!!!!!", res);
-});
+// app.get('/', function(req, res, next){
+//   res.json("You Made It!!!!!!!!!!!!!!!!!!!!!!", res);
+// });
 // Configure Passport
 passport.use(new githubstrategy({
   clientID: keys.github.id,
@@ -51,7 +51,6 @@ passport.use(new githubstrategy({
 },
 function (accessToken, refreshToken, profile, done) {
   // DB query to create profile id, change to access DB
-  console.log("profile?!?!??!?!?!?!  ", profile);
   users[profile.id] = profile;
   done(null, users[profile.id]);
 }));
