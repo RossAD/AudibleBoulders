@@ -1,3 +1,4 @@
+"use strict";
 angular.module('myApp', [
   'add', 'dashboard', 'home', 'login', 'ngRoute'
 ])
@@ -12,7 +13,7 @@ angular.module('myApp', [
   });
   $routeProvider.when('/add', {
     templateUrl: 'app/add/add.html',
-    controller: 'AddController'
+    controller: 'AddCongtroller'
   });
   $routeProvider.when('/dashboard/:orgName/:repoName', {
     templateUrl: 'app/dashboard/dashboard.html',
@@ -23,4 +24,4 @@ angular.module('myApp', [
     controller: 'DashboardController'
   });
   $routeProvider.otherwise({redirectTo: '/'});
-}])
+}]);
