@@ -7,7 +7,7 @@ var createUsersDashboardsEntry = function() {
 };
 
 module.exports = {
-  handleCommit: function (req, res, next) {
+  handlePost: function (req, res, next) {
     var users_id = req.body.users_id;
     var dashboards_id = req.body.dashboards_id;
     var last_pulled_commit = req.body.last_pulled_commit;
