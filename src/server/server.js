@@ -9,7 +9,7 @@ var cookieparser = require('cookie-parser');
 var GithubStrategy = require('passport-github2').Strategy;
 var session = require('express-session');
 var db = require('./db');
-var users = require('./users.js');
+var users = require('./request-handlers/users.js');
 
 app.use(cookieparser());
 app.use(session({
@@ -28,12 +28,12 @@ require('./config/routes.js')(app, express);
 
 
 passport.serializeUser(function (user, done) {
-  done(null, user.id);
+  done(null, user);
 });
 
 passport.deserializeUser(function (userId, done) {
-  if (users[userId]) {
-    done(null, users[userId]);
+  if (userId) {
+    done(null,userId);
   } else {
     done('user not found', null);
   }
@@ -48,8 +48,7 @@ passport.use(new GithubStrategy({
   clientID: keys.github.id,
   clientSecret: keys.github.secret,
   // URL to redirect to on login
-  callbackUrl: 'http://localhost:8080/login/github_callback',
-  userAgent: 'localhost:8080'
+  callbackUrl: 'http://localhost:8080/login/github_callback'
 },
 function (accessToken, refreshToken, profile, done) {
   // DB query to create profile id, change to access DB
@@ -58,8 +57,8 @@ function (accessToken, refreshToken, profile, done) {
     // represent the logged-in user.  In a typical application, you would want
     // to associate the GitHub account with a user record in your database,
     // and return that user instead.
-
-    return done(null, users.postUser());
+    users.postUser(profile._json);
+    return done(null, profile._json);
   });
   // users[profile.id] = profile;
   // done(null, users[profile.id]);
@@ -73,7 +72,10 @@ app.get('/login/github_callback', passport.authenticate('github', {
 }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/', res.body);
+    res.cookie('githubId', req.user.id);
+    res.cookie('githubName', req.user.login);
+    console.log('Authentication??????????????', req.user);
+    res.redirect('/');
   });
 
 function checkPermission (req, res, next) {
