@@ -50,5 +50,8 @@
    */
 
   // Suppress warnings about == null comparisons.
-  "eqnull": true
+  "eqnull": true,
+
+  // Sets "angular" as a predefined variable
+  "predef": ["angular"]
 }

@@ -21,7 +21,7 @@ angular.module('myApp', [
   });
   $routeProvider.when('/setup/:orgName/:repoName', {
     templateUrl: 'app/dashboard/dashboard.html',
-    controller: 'DashboardController'
+    controller: 'gDashboardController'
   });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
