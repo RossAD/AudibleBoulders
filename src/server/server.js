@@ -12,16 +12,15 @@ var db = require('./db');
 var users = require('./request-handlers/users.js');
 
 app.use(cookieparser());
+
 app.use(session({
   secret:'audibleBoulder',
   resave: false,
   saveUninitialized: true
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
-
-// Temp object for testing GITHUB login
-// var users = {};
 
 require('./config/middleware.js')(app, express);
 require('./config/routes.js')(app, express);
@@ -39,42 +38,30 @@ passport.deserializeUser(function (userId, done) {
   }
 });
 
-// Test route
-// app.get('/', function(req, res, next){
-//   res.json("You Made It!!!!!!!!!!!!!!!!!!!!!!", res);
-// });
 // Configure Passport
 passport.use(new GithubStrategy({
   clientID: keys.github.id,
   clientSecret: keys.github.secret,
-  // URL to redirect to on login
   callbackUrl: 'http://localhost:8080/login/github_callback'
 },
 function (accessToken, refreshToken, profile, done) {
-  // DB query to create profile id, change to access DB
+  // TODO: DB query to create profile id, change to access DB
   process.nextTick(function () {
-    // To keep the example simple, the user's GitHub profile is returned to
-    // represent the logged-in user.  In a typical application, you would want
-    // to associate the GitHub account with a user record in your database,
-    // and return that user instead.
     users.postUser(profile._json);
     return done(null, profile._json);
   });
-  // users[profile.id] = profile;
-  // done(null, users[profile.id]);
 }));
 
 // GITHUB LOGIN
-app.get('/login/github', passport.authenticate('github', { scope: [ 'user:email' ] }));
+app.get('/login/github',
+  passport.authenticate('github', {scope: ['user:email']}));
 
-app.get('/login/github_callback', passport.authenticate('github', {
-  failureRedirect: 'https://www.amazon.com'
-}),
+app.get('/login/github_callback',
+  passport.authenticate('github', {failureRedirect: '/'}),
   function(req, res) {
-    // Successful authentication, redirect home.
+    // Successful authentication, create cookie, redirect home.
     res.cookie('githubId', req.user.id);
     res.cookie('githubName', req.user.login);
-    console.log('Authentication??????????????', req.user);
     res.redirect('/');
   });
 
