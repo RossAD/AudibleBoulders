@@ -4,23 +4,25 @@
 var helpers = require('./helpers.js');
 
 // request handlers
-var commits = require('../request-handlers/commits');
+var users = require('../request-handlers/users');
+var dashboards = require('../request-handlers/dashboards');
 var dashboardsUserId = require('../request-handlers/dashboards-userId');
 var dashboardsOrgRepo = require('../request-handlers/dashboards-org-repo');
 var setup = require('../request-handlers/setup');
+var commits = require('../request-handlers/commits');
 
 module.exports = function (app) {
   // 'helpers.testy' is a placeholder to test routing, replace with appropriate functions
 
   // Interact with users
-  app.post('/api/users/', helpers.testy);
+  app.post('/api/users/', users.handlePost);
 
   // Interact with dashboards
-  app.post('/api/dashboards/', helpers.testy);
+  app.post('/api/dashboards/', dashboards.handlePost);
   app.get('/api/dashboards/:userId', dashboardsUserId.handleGet);
   app.get('/api/dashboards/:orgName/:repoName', dashboardsOrgRepo.handleGet);
 
-  // 'Setup' routing
+  // Get signature hash etc for setup page
   app.get('/api/setup/:userId/:dashboardId', setup.handleGet);
 
   // 'Commit' interaction
