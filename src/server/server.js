@@ -1,14 +1,12 @@
-/*jslint node: true */
 "use strict";
-
 var express = require('express');
 var app = express();
-
+var path = require('path');
 var bodyparser = require('body-parser');
 var keys = require('./config/keys.js');
 var passport = require('passport');
 var cookieparser = require('cookie-parser');
-var githubstrategy = require('passport-github2').Strategy;
+var GithubStrategy = require('passport-github2').Strategy;
 var session = require('express-session');
 var db = require('./db');
 
@@ -45,7 +43,7 @@ passport.deserializeUser(function (userId, done) {
 //   res.json("You Made It!!!!!!!!!!!!!!!!!!!!!!", res);
 // });
 // Configure Passport
-passport.use(new githubstrategy({
+passport.use(new GithubStrategy({
   clientID: keys.github.id,
   clientSecret: keys.github.secret,
   // URL to redirect to on login
@@ -68,6 +66,14 @@ app.get('/login/github_callback', passport.authenticate('github', {
     res.redirect('/', res.body);
   });
 
+function checkPermission (req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/github/failure');
+  }
+}
+
 app.get('/github/profile', checkPermission, function (req, res) {
   res.send(req.user);
 });
@@ -81,13 +87,6 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-function checkPermission (req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  } else {
-    res.redirect('/github/failure');
-  }
-}
 
 
 var PORT = process.env.PORT || 8080;

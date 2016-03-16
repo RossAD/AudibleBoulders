@@ -20,8 +20,8 @@ angular.module('myApp', [
     controller: 'DashboardController'
   });
   $routeProvider.when('/setup/:orgName/:repoName', {
-    templateUrl: 'app/dashboard/dashboard.html',
-    controller: 'DashboardController'
+    templateUrl: 'app/setup/setup.html',
+    controller: 'SetupController'
   });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
