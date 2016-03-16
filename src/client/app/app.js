@@ -1,6 +1,6 @@
 "use strict";
 angular.module('myApp', [
-  'add', 'dashboard', 'home', 'login', 'ngRoute'
+  'add', 'dashboard', 'home', 'login', 'ngRoute', 'helper'
 ])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
