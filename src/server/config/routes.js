@@ -2,6 +2,7 @@
 "use strict";
 
 var helpers = require('./helpers.js');
+var commitHandler = require('../request-handlers/commits');
 
 module.exports = function (app) {
   // 'helpers.testy' is a placeholder to test routing, replace with appropriate functions
@@ -18,7 +19,7 @@ module.exports = function (app) {
   app.get('/api/setup/:userId/:dashboardId', helpers.testy);
 
   // 'Commit' interaction
-  app.post('/api/commits/', helpers.handleCommit);
+  app.post('/api/commits/', commitHandler.handleCommit);
 
   // Error handling
   app.use(helpers.errorLogger);
