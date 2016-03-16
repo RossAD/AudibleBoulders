@@ -1,19 +1,21 @@
+DROP DATABASE IF EXISTS app;
+
 CREATE DATABASE app;
 
 USE app;
 
-DROP TABLE IF EXISTS "users";
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   id int NOT NULL AUTO_INCREMENT,
   github_username varchar(39) NOT NULL UNIQUE,
   name varchar(256),
   signature varchar(200),
-  token varchar(200)
+  token varchar(200),
   PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS "dashboards";
+DROP TABLE IF EXISTS dashboards;
 
 CREATE TABLE dashboards (
   id int NOT NULL AUTO_INCREMENT,
@@ -25,7 +27,7 @@ CREATE TABLE dashboards (
   PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS "users_dashboards";
+DROP TABLE IF EXISTS users_dashboards;
 
 CREATE TABLE users_dashboards (
   id int NOT NULL AUTO_INCREMENT,
@@ -41,7 +43,7 @@ CREATE TABLE users_dashboards (
     REFERENCES dashboards(id)
 );
 
-DROP TABLE IF EXISTS "dffs";
+DROP TABLE IF EXISTS diffs;
 
 CREATE TABLE diffs (
   id int NOT NULL AUTO_INCREMENT,
