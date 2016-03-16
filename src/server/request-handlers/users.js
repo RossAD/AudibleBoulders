@@ -10,7 +10,7 @@ module.exports = {
     var gitId = profile.id;
     var email = profile.email;
     var avatar = profile.avatar_url;
-    console.log('------------>>>>>>>>> My profile!!!', profile);
+    console.log('------------>>>>>>>>>>>Logging In: ', profile.name);
     // var queryStr = "SELECT id FROM users WHERE users_id='" + gitId.toString() + "' AND dashboards_id='" + dashboards_id.toString() + "'";
     // console.log("queryStr:", queryStr);
 
