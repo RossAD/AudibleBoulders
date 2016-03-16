@@ -1,0 +1,9 @@
+<h1>Home route (dashboard list)</h1>
+
+<a href="#/add"><button>Add a new dashboard</button></a>
+
+<ul ng-repeat="dashboard in dashboards">
+  <a href="#/{{dashboard.org_name}}/{{dashboard.repo_name}}">
+    <li>{{dashboard.org_name}} / {{dashboard.repo_name}}</li>
+  </a>
+</ul>
