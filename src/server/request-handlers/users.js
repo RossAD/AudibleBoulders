@@ -6,7 +6,7 @@ module.exports = {
 
   },
 
-  postUser: function (profile) {
+  postUser: function (profile, token) {
     var gitId = profile.id;
     var gitHandle = profile.login;
     var avatar = profile.avatar_url;
@@ -21,7 +21,7 @@ module.exports = {
       console.log('query result: ', results);
       // If user NOT in table, add user
       if (results.length === 0) {
-        var addUser = "INSERT into users (gitHandle, name, githubId, githubAvatar) VALUES ('"+ gitHandle +"','"+ name +"','"+ gitId +"','"+ avatar +"')";
+        var addUser = "INSERT into users (gitHandle, name, githubId, githubAvatar, gitToken) VALUES ('"+ gitHandle +"','"+ name +"','"+ gitId +"','"+ avatar +"','"+ token +"')";
         db.query(addUser, function (err, results) {
           if (err) {
             throw new Error(err);

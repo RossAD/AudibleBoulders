@@ -13,6 +13,7 @@ CREATE TABLE users (
   signature varchar(200),
   githubId varchar(200),
   githubAvatar varchar(200),
+  gitToken varchar(200),
   PRIMARY KEY (id)
 );
 

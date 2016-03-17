@@ -37,7 +37,9 @@ passport.deserializeUser(function (userId, done) {
     done('user not found', null);
   }
 });
-
+function token (token) {
+  console.log('This is Your Token: ', token);
+}
 // Configure Passport
 passport.use(new GithubStrategy({
   clientID: keys.github.id,
@@ -47,7 +49,8 @@ passport.use(new GithubStrategy({
 function (accessToken, refreshToken, profile, done) {
   // TODO: DB query to create profile id, change to access DB
   process.nextTick(function () {
-    users.postUser(profile._json);
+    token(accessToken);
+    users.postUser(profile._json, accessToken);
     return done(null, profile._json);
   });
 }));
@@ -60,6 +63,7 @@ app.get('/login/github_callback',
   passport.authenticate('github', {failureRedirect: '/'}),
   function(req, res) {
     // Successful authentication, create cookie, redirect home.
+    console.log('Response--------->>>>>>>>', req.isAuthenticated);
     res.cookie('githubId', req.user.id);
     res.cookie('githubName', req.user.login);
     res.redirect('/');
