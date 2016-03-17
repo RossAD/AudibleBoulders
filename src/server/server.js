@@ -82,7 +82,7 @@ app.get('/github/failure', function (req, res) {
 });
 
 app.get('/logout', function(req, res){
-  console.log('--------------->>>>>>>>>>>>Logging Out: ', req.user.name);
+  console.log('--------------->>>>>>>>>>>>Logging Out: ', req.cookies.githubName);
   req.logout();
   res.redirect('/');
 });
