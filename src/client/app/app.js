@@ -1,6 +1,6 @@
 "use strict";
 angular.module('GitSpy', [
-  'add', 'dashboard', 'home', 'login', 'setup', 'ngRoute', 'helper'
+  'add', 'dashboard', 'home', 'login', 'setup', 'ngRoute', 'helper', 'logout'
 ])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
@@ -8,8 +8,7 @@ angular.module('GitSpy', [
     controller: 'HomeController'
   });
   $routeProvider.when('/login',{
-    templateUrl: 'app/login/login.html',
-    controller: 'LoginController'
+    templateUrl: 'app/login/login.html'
   });
   $routeProvider.when('/add', {
     templateUrl: 'app/add/add.html',
@@ -23,5 +22,18 @@ angular.module('GitSpy', [
     templateUrl: 'app/setup/setup.html',
     controller: 'SetupController'
   });
+  $routeProvider.when('/logout', {
+    templateUrl: 'app/logout/logout.html',
+    controller: 'LogoutController'
+  });
   $routeProvider.otherwise({redirectTo: '/'});
-}]);
+}])
+
+.run(function($rootScope, $location, AuthFactory) {
+  $rootScope.$on('$routeChangeStart', function(event, toState) {
+    var route = toState.originalPath;
+    if (AuthFactory.authRoutes.indexOf(route) >= 0 && !AuthFactory.isAuth()) {
+      $location.path('/login');
+    }
+  });
+});

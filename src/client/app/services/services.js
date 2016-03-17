@@ -1,5 +1,5 @@
 "use strict";
-var helper = angular.module("helper", []);
+var helper = angular.module("helper", ['ngCookies']);
 
 // all GET requests will return res.data in a promise
 // POST request does not return anything
@@ -47,5 +47,35 @@ helper.factory('RequestFactory', function($http) {
     getAllDashboards: getAllDashboards,
     getSignature: getSignature,
     postDashboard: postDashboard
+  };
+});
+
+helper.factory('AuthFactory', function($cookies, $http, $location) {
+  var authRoutes = ['/', '/add', '/:orgName/:repoName', '/:orgName/:repoName/setup'];
+
+  var isAuth = function () {
+    return $cookies.get('githubId');
+  };
+
+  var eatCookies = function () {
+    var cookies = $cookies.getAll();
+    angular.forEach(cookies, function (v, k) {
+      $cookies.remove(k);
+    });
+  };
+
+  var logout = function() {
+    $http({
+      method: 'GET',
+      url: '/logout'
+    });
+    $location.path('/login');
+  };
+
+  return {
+    authRoutes: authRoutes,
+    isAuth: isAuth,
+    eatCookies: eatCookies,
+    logout: logout
   };
 });
