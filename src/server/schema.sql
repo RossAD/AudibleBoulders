@@ -8,11 +8,11 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   id int NOT NULL AUTO_INCREMENT,
-  github_username varchar(39) NOT NULL UNIQUE,
+  gitHandle varchar(39) NOT NULL UNIQUE,
   name varchar(256),
   signature varchar(200),
   githubId varchar(200),
-  githubAvatar varchar(200)
+  githubAvatar varchar(200),
   PRIMARY KEY (id)
 );
 
