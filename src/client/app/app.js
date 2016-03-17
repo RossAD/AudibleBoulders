@@ -1,6 +1,6 @@
 "use strict";
 angular.module('GitSpy', [
-  'add', 'dashboard', 'home', 'login', 'setup', 'ngRoute', 'helper', 'logout'
+  'add', 'dashboard', 'home', 'login', 'setup', 'ngRoute', 'helper', 'logout', 'ngCookies'
 ])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {

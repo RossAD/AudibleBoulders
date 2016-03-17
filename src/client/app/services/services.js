@@ -1,5 +1,5 @@
 "use strict";
-var helper = angular.module("helper", ['ngCookies']);
+var helper = angular.module("helper", []);
 
 // all GET requests will return res.data in a promise
 // POST request does not return anything
@@ -14,10 +14,10 @@ helper.factory('RequestFactory', function($http) {
     });
   };
 
-  var getAllDashboards = function(userId) {
+  var getAllDashboards = function(githubId) {
     return $http({
       method: 'GET',
-      url: '/api/dashboards/' + userId
+      url: '/api/dashboards/' + githubId
     })
     .then(function(res) {
       return res.data;
