@@ -28,7 +28,7 @@ module.exports = {
           }
           // For each diff, create new diff for selected user/dashboard
           for (var i = 0; i < diffs.length; i++) {
-            var insertDiff = "INSERT INTO diffs (file, mod_type, commit_message, users_dashboards_id) VALUES ('" + diffs[i].file.toString() + "', '" + diffs[i].mod_type.toString() + "', '" + diffs[i].commit_message.toString() + "', '" + users_dashboards_id.toString() + "');";
+            var insertDiff = "INSERT INTO diffs (file, mod_type, commit_message, users_dashboards_id) VALUES ('" + diffs[i].file.toString() + "', '" + diffs[i].mod_type.toString() + "', '" + diffs[i].commit_message.toString() + "', " + users_dashboards_id.toString() + ");";
             db.query(insertDiff, function (err, results) {
               if (err) {
                 throw new Error(err);
@@ -43,8 +43,6 @@ module.exports = {
               throw new Error(err);
             }
             if (results[0].last_commit !== last_pulled_commit) {
-              console.log(results[0]);
-              console.log(last_pulled_commit);
               var updateUptodateFalse = "UPDATE users_dashboards SET up_to_date='0', last_pulled_commit='" + last_pulled_commit + "' WHERE users_id='" + users_id.toString() + "' AND dashboards_id='" + dashboards_id.toString() + "';";
               db.query(updateUptodateFalse, function (err, results) {
                 if (err) {
@@ -53,7 +51,7 @@ module.exports = {
                 res.send(201);
               });
             } else {
-              var updateUptodateTrue = "UPDATE users_dashboards SET up_to_date='1' WHERE users_id='" + users_id.toString() + "' AND dashboards_id='" + dashboards_id.toString() + "';";
+              var updateUptodateTrue = "UPDATE users_dashboards SET up_to_date='1', last_pulled_commit='" + last_pulled_commit +"' WHERE users_id='" + users_id.toString() + "' AND dashboards_id='" + dashboards_id.toString() + "';";
               db.query(updateUptodateTrue, function (err, results) {
                 if (err) {
                   throw new Error(err);
