@@ -6,7 +6,7 @@ var helpers = require('./helpers.js');
 // request handlers
 var users = require('../request-handlers/users');
 var dashboards = require('../request-handlers/dashboards');
-var dashboardsUserId = require('../request-handlers/dashboards-userId');
+var dashboardsGithubId = require('../request-handlers/dashboards-githubId');
 var dashboardsOrgRepo = require('../request-handlers/dashboards-org-repo');
 var setup = require('../request-handlers/setup');
 var commits = require('../request-handlers/commits');
@@ -19,7 +19,7 @@ module.exports = function (app) {
 
   // Interact with dashboards
   app.post('/api/dashboards/', dashboards.handlePost);
-  app.get('/api/dashboards/:userId', dashboardsUserId.handleGet);
+  app.get('/api/dashboards/:githubId', dashboardsGithubId.handleGet);
   app.get('/api/dashboards/:orgName/:repoName', dashboardsOrgRepo.handleGet);
 
   // Get signature hash etc for setup page

@@ -1,8 +1,9 @@
 "use strict";
 angular.module('home', [])
-.controller('HomeController', function($scope, RequestFactory, AuthFactory){
+.controller('HomeController', function($scope, RequestFactory, AuthFactory, $cookies){
   var initializeDashboardList = function() {
-    RequestFactory.getAllDashboards(1) // userId hardcoded to 1 for now
+    var githubId = $cookies.get('githubId');
+    RequestFactory.getAllDashboards(githubId)
     .then(function (dashboards) {
       $scope.dashboards = dashboards;
     });
