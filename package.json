@@ -7,7 +7,8 @@
     "start": "nodemon src/server/server.js",
     "initDB": "mysql -u root -p < src/server/schema.sql",
     "openDB": "mysql -u root -p app",
-    "lint": "jshint src"
+    "lint": "jshint src",
+    "test": "karma start karma.conf.js"
   },
   "pre-commit": [
     "lint"
@@ -27,16 +28,17 @@
     "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
-    "passport": "^0.3.2",
-    "passport-github2": "^0.1.10",
+    "fs": "0.0.2",
     "morgan": "^1.6.1",
     "mysql": "^2.4.2",
     "nodemon": "^1.8.1",
+    "passport": "^0.3.2",
+    "passport-github2": "^0.1.10",
     "request": "^2.69.0",
-    "underscore": "^1.8.3",
-    "fs": "0.0.2"
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "grunt": "^0.4.4",
     "grunt-contrib-concat": "^0.3.0",
     "grunt-contrib-cssmin": "^0.9.0",
@@ -48,6 +50,15 @@
     "grunt-nodemon": "^0.2.1",
     "grunt-shell": "^0.6.4",
     "jshint": "^2.9.1",
-    "pre-commit": "^1.1.2"
+    "karma": "^0.13.22",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.2.2",
+    "karma-nyan-reporter": "0.0.43",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sinon": "^1.0.4",
+    "mocha": "^2.4.5",
+    "phantomjs-prebuilt": "^2.1.5",
+    "pre-commit": "^1.1.2",
+    "sinon": "^1.17.3"
   }
 }
