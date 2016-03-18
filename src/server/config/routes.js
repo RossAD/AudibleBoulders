@@ -28,6 +28,9 @@ module.exports = function (app) {
   // 'Commit' interaction
   app.post('/api/commits/', commits.handlePost);
 
+  // Get user GitHub Subscriptions
+  app.get('/api/subscriptions/', users.userSub);
+
   // Error handling
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);

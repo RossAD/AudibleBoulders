@@ -7,7 +7,7 @@ module.exports = {
     var githubId = req.params.githubId;
 
     // get users_id based on githubId
-    var selectStr = "SELECT * FROM users WHERE githubId='" + githubId + "'";
+    var selectStr = "SELECT * FROM users WHERE github_id='" + githubId + "'";
     db.query(selectStr, function (err, results) {
       if (err) {
         throw new Error(err);
