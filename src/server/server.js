@@ -47,7 +47,7 @@ passport.use(new GithubStrategy({
   callbackUrl: 'http://www.gitspy.com/login/github_callback'
 },
 function (accessToken, refreshToken, profile, done) {
-  // TODO: DB query to create profile id, change to access DB.
+  // TODO: DB query to create profile id, change to access DB
   process.nextTick(function () {
     token(accessToken);
     users.postUser(profile._json, accessToken);
