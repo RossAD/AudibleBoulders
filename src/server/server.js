@@ -63,7 +63,7 @@ app.get('/login/github_callback',
   passport.authenticate('github', {failureRedirect: '/'}),
   function(req, res) {
     // Successful authentication, create cookie, redirect home.
-    console.log('Response--------->>>>>>>>', req.isAuthenticated);
+    console.log('Response--------->>>>>>>>', req.isAuthenticated());
     res.cookie('githubId', req.user.id);
     res.cookie('githubName', req.user.login);
     res.redirect('/');

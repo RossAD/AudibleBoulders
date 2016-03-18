@@ -17,7 +17,6 @@ module.exports = {
       if (err) {
         throw new Error(err);
       }
-      console.log('query result: ', results);
       // If user NOT in table, add user
       if (results.length === 0) {
         var addUser = "INSERT into users (git_handle, name, github_id, github_avatar, git_token) VALUES ('"+ gitHandle +"','"+ name +"','"+ gitId +"','"+ avatar +"','"+ token +"')";
@@ -26,6 +25,25 @@ module.exports = {
             throw new Error(err);
           } else {
             return results;
+          }
+        });
+      } else {
+        // If user is in the table check if git token has changed
+        var tokenQry = "SELECT git_token FROM users where github_id='" +gitId.toString()+ "'";
+        db.query(tokenQry, function(err, result) {
+          if (err) {
+            throw new Error(err);
+          } else if(result[0].git_token !== token){
+            // If the tokens are not equal update token
+            var updateToken = "UPDATE users SET git_token='"+token+"' WHERE github_id='"+gitId+"'";
+            db.query(updateToken, function (err, results) {
+              if (err) {
+                throw new Error(err);
+              } else {
+                return results;
+              }
+            });
+            return result;
           }
         });
       }
@@ -46,10 +64,8 @@ module.exports = {
   },
 
   userSub: function (req, res, next) {
-    console.log('what do we have? ',req.cookies);
     var id  = req.cookies.githubId;
     var gitHandle = req.cookies.githubName;
-    console.log('GitHub ID and GitHub Handle: ', id, " ", gitHandle);
     var token;
     module.exports.getToken(id,function(token){
       token = token;
@@ -62,7 +78,6 @@ module.exports = {
         },
       };
       request.get(options, function(error, response, body) {
-        console.log('options? ', options);
         if (error){
           throw new Error(error);
         } else {
@@ -70,7 +85,6 @@ module.exports = {
         }
       });
     });
-    console.log('Token: ', token);
   }
 
 };

@@ -52,7 +52,7 @@ module.exports = {
 
         // Retrieve user details for all users that are part of this dashboard
         var dashboardId = responseObject.dashboard.id;
-        var joinStr = "SELECT users_dashboards.id, gitHandle, name, githubId, githubAvatar FROM users_dashboards INNER JOIN users ON users_dashboards.users_id=users.id WHERE dashboards_id='" + dashboardId + "'";
+        var joinStr = "SELECT users_dashboards.id, git_handle, name, github_id, github_avatar FROM users_dashboards INNER JOIN users ON users_dashboards.users_id=users.id WHERE dashboards_id='" + dashboardId + "'";
 
         db.query(joinStr, function (err, results) {
           if (err) {
