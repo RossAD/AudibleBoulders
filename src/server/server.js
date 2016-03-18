@@ -44,7 +44,7 @@ function token (token) {
 passport.use(new GithubStrategy({
   clientID: keys.github.id,
   clientSecret: keys.github.secret,
-  callbackUrl: 'http://localhost:8080/login/github_callback'
+  callbackUrl: 'http://www.gitspy.com/login/github_callback'
 },
 function (accessToken, refreshToken, profile, done) {
   // TODO: DB query to create profile id, change to access DB
