@@ -8,22 +8,22 @@ angular.module('GitSpy', [
     controller: 'HomeController'
   });
   $routeProvider.when('/login',{
-    templateUrl: 'app/login/login.html'
+    templateUrl: '/app/login/login.html'
   });
   $routeProvider.when('/add', {
-    templateUrl: 'app/add/add.html',
+    templateUrl: '/app/add/add.html',
     controller: 'AddController'
   });
   $routeProvider.when('/:orgName/:repoName', {
-    templateUrl: 'app/dashboard/dashboard.html',
+    templateUrl: '/app/dashboard/dashboard.html',
     controller: 'DashboardController'
   });
   $routeProvider.when('/:orgName/:repoName/setup', {
-    templateUrl: 'app/setup/setup.html',
+    templateUrl: '/app/setup/setup.html',
     controller: 'SetupController'
   });
   $routeProvider.when('/logout', {
-    templateUrl: 'app/logout/logout.html',
+    templateUrl: '/app/logout/logout.html',
     controller: 'LogoutController'
   });
   $routeProvider.otherwise({redirectTo: '/'});
