@@ -24,10 +24,10 @@ helper.factory('RequestFactory', function($http) {
     });
   };
 
-  var getSignature = function(userId, dashboardId) {
+  var getSetupInfo = function(orgName, repoName, githubId) {
     return $http({
       method: 'GET',
-      url: '/api/setup/' + userId + '/' + dashboardId
+      url: '/api/setup/' + orgName + '/' + repoName + '/' + githubId
     })
     .then(function(res) {
       return res.data;
@@ -45,7 +45,7 @@ helper.factory('RequestFactory', function($http) {
   return {
     getDashboard: getDashboard,
     getAllDashboards: getAllDashboards,
-    getSignature: getSignature,
+    getSetupInfo: getSetupInfo,
     postDashboard: postDashboard
   };
 });
