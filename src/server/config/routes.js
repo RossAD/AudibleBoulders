@@ -23,7 +23,7 @@ module.exports = function (app) {
   app.get('/api/dashboards/:orgName/:repoName', dashboardsOrgRepo.handleGet);
 
   // Get signature hash etc for setup page
-  app.get('/api/setup/:userId/:dashboardId', setup.handleGet);
+  app.get('/api/setup/:orgName/:repoName/:githubId', setup.handleGet);
 
   // 'Commit' interaction
   app.post('/api/commits/', commits.handlePost);
