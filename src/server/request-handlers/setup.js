@@ -9,18 +9,19 @@ module.exports = {
     var githubId = req.params.githubId;
     var responseObject = {};
 
-    var selectStr = "SELECT * FROM users WHERE githubId='" + githubId + "';";
+    var selectStr = "SELECT * FROM users WHERE github_id='" + githubId + "';";
     db.query(selectStr, function (err, results) {
       if (err) {
         throw new Error(err);
       } else {
         responseObject.users_id = results[0].id;
-
+        console.log('user query: ', results);
         var selectStr = "SELECT * FROM dashboards WHERE org_name='" + org_name + "' AND repo_name='" + repo_name + "'";
         db.query(selectStr, function (err, results) {
           if (err) {
             throw new Error(err);
           } else {
+            console.log('dashboards id', results);
             responseObject.dashboards_id = results[0].id;
 
             res.json(responseObject);
