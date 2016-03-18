@@ -9,13 +9,12 @@ module.exports = {
     var githubId = req.params.githubId;
     var responseObject = {};
 
-    var selectStr = "SELECT * FROM users WHERE githubId='" + githubId + "';";
+    var selectStr = "SELECT * FROM users WHERE github_id='" + githubId + "';";
     db.query(selectStr, function (err, results) {
       if (err) {
         throw new Error(err);
       } else {
         responseObject.users_id = results[0].id;
-
         var selectStr = "SELECT * FROM dashboards WHERE org_name='" + org_name + "' AND repo_name='" + repo_name + "'";
         db.query(selectStr, function (err, results) {
           if (err) {
