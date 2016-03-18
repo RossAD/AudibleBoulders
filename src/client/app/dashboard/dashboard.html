@@ -4,7 +4,7 @@
   <div>Last Commit: {{dashboard.last_commit}}</div>
 
   <div class="users" ng-repeat="user in users">
-    <img src="{{user.githubAvatar}}" width="50">{{user.name}} - <a href="https://github.com/{{user.gitHandle}}">{{user.gitHandle}}</a>
+    <img class="gitimg" src="{{user.githubAvatar}}">{{user.name}} - <a href="https://github.com/{{user.gitHandle}}">{{user.gitHandle}}</a>
     <div class="diffs" ng-repeat="diff in user.diffs">
       {{diff.file}} - {{diff.mod_type}} - {{diff.commit_message}}
     </div>
