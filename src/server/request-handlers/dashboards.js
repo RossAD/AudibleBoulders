@@ -1,4 +1,3 @@
-/*jslint node: true*/
 "use strict";
 
 var db = require('../db');
@@ -65,7 +64,6 @@ module.exports = {
           console.log("user with this github_id is not found");
         } else {
           var users_id = results[0].id;
-
           // find or create the dashboard
           var findDashboard = "SELECT * FROM dashboards WHERE repo_link='" + dashboardDetails.repo_link.toString() + "';";
           // Check if dashboard exists
