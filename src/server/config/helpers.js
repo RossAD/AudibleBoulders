@@ -1,7 +1,6 @@
-/*jslint node: true */
+/*jslint node: true*/
 "use strict";
 
-// var jwt = require('jwt-simple');
 var db = require('../db');
 
 module.exports = {
@@ -20,24 +19,4 @@ module.exports = {
   testy: function (req, res, next) {
     res.json("Route Succesful");
   }
-
-  // Tolken handler, not sure if will use
-
-  // decode: function (req, res, next) {
-  //   var token = req.headers['x-access-token'];
-  //   var user;
-  //   if (!token) {
-  //     return res.send(403); // send forbidden if a token is not provided
-  //   }
-
-  //   try {
-  //     // decode token and attach user to the request
-  //     // for use inside our controllers
-  //     user = jwt.decode(token, 'secret');
-  //     req.user = user;
-  //     next();
-  //   } catch (error) {
-  //     return next(error);
-  //   }
-  // }
 };
