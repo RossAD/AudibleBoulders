@@ -1,3 +1,4 @@
+/*jslint node: true*/
 "use strict";
 
 var db = require('../db');
@@ -6,7 +7,6 @@ var request = require('request');
 module.exports = {
   // Function to grab specified users Git Token
   getToken: function (gitID, cb) {
-    console.log('gitID ', gitID);
     var tokQry = "SELECT git_token FROM users WHERE github_id='" +  gitID.toString() + "'";
     db.query(tokQry, function (err, result) {
       if (err) {
