@@ -1,8 +1,46 @@
 "use strict";
 
 var db = require('../db');
+var request = require('request');
 
 module.exports = {
+  getToken: function (gitID, cb) {
+    console.log('gitID ', gitID);
+    var tokQry = "SELECT git_token FROM users WHERE github_id='" +  gitID.toString() + "'";
+    db.query(tokQry, function (err, result) {
+      if (err) {
+        throw new Error(err);
+      } else {
+        console.log('token result: ', result[0].git_token);
+        cb(result[0].git_token);
+      }
+    });
+  },
+
+  userSub: function (req, res, next) {
+    var id  = req.cookies.githubId;
+    var gitHandle = req.cookies.githubName;
+    var token;
+    module.exports.getToken(id,function(token){
+      token = token;
+      var options = {
+        url: "https://api.github.com/users/"+ gitHandle +"/subscriptions",
+        headers: {
+          'User-Agent': 'GitSpy',
+          authorization: 'token '+ token,
+          'content-type': 'application/json'
+        },
+      };
+      request.get(options, function(error, response, body) {
+        if (error){
+          throw new Error(error);
+        } else {
+          res.end(body);
+        }
+      });
+    });
+  },
+
   handlePost: function (req, res, next) {
     var githubId = req.cookies.githubId;
 
