@@ -4,6 +4,7 @@ var db = require('../db');
 var request = require('request');
 
 module.exports = {
+  // Function to grab specified users Git Token
   getToken: function (gitID, cb) {
     console.log('gitID ', gitID);
     var tokQry = "SELECT git_token FROM users WHERE github_id='" +  gitID.toString() + "'";
@@ -11,19 +12,15 @@ module.exports = {
       if (err) {
         throw new Error(err);
       } else {
-        console.log('token result: ', result[0].git_token);
         cb(result[0].git_token);
       }
     });
   },
-
+  // Function to grab Information from specified URL
   gitURL: function (id, url, callback) {
-    // var id  = req.cookies.githubId;
-    // var gitHandle = req.cookies.githubName;
     var token;
     module.exports.getToken(id,function(token){
       token = token;
-      console.log('Grabbed the token!!!!!!', token);
       var options = {
         url: url,
         headers: {
@@ -36,13 +33,12 @@ module.exports = {
         if (error){
           throw new Error(error);
         } else {
-          // console.log("Last Commit???????????????", JSON.parse(body));
           callback(JSON.parse(body));
         }
       });
     });
   },
-
+  // Update Database with new repo information for Dashboard
   handlePost: function (req, res, next) {
     var githubId = req.cookies.githubId;
     var commitUrl = req.body.commits_url;
