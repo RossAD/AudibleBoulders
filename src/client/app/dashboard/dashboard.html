@@ -1,4 +1,7 @@
 <div ng-controller='DashboardController'>
+
+  <a href="#/{{dashboard.org_name}}/{{dashboard.repo_name}}/setup"><button>Setup instructions</button></a>
+
   <h1>{{dashboard.org_name}} / <a href="{{dashboard.repo_link}}">{{dashboard.repo_name}}</a></h1>
   <h3>Branch: {{dashboard.branch}}</h3>
   <div>Last Commit: {{dashboard.last_commit}}</div>
