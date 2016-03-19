@@ -8,7 +8,7 @@ module.exports = {
 
     var dashboardDetails = {};
     dashboardDetails.repo_link = req.body.html_url;
-    dashboardDetails.branch = 'master';
+    dashboardDetails.branch = req.body.default_branch;
     dashboardDetails.org_name = req.body.owner.login;
     dashboardDetails.repo_name = req.body.name;
     dashboardDetails.last_commit = 'some_git_sha1_hash_asdfadfdsfas';
