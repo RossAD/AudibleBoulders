@@ -6,4 +6,4 @@ npm-debug.log
 **/npm-debug.log
 src/client/lib
 src/server/config/keys.js
-
+src/server/db/index.js
