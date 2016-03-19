@@ -23,7 +23,7 @@ var db = require('../db');
 //       github_username: 'yaliceme',
 //       name: 'Alice',
 //       set_up: true,
-//       up_to_date: true,
+//       up_to_date: 0,
 //       diffs: [
 //         { id: 123,
 //           file: 'file/path/index.html',
@@ -52,7 +52,7 @@ module.exports = {
 
         // Retrieve user details for all users that are part of this dashboard
         var dashboardId = responseObject.dashboard.id;
-        var joinStr = "SELECT users_dashboards.id, git_handle, name, github_id, github_avatar FROM users_dashboards INNER JOIN users ON users_dashboards.users_id=users.id WHERE dashboards_id='" + dashboardId + "'";
+        var joinStr = "SELECT users_dashboards.id, git_handle, name, github_id, github_avatar, set_up, up_to_date FROM users_dashboards INNER JOIN users ON users_dashboards.users_id=users.id WHERE dashboards_id='" + dashboardId + "'";
 
         db.query(joinStr, function (err, results) {
           if (err) {
