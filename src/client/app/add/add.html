@@ -1,7 +1,8 @@
 <h1>Add</h1>
 <p>Choose a Repo to Add to Your Dashboard</p>
+<div class='add-repo'><span ng-show="repoAdded">Added <strong class="addedRepo">{{newRepo}}</strong> to your Dashboard</span></div>
 <ul>
   <li ng-click="postDashboard(repo)" ng-repeat="repo in subsc">
-    {{ repo.full_name }}
+    <div class="button">{{ repo.full_name }}</div>
   </li>
 </ul>
