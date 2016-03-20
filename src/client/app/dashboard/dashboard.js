@@ -23,4 +23,8 @@ angular.module('dashboard', [])
   };
 
   $scope.getDashboard();
+
+  $scope.updateLastCommit = function () {
+    console.log("updateLastCommit");
+  };
 });
