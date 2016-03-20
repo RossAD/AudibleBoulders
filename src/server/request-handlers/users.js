@@ -2,10 +2,6 @@
 var db = require('../db');
 var request = require('request');
 module.exports = {
-  handlePost: function (req, res, next) {
-
-  },
-
   postUser: function (profile, token) {
     var gitId = profile.id;
     var gitHandle = profile.login;
@@ -51,13 +47,11 @@ module.exports = {
   },
 
   getToken: function (gitID, cb) {
-    console.log('gitID ', gitID);
     var tokQry = "SELECT git_token FROM users WHERE github_id='" +  gitID.toString() + "'";
     db.query(tokQry, function (err, result) {
       if (err) {
         throw new Error(err);
       } else {
-        console.log('token result: ', result[0].git_token);
         cb(result[0].git_token);
       }
     });
@@ -86,5 +80,4 @@ module.exports = {
       });
     });
   }
-
 };

@@ -14,9 +14,6 @@ var commits = require('../request-handlers/commits');
 module.exports = function (app) {
   // 'helpers.testy' is a placeholder to test routing, replace with appropriate functions
 
-  // Interact with users
-  app.post('/api/users/', users.handlePost);
-
   // Interact with dashboards
   app.post('/api/dashboards/', dashboards.handlePost);
   app.get('/api/dashboards/:githubId', dashboardsGithubId.handleGet);
