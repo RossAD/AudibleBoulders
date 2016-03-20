@@ -60,3 +60,53 @@
 .alignright {
   float: right;
 }
+
+.add-repo {
+  font-size: 15px;
+  color: #0000ff;
+  font-family: Helvetica Neue;
+  padding: 10px 10px;
+  line-height: 10px;
+  float: center;
+}
+
+.addedRepo {
+  color: #ff0000;
+}
+
+.button {
+    display: inline-block;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#fbffff));
+    background: -moz-linear-gradient(center top, #ffffff 0%, #eeeeee 100%);
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.2s;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 0.5px 0.5px 0px #fdffff;
+    padding: 5px 5px;
+    /*display: block;*/
+
+    border-color: #c9cdd1;
+    border-width: 0.5px;
+    border-style: solid;
+    text-align: center;
+    font-family: Helvetica Neue;
+    font-size: 13px;
+    line-height: 12px;
+    color: #455868;
+    /*font-weight: bold;*/
+}
+.button:hover {
+    -webkit-box-shadow: 0px 0px 1px 1px #c9cdd1;
+    -moz-box-shadow: 0px 0px 1px 1px #c9cdd1;
+    box-shadow: 0px 0px 1px 1px #c9cdd1;
+    cursor: pointer;
+}
+.button:active {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e8e9ea), color-stop(100%,#ffffff));
+    background: -moz-linear-gradient(center top, #e8e9ea 0%, #ffffff 100%);
+    -webkit-box-shadow: 0px 0px 2px 1px #c9cdd1;
+    -moz-box-shadow: 0px 0px 2px 1px #c9cdd1;
+    box-shadow: 0px 0px 2px 1px #c9cdd1;
+}
