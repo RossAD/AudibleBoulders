@@ -2,9 +2,9 @@
 
   <a href="#/{{dashboard.org_name}}/{{dashboard.repo_name}}/setup"><button type="button" class="btn btn-info btn-sm">Setup instructions</button></a>
 
-  <h1>{{dashboard.org_name}} / <a href="{{dashboard.repo_link}}">{{dashboard.repo_name}}</a></h1>
-  <h3>Branch: {{dashboard.branch}}</h3>
-  <div>Last Commit: {{dashboard.last_commit}}</div>
+  <h1>{{dashboard.org_name}} / <a href="{{dashboard.repo_link}}">{{dashboard.repo_name}}</a> - {{dashboard.branch}} branch</h1>
+  <h3>The sha1 of the most recent PR merge is:</h3>
+  <h3>{{dashboard.last_commit}}</h3>
 
   <div ng-repeat="user in users">
     <div ng-class="[users, { upToDate: user.up_to_date === 1, outOfDate: user.up_to_date === 0, notSetUp: user.set_up === 0 }]">
