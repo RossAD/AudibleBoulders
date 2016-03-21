@@ -85,7 +85,8 @@ module.exports = {
                     throw new Error(err);
                   } else {
                     console.log('Successfully inserted into users_dashboards table');
-                    res.send(201);
+                    res.status = 201;
+                    res.json(results);
                   }
                 });
               });
@@ -103,11 +104,13 @@ module.exports = {
                     if (err) {
                       throw new Error(err);
                     } else {
-                      res.send(201);
+                      res.status = 201;
+                      res.json(results);
                     }
                   });
                 } else {
-                  res.send(201);
+                  res.status = 201;
+                  res.json(results);
                 }
               });
             }

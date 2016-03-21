@@ -1,3 +1,4 @@
+/*jshint loopfunc: true */
 "use strict";
 var express = require('express');
 var app = express();
@@ -10,6 +11,8 @@ var GithubStrategy = require('passport-github2').Strategy;
 var session = require('express-session');
 var db = require('./db');
 var users = require('./request-handlers/users.js');
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 app.use(cookieparser());
 
@@ -24,7 +27,6 @@ app.use(passport.session());
 
 require('./config/middleware.js')(app, express);
 require('./config/routes.js')(app, express);
-
 
 passport.serializeUser(function (user, done) {
   done(null, user);
@@ -63,7 +65,6 @@ app.get('/login/github_callback',
   passport.authenticate('github', {failureRedirect: '/'}),
   function(req, res) {
     // Successful authentication, create cookie, redirect home.
-    console.log('Response--------->>>>>>>>', req.isAuthenticated());
     res.cookie('githubId', req.user.id);
     res.cookie('githubName', req.user.login);
     res.redirect('/');
@@ -90,9 +91,18 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
+io.on('connect', function (socket) {
+  console.log('Sockets connected!');
+  socket.on('disconnect', function () {
+    console.log('Sockets disconnected');
+  });
 
+  socket.on('newJoin', function (data) {
+    socket.join(data.dashboards_id);
+  });
+});
 
 var PORT = process.env.PORT || 8080;
-app.listen(PORT, function() {
+http.listen(PORT, function() {
   console.log('Production Express server running at localhost:' + PORT);
 });

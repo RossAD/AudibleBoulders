@@ -1,6 +1,15 @@
 "use strict";
 angular.module('GitSpy', [
-  'add', 'dashboard', 'home', 'login', 'setup', 'ngRoute', 'helper', 'logout', 'ngCookies'
+  'add',
+  'dashboard',
+  'home',
+  'login',
+  'setup',
+  'ngRoute',
+  'ngCookies',
+  'helper',
+  'logout',
+  'btford.socket-io'
 ])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
