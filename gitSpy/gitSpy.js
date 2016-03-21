@@ -37,8 +37,8 @@ function formatDiffs(gitDiff) {
 
 function main() {
   /** SERVE ERROR IF KEYS ARE NOT NUMBERS **/
-  if (typeof keys.user_id != "number" ||
-    typeof keys.dashboard_id != "number") {
+  if (typeof keys.user_id !== "number" ||
+    typeof keys.dashboard_id !== "number") {
     throwErr("Please double check that your gitSpy keys are correct!");
   }
 
@@ -73,3 +73,4 @@ function main() {
   // });
 }
 main();
+
