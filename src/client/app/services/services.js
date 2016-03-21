@@ -9,7 +9,7 @@ helper.factory('RequestFactory', function($http) {
       method: 'GET',
       url: '/api/dashboards/' + orgName + '/' + repoName
     })
-    .then(function(res) {
+    .then(function (res) {
       return res.data;
     });
   };
@@ -19,7 +19,7 @@ helper.factory('RequestFactory', function($http) {
       method: 'GET',
       url: '/api/dashboards/' + githubId
     })
-    .then(function(res) {
+    .then(function (res) {
       return res.data;
     });
   };
@@ -29,16 +29,19 @@ helper.factory('RequestFactory', function($http) {
       method: 'GET',
       url: '/api/setup/' + orgName + '/' + repoName + '/' + githubId
     })
-    .then(function(res) {
+    .then(function (res) {
       return res.data;
     });
   };
 
   var postDashboard = function(newDashboard) {
-    $http({
+    return $http({
       method: 'POST',
       url: '/api/dashboards/',
       data: newDashboard
+    })
+    .then(function (res) {
+      return res.data;
     });
   };
 
@@ -79,3 +82,7 @@ helper.factory('AuthFactory', function($cookies, $http, $location) {
     logout: logout
   };
 });
+
+helper.factory('Socket', ['socketFactory', function (socketFactory) {
+  return socketFactory();
+}]);

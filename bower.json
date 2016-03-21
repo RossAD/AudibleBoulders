@@ -22,7 +22,8 @@
     "angular": null,
     "angular-route": null,
     "angular-mocks": null,
-    "angular-cookies": null
+    "angular-cookies": null,
+    "angular-socket-io": "^0.7.0"
   },
   "resolutions": {
     "angular": null
