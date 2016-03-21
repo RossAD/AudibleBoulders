@@ -72,18 +72,34 @@ module.exports = {
     });
   },
   handleGet: function (req, res, next) {
+    var responseObject = {};
+    var githubId = req.cookies.githubId;
     var org_name = req.params.orgName;
     var repo_name = req.params.repoName;
-    var githubId = req.cookies.githubId;
-    var responseObject = {};
-
     var commitUrl = 'https://api.github.com/repos/' + org_name + '/' + repo_name + '/commits';
 
-    module.exports.gitURL();
+    module.exports.gitURL(githubId, commitUrl, function (commits) {
+      var currentLastCommit = commits[0].sha;
 
-    // Check if last_commit needs updating
-      // If so, update last_commit
-        // update up_to_date properties of all users
+      // Check if last_commit needs updating
+      var selectStr = "SELECT last_commit FROM dashboards WHERE org_name='" + org_name + "' AND repo_name='" + repo_name + "'";
+      db.query(selectStr, function (err, results) {
+        if (err) {
+          throw new Error(err);
+        } else {
+          var last_commit = results[0].last_commit;
+          if (currentLastCommit !== last_commit) {
+          // If so, update last_commit
+
+            var updateStr = "UPDATE dashboards SET last_commit='" + currentLastCommit + "' WHERE org_name='" + org_name + "' AND repo_name='" + repo_name + "'";
+            // update up_to_date properties of all users
+          } else {
+            console.log("dashboard is up to date");
+          }
+        }
+      });
+    });
+
 
     // Retrieve dashboard details
     var selectStr = "SELECT id, repo_link, branch, org_name, repo_name, last_commit FROM dashboards WHERE org_name='" + org_name + "' AND repo_name='" + repo_name + "'";
@@ -116,6 +132,7 @@ module.exports = {
                 }
                 this.diffs = results;
 
+                // TODO: make this check the total number of completed diffs queries instead of i, since it's possible that the last query may complete while previous ones are still in process
                 // if we are on the last iteration of the for loop, send the responseObject
                 if (i >= responseObject.users.length - 1) {
                   res.json(responseObject);
