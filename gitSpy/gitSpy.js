@@ -38,7 +38,7 @@ function formatDiffs(gitDiff) {
 function main() {
   /** SERVE ERROR IF KEYS ARE NOT NUMBERS **/
   if (typeof keys.user_id != "number" ||
-    typeof key.dashboards_id != "number") {
+    typeof keys.dashboard_id != "number") {
     throwErr("Please double check that your gitSpy keys are correct!");
   }
 
@@ -56,8 +56,8 @@ function main() {
 
   /** send POST request to server **/
   var data = {
-    users_id: keys.users_id,
-    dashboards_id: keys.dashboards_id,
+    users_id: keys.user_id,
+    dashboards_id: keys.dashboard_id,
     last_pulled_commit: lastPullHash,
     diffs: diffs
   };

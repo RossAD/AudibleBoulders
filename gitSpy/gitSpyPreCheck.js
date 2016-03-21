@@ -22,11 +22,9 @@ function main() {
 
   /** SERVE ERROR IF KEYS ARE NOT NUMBERS **/
   if (typeof keys.user_id != "number" ||
-    typeof key.dashboards_id != "number") {
+    typeof keys.dashboard_id != "number") {
     throw new Error("Commit aborted\n
       Please double check that your gitSpy keys are correct!");
   }
-
-  /**  **/
 }
 main();
