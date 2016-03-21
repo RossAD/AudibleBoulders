@@ -2,6 +2,7 @@
 "use strict";
 
 var db = require('../db');
+var request = require('request');
 
 // This request handler takes the orgname and reponame for a given dashboard and returns everything
 // needed to render that dashboard page
@@ -36,10 +37,53 @@ var db = require('../db');
 // }
 
 module.exports = {
+  // TODO: getToken and gitURL are copied from dashboards.js, factor them out into own file later
+  // Function to grab specified users Git Token
+  getToken: function (gitID, cb) {
+    var tokQry = "SELECT git_token FROM users WHERE github_id='" +  gitID.toString() + "'";
+    db.query(tokQry, function (err, result) {
+      if (err) {
+        throw new Error(err);
+      } else {
+        cb(result[0].git_token);
+      }
+    });
+  },
+  // Function to grab Information from specified URL
+  gitURL: function (id, url, callback) {
+    var token;
+    module.exports.getToken(id,function(token){
+      token = token;
+      var options = {
+        url: url,
+        headers: {
+          'User-Agent': 'GitSpy',
+          authorization: 'token '+ token,
+          'content-type': 'application/json'
+        },
+      };
+      request.get(options, function(error, response, body) {
+        if (error){
+          throw new Error(error);
+        } else {
+          callback(JSON.parse(body));
+        }
+      });
+    });
+  },
   handleGet: function (req, res, next) {
     var org_name = req.params.orgName;
     var repo_name = req.params.repoName;
+    var githubId = req.cookies.githubId;
     var responseObject = {};
+
+    var commitUrl = 'https://api.github.com/repos/' + org_name + '/' + repo_name + '/commits';
+
+    module.exports.gitURL();
+
+    // Check if last_commit needs updating
+      // If so, update last_commit
+        // update up_to_date properties of all users
 
     // Retrieve dashboard details
     var selectStr = "SELECT id, repo_link, branch, org_name, repo_name, last_commit FROM dashboards WHERE org_name='" + org_name + "' AND repo_name='" + repo_name + "'";
