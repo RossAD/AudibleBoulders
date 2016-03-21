@@ -71,16 +71,12 @@ module.exports = {
       });
     });
   },
-  handleGet: function (req, res, next) {
-    var responseObject = {};
-    var githubId = req.cookies.githubId;
-    var org_name = req.params.orgName;
-    var repo_name = req.params.repoName;
+  updateLastCommit: function (githubId, org_name, repo_name, callback) {
     var commitUrl = 'https://api.github.com/repos/' + org_name + '/' + repo_name + '/commits';
 
     module.exports.gitURL(githubId, commitUrl, function (commits) {
       var currentLastCommit = commits[0].sha;
-      // Check if last_commit needs updating
+
       var selectStr = "SELECT last_commit FROM dashboards WHERE org_name='" + org_name + "' AND repo_name='" + repo_name + "'";
       db.query(selectStr, function (err, results) {
         if (err) {
@@ -88,61 +84,75 @@ module.exports = {
         } else {
           var last_commit = results[0].last_commit;
           if (currentLastCommit !== last_commit) {
-          // If so, update last_commit
-
             var updateStr = "UPDATE dashboards SET last_commit='" + currentLastCommit + "' WHERE org_name='" + org_name + "' AND repo_name='" + repo_name + "'";
-            // update up_to_date properties of all users
+            db.query(updateStr, function (err, results) {
+              if (err) {
+                throw new Error(err);
+              } else {
+                callback();
+              }
+            });
           } else {
-            console.log("dashboard is up to date");
+            callback();
           }
         }
       });
     });
+  },
+  handleGet: function (req, res, next) {
+    var responseObject = {};
+    var githubId = req.cookies.githubId;
+    var org_name = req.params.orgName;
+    var repo_name = req.params.repoName;
 
+    // Update last_commit if needed
+    module.exports.updateLastCommit(githubId, org_name, repo_name, function () {
+      // Now that last_commit is up to date, build and send responseObject
+      // =================================================================
+      // Retrieve dashboard details
+      var selectStr = "SELECT id, repo_link, branch, org_name, repo_name, last_commit FROM dashboards WHERE org_name='" + org_name + "' AND repo_name='" + repo_name + "'";
 
-    // Retrieve dashboard details
-    var selectStr = "SELECT id, repo_link, branch, org_name, repo_name, last_commit FROM dashboards WHERE org_name='" + org_name + "' AND repo_name='" + repo_name + "'";
+      db.query(selectStr, function(err, results) {
+        if (err) {
+          throw new Error(err);
+        } else {
+          responseObject.dashboard = results[0];
 
-    db.query(selectStr, function(err, results) {
-      if (err) {
-        throw new Error(err);
-      } else {
-        responseObject.dashboard = results[0];
+          // Retrieve user details for all users that are part of this dashboard
+          var dashboardId = responseObject.dashboard.id;
+          var joinStr = "SELECT users_dashboards.id, git_handle, name, github_id, github_avatar, set_up, last_pulled_commit FROM users_dashboards INNER JOIN users ON users_dashboards.users_id=users.id WHERE dashboards_id='" + dashboardId + "'";
 
-        // Retrieve user details for all users that are part of this dashboard
-        var dashboardId = responseObject.dashboard.id;
-        var joinStr = "SELECT users_dashboards.id, git_handle, name, github_id, github_avatar, set_up, last_pulled_commit FROM users_dashboards INNER JOIN users ON users_dashboards.users_id=users.id WHERE dashboards_id='" + dashboardId + "'";
+          db.query(joinStr, function (err, results) {
+            if (err) {
+              throw new Error(err);
+            } else {
+              responseObject.users = results;
 
-        db.query(joinStr, function (err, results) {
-          if (err) {
-            throw new Error(err);
-          } else {
-            responseObject.users = results;
+              // For each user object, add a diffs property containing all their diffs for that dashboard
+              for (var i = 0; i < responseObject.users.length; i++) {
+                var thisUser = responseObject.users[i];
 
-            // For each user object, add a diffs property containing all their diffs for that dashboard
-            for (var i = 0; i < responseObject.users.length; i++) {
-              var thisUser = responseObject.users[i];
-              var selectStr = "SELECT * FROM diffs WHERE users_dashboards_id='" + thisUser.id + "';";
-              // note: thisUser.id is the users_dashboards.id, NOT the users.id
+                // note: thisUser.id is the users_dashboards.id, NOT the users.id
+                var selectStr = "SELECT * FROM diffs WHERE users_dashboards_id='" + thisUser.id + "';";
+                db.query(selectStr, function (i, err, results) {
+                  if (err) {
+                    throw new Error(err);
+                  }
+                  this.diffs = results;
 
-              db.query(selectStr, function (i, err, results) {
-                if (err) {
-                  throw new Error(err);
-                }
-                this.diffs = results;
-
-                // TODO: make this check the total number of completed diffs queries instead of i, since it's possible that the last query may complete while previous ones are still in process
-                // if we are on the last iteration of the for loop, send the responseObject
-                if (i >= responseObject.users.length - 1) {
-                  res.json(responseObject);
-                }
-              }.bind(thisUser, i));
-              // we needed to bind thisUser so that we will add the diffs results to the right user object, since the db.query happens asynchronously
-              // we also needed to pass in i as an argument, so that we could keep track of which iteration of the for loop we're on. We only want to do res.json once we've finished the db.query that's associated with the last iteration
+                  // TODO: make this check the total number of completed diffs queries instead of i, since it's possible that the last query may complete while previous ones are still in process
+                  // if we are on the last iteration of the for loop, send the responseObject
+                  if (i >= responseObject.users.length - 1) {
+                    res.json(responseObject);
+                  }
+                }.bind(thisUser, i));
+                // we needed to bind thisUser so that we will add the diffs results to the right user object, since the db.query happens asynchronously
+                // we also needed to pass in i as an argument, so that we could keep track of which iteration of the for loop we're on. We only want to do res.json once we've finished the db.query that's associated with the last iteration
+              }
             }
-          }
-        });
-      }
+          });
+        }
+      });
     });
   }
 };
