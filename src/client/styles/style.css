@@ -1,3 +1,4 @@
+/*Dashboard styles*/
 .diffs {
   background-color: #e6e6e6;
   border-style: solid;
@@ -8,6 +9,7 @@
   margin: 2px 0px 2px 0px;
 }
 
+
 /*Home page styles*/
 .home {
   margin-left: 10px;
@@ -16,11 +18,12 @@
 .home a:hover {
   text-decoration: none;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .homeDesc {
-  padding: 5px 0px 5px 0px;
-  font-size:12px;
+  padding: 5px 0px 10px 0px;
+  font-size:11px;
 }
 
 .homeRows:hover .removeButton{
@@ -34,7 +37,7 @@
 
 .homeTitle span {
   font-size: 24px;
-  margin: 10px 0px 10px 20px;
+  margin: 10px 0px 10px 15px;
 }
 
 .removeButton {
@@ -45,11 +48,44 @@
 
 .tablecss {
   margin-left: 5px;
-  width: 500px !important;
+  width: 70% !important;
 }
 
 .tablecss span {
   margin-right: 10px;
+}
+
+
+/*Add page styles*/
+.add {
+  margin-left: 10px;
+}
+
+.add a:hover {
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.addDesc {
+  padding: 5px 0px 10px 0px;
+  font-size:11px;
+  width:70%;
+}
+
+.addTitle {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.addTitle span {
+  font-size: 24px;
+  margin: 10px 0px 10px 5px;
+}
+
+.filterTextField {
+  width: 70%;
+  margin: 0px 0px 10px 0px;
 }
 
 
