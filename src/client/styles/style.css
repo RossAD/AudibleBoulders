@@ -8,6 +8,52 @@
   margin: 2px 0px 2px 0px;
 }
 
+/*Home page styles*/
+.home {
+  margin-left: 10px;
+}
+
+.home a:hover {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.homeDesc {
+  padding: 5px 0px 5px 0px;
+  font-size:12px;
+}
+
+.homeRows:hover .removeButton{
+  display:inline;
+}
+
+.homeTitle {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.homeTitle span {
+  font-size: 24px;
+  margin: 10px 0px 10px 20px;
+}
+
+.removeButton {
+  display: none;
+  color: red;
+  float: right;
+}
+
+.tablecss {
+  margin-left: 5px;
+  width: 500px !important;
+}
+
+.tablecss span {
+  margin-right: 10px;
+}
+
+
+/*Dashboard page styles*/
 .users {
   margin: 25px 0px 25px 0px;
 }
@@ -97,6 +143,7 @@
     color: #455868;
     /*font-weight: bold;*/
 }
+
 .button:hover {
     -webkit-box-shadow: 0px 0px 1px 1px #c9cdd1;
     -moz-box-shadow: 0px 0px 1px 1px #c9cdd1;

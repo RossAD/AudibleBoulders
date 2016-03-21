@@ -1,9 +1,15 @@
-<h1>Home route (dashboard list)</h1>
+<div class="home">
+  <div class="homeTitle">
+    Your Dashboards<a href="#/add"><span class="glyphicon glyphicon-plus-sign"></span></a>
+  </div>
+  <div class="homeDesc">
+      Don't see your board? It may be a private repo. Allow private repo access <a href="">here</a>.
+    </div>
 
-<a href="#/add"><button>Add a new dashboard</button></a>
-
-<ul ng-repeat="dashboard in dashboards">
-  <a href="#/{{dashboard.org_name}}/{{dashboard.repo_name}}">
-    <li>{{dashboard.org_name}} / {{dashboard.repo_name}}</li>
-  </a>
-</ul>
+  <table class="table tablecss table-hover">
+    <tr class="homeRows" ng-repeat="dashboard in dashboards">
+      <td><span class="glyphicon glyphicon-inbox"></span><a href="#/{{dashboard.org_name}}/{{dashboard.repo_name}}">{{dashboard.org_name}} / {{dashboard.repo_name}}
+    </a><a class="removeButton" href=""><span class="glyphicon glyphicon-remove "></span></a></td>
+    </tr>
+  </table>
+</div>
