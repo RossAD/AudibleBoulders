@@ -23,8 +23,8 @@ var request = require('request');
 //       id: 1,
 //       github_username: 'yaliceme',
 //       name: 'Alice',
-//       set_up: true,
-//       up_to_date: 0,
+//       set_up: 1,
+//       last_pulled_commit: 'some_sha1_hash_sdfdsfasd'
 //       diffs: [
 //         { id: 123,
 //           file: 'file/path/index.html',
@@ -80,7 +80,6 @@ module.exports = {
 
     module.exports.gitURL(githubId, commitUrl, function (commits) {
       var currentLastCommit = commits[0].sha;
-
       // Check if last_commit needs updating
       var selectStr = "SELECT last_commit FROM dashboards WHERE org_name='" + org_name + "' AND repo_name='" + repo_name + "'";
       db.query(selectStr, function (err, results) {
@@ -112,7 +111,7 @@ module.exports = {
 
         // Retrieve user details for all users that are part of this dashboard
         var dashboardId = responseObject.dashboard.id;
-        var joinStr = "SELECT users_dashboards.id, git_handle, name, github_id, github_avatar, set_up, up_to_date FROM users_dashboards INNER JOIN users ON users_dashboards.users_id=users.id WHERE dashboards_id='" + dashboardId + "'";
+        var joinStr = "SELECT users_dashboards.id, git_handle, name, github_id, github_avatar, set_up, last_pulled_commit FROM users_dashboards INNER JOIN users ON users_dashboards.users_id=users.id WHERE dashboards_id='" + dashboardId + "'";
 
         db.query(joinStr, function (err, results) {
           if (err) {
