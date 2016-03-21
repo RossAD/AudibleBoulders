@@ -9,19 +9,17 @@ angular.module('add', [])
     $scope.subsc = res.data;
   });
 
-  var emitJoinDash = function (dashPath, res) {
+  var emitJoinDash = function (repoObject) {
+    var dashPath = repoObject.full_name;
     Socket.emit('newJoin', {
-      users_id: res[0].users_id,
-      dashboards_id: res[0].dashboards_id
     });
     $location.path(dashPath);
   };
 
   $scope.postDashboard = function (repoObject) {
     RequestFactory.postDashboard(repoObject)
-    .then(function (res) {
-      var dashPath = repoObject.full_name;
-      emitJoinDash(dashPath, res);
+    .then(function () {
+      emitJoinDash(repoObject);
     });
   };
 }]);
