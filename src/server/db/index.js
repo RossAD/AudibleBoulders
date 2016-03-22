@@ -1,14 +1,24 @@
 /*jslint node: true */
 "use strict";
-
+var express = require('express');
 var mysql = require('mysql');
-
-var connection = mysql.createConnection({
-  user: 'root',
-  password: '',
-  database: 'app'
+var app = express();
+// Setup Pool for MySql DB
+var pool = mysql.createPool({
+  connectionLimit : 200, //important
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'app',
+  debug    :  false
 });
 
-connection.connect();
+module.exports = {
 
-module.exports = connection;
+  getConnection : function(callback) {
+    pool.getConnection(function(err, connection) {
+      callback(err, connection);
+    });
+  }
+};
+

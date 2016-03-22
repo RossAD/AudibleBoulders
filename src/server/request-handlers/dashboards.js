@@ -2,17 +2,23 @@
 
 var db = require('../db');
 var request = require('request');
+var pool = require('../db/index.js');
 
 module.exports = {
   // Function to grab specified users Git Token
   getToken: function (gitID, cb) {
     var tokQry = "SELECT git_token FROM users WHERE github_id='" +  gitID.toString() + "'";
-    db.query(tokQry, function (err, result) {
-      if (err) {
-        throw new Error(err);
-      } else {
-        cb(result[0].git_token);
+    pool.getConnection(function(err, connection){
+      if(err) {
+        throw err;
       }
+      connection.query(tokQry, function (err, result) {
+        if (err) {
+          throw new Error(err);
+        } else {
+          cb(result[0].git_token);
+        }
+      });
     });
   },
   // Function to grab Information from specified URL
@@ -56,66 +62,71 @@ module.exports = {
 
       // find users_id based on githubId
       var selectStr = "SELECT id FROM users WHERE github_id='" + githubId.toString() + "';";
-      db.query(selectStr, function (err, results) {
-        if (err) {
-          throw new Error (err);
+      pool.getConnection(function(err, connection){
+        if(err) {
+          throw err;
         }
-        if (results.length === 0) {
-          console.log("user with this github_id is not found");
-        } else {
-          var users_id = results[0].id;
-          // find or create the dashboard
-          var findDashboard = "SELECT * FROM dashboards WHERE repo_link='" + dashboardDetails.repo_link.toString() + "';";
-          // Check if dashboard exists
-          db.query(findDashboard, function (err, results) {
-            if (err) {
-              throw new Error(err);
-            }
-            if (results.length === 0) {
-              // Dashboard DOES NOT exist. Create dashboard and associate user to the dashboard
-              var createDashboard = "INSERT INTO dashboards (repo_link, branch, org_name, repo_name, last_commit) VALUES ('" + dashboardDetails.repo_link + "', '" + dashboardDetails.branch + "', '" + dashboardDetails.org_name + "', '" + dashboardDetails.repo_name + "', '" + dashboardDetails.last_commit + "');";
-              db.query(createDashboard, function (err, results) {
-                if (err) {
-                  throw new Error(err);
-                }
-                var dashboards_id = results.insertId;
-                var associateUser = "INSERT INTO users_dashboards (users_id, dashboards_id, set_up, up_to_date) VALUES ('" + users_id.toString() + "', '" + dashboards_id.toString() + "', '0', '0');";
-                db.query(associateUser, function (err, results) {
+        connection.query(selectStr, function (err, results) {
+          if (err) {
+            throw new Error (err);
+          }
+          if (results.length === 0) {
+            console.log("user with this github_id is not found");
+          } else {
+            var users_id = results[0].id;
+            // find or create the dashboard
+            var findDashboard = "SELECT * FROM dashboards WHERE repo_link='" + dashboardDetails.repo_link.toString() + "';";
+            // Check if dashboard exists
+            connection.query(findDashboard, function (err, results) {
+              if (err) {
+                throw new Error(err);
+              }
+              if (results.length === 0) {
+                // Dashboard DOES NOT exist. Create dashboard and associate user to the dashboard
+                var createDashboard = "INSERT INTO dashboards (repo_link, branch, org_name, repo_name, last_commit) VALUES ('" + dashboardDetails.repo_link + "', '" + dashboardDetails.branch + "', '" + dashboardDetails.org_name + "', '" + dashboardDetails.repo_name + "', '" + dashboardDetails.last_commit + "');";
+                connection.query(createDashboard, function (err, results) {
                   if (err) {
                     throw new Error(err);
-                  } else {
-                    console.log('Successfully inserted into users_dashboards table');
-                    res.status = 201;
-                    res.json(results);
                   }
-                });
-              });
-            } else {
-              // Dashboard DOES exist. Check if user is already associated to dashboard, if not create the association.
-              var dashboards_id = results[0].id;
-              var checkUsersDashboard = "SELECT * FROM users_dashboards WHERE users_id='" + users_id.toString() + "' AND dashboards_id='" + dashboards_id.toString() + "'";
-              db.query(checkUsersDashboard, function (err, results) {
-                if (err) {
-                  throw new Error(err);
-                }
-                if (results.length === 0) {
+                  var dashboards_id = results.insertId;
                   var associateUser = "INSERT INTO users_dashboards (users_id, dashboards_id, set_up, up_to_date) VALUES ('" + users_id.toString() + "', '" + dashboards_id.toString() + "', '0', '0');";
-                  db.query(associateUser, function (err, results) {
+                  connection.query(associateUser, function (err, results) {
                     if (err) {
                       throw new Error(err);
                     } else {
+                      console.log('Successfully inserted into users_dashboards table');
                       res.status = 201;
                       res.json(results);
                     }
                   });
-                } else {
-                  res.status = 201;
-                  res.json(results);
-                }
-              });
-            }
-          });
-        }
+                });
+              } else {
+                // Dashboard DOES exist. Check if user is already associated to dashboard, if not create the association.
+                var dashboards_id = results[0].id;
+                var checkUsersDashboard = "SELECT * FROM users_dashboards WHERE users_id='" + users_id.toString() + "' AND dashboards_id='" + dashboards_id.toString() + "'";
+                connection.query(checkUsersDashboard, function (err, results) {
+                  if (err) {
+                    throw new Error(err);
+                  }
+                  if (results.length === 0) {
+                    var associateUser = "INSERT INTO users_dashboards (users_id, dashboards_id, set_up, up_to_date) VALUES ('" + users_id.toString() + "', '" + dashboards_id.toString() + "', '0', '0');";
+                    connection.query(associateUser, function (err, results) {
+                      if (err) {
+                        throw new Error(err);
+                      } else {
+                        res.status = 201;
+                        res.json(results);
+                      }
+                    });
+                  } else {
+                    res.status = 201;
+                    res.json(results);
+                  }
+                });
+              }
+            });
+          }
+        });
       });
     });
   }
