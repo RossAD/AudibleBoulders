@@ -4,9 +4,15 @@ angular.module('home', [])
   $scope.empty = false;
   $scope.loading = true;
   var githubId = $cookies.get('githubId');
+  var isEmpty = function() {
+    if ($scope.dashboards.length === 0) {
+        $scope.empty = true;
+    }
+  };
   $scope.removeUserDashboard = function(index) {
     var dashboardId = $scope.dashboards[index].id;
     $scope.dashboards.splice(index, 1);
+    isEmpty();
     RequestFactory.deleteUserDashboard(githubId, dashboardId);
   };
   var initializeDashboardList = function() {
@@ -14,9 +20,7 @@ angular.module('home', [])
     .then(function (dashboards) {
       $scope.loading = false;
       $scope.dashboards = dashboards;
-      if (dashboards.length === 0) {
-        $scope.empty = true;
-      }
+      isEmpty();
     });
   };
 
