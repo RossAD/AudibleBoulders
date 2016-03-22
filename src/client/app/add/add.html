@@ -1,7 +1,23 @@
-<h1>Spy on a repository</h1>
-<p>Select a Github repository you would like to spy on. Don't see your organization's repos? Make sure you've granded GitSpy access <a href="https://github.com/settings/connections/applications/f6813881ccb66bdfc9be">here</a>. Don't see your repository? Make sure that the repo is public or grant access to the private repo <a href="">here</a>.</p>
-<ul>
-  <li ng-click="postDashboard(repo)" ng-repeat="repo in subsc">
-    <div class="button">{{ repo.full_name }}</div>
-  </li>
-</ul>
+<div class="add">
+  <div class="addTitle">Spy on a Repo <a href="#/"><span class="glyphicon glyphicon-circle-arrow-left" title="Go back home"></span></a></div>
+
+  <div class="addDesc">
+    Select a Github repository you would like to spy on. Don't see your organization's repos? Make sure you've granted GitSpy access <a href="https://github.com/settings/connections/applications/f6813881ccb66bdfc9be">here</a>. Don't see your repository? Make sure that the repo is public or grant access to the private repo <a href="">here</a>.
+  </div>
+
+  <div class="filterTextField">
+    <table>
+      <tr>
+        <td width="10%"><span class="glyphicon glyphicon-search"></td>
+        <td width="90%"><input type="text" class="form-control" id="filterRepos" placeholder="Filter repos"></td>
+      </tr>
+    </table>
+  </div>
+
+  <table class="table tablecss table-hover">
+    <tr class="homeRows" ng-repeat="repo in subsc">
+      <td><span class="glyphicon glyphicon-inbox"></span><a ng-click="postDashboard(repo)">{{ repo.full_name }}</a></td>
+    </tr>
+  </table>
+
+</div>

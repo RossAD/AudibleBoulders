@@ -1,3 +1,4 @@
+/*Dashboard styles*/
 .diffs {
   background-color: #e6e6e6;
   border-style: solid;
@@ -8,6 +9,92 @@
   margin: 2px 0px 2px 0px;
 }
 
+
+/*Home page styles*/
+.home {
+  margin-left: 10px;
+}
+
+.home a:hover {
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.homeDesc {
+  padding: 5px 0px 10px 0px;
+  font-size:12px;
+}
+
+.homeRows:hover .removeButton{
+  display:inline;
+}
+
+.homeTitle {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.homeTitle span {
+  font-size: 24px;
+  margin: 10px 0px 10px 15px;
+}
+
+.removeButton {
+  display: none;
+  color: red;
+  float: right;
+}
+
+.tablecss {
+  margin-left: 5px;
+  width: 70% !important;
+}
+
+.tablecss span {
+  margin-right: 10px;
+}
+
+
+/*Add page styles*/
+.add {
+  margin-left: 10px;
+}
+
+.add a:hover {
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.addDesc {
+  padding: 5px 0px 10px 0px;
+  font-size:12px;
+  width:70%;
+}
+
+.addTitle {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.addTitle span {
+  font-size: 24px;
+  margin: 10px 0px 10px 5px;
+}
+
+.filterTextField {
+  width: 70%;
+  margin: 0px 0px 10px 0px;
+  /*border: 5px solid black;*/
+}
+
+.filterTextField td {
+  padding: 0px 0px 0px 5px;
+}
+
+
+/*Dashboard page styles*/
 .users {
   margin: 25px 0px 25px 0px;
 }
@@ -102,12 +189,14 @@
     color: #455868;
     /*font-weight: bold;*/
 }
+
 .button:hover {
     -webkit-box-shadow: 0px 0px 1px 1px #c9cdd1;
     -moz-box-shadow: 0px 0px 1px 1px #c9cdd1;
     box-shadow: 0px 0px 1px 1px #c9cdd1;
     cursor: pointer;
 }
+
 .button:active {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e8e9ea), color-stop(100%,#ffffff));
     background: -moz-linear-gradient(center top, #e8e9ea 0%, #ffffff 100%);
