@@ -20,6 +20,11 @@
   padding: 2px;
 }
 
+.lastCommit {
+  background-color: #cad8ed;
+  padding: 5px 5px;
+}
+
 .upToDate {
   background-color: #c1f0c1;
   border-style: solid;
