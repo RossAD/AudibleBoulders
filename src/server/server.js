@@ -1,5 +1,6 @@
 /*jshint loopfunc: true */
 "use strict";
+var PORT = module.exports = process.env.PORT || 8080; // Set port
 var express = require('express');
 var app = express();
 var path = require('path');
@@ -43,10 +44,12 @@ function token (token) {
   console.log('This is Your Token: ', token);
 }
 // Configure Passport
+var callbackHost = (PORT === 8080) ? 'localhost:8080' : 'www.gitspy.com';
+
 passport.use(new GithubStrategy({
   clientID: keys.github.id,
   clientSecret: keys.github.secret,
-  callbackUrl: 'http://www.gitspy.com/login/github_callback'
+  callbackUrl: 'http://' + callbackHost + '/login/github_callback'
 },
 function (accessToken, refreshToken, profile, done) {
   // TODO: DB query to create profile id, change to access DB
@@ -102,7 +105,6 @@ io.on('connect', function (socket) {
   });
 });
 
-var PORT = process.env.PORT || 8080;
 http.listen(PORT, function() {
   console.log('Production Express server running at localhost:' + PORT);
 });
