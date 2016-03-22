@@ -13,7 +13,7 @@
   <table class="table tablecss table-hover">
     <tr class="homeRows" ng-repeat="dashboard in dashboards">
       <td><span class="glyphicon glyphicon-inbox"></span><a href="#/{{dashboard.org_name}}/{{dashboard.repo_name}}">{{dashboard.org_name}} / {{dashboard.repo_name}}
-    </a><a class="removeButton" href=""><span class="glyphicon glyphicon-remove "></span></a></td>
+    </a><a class="removeButton" href="" ng-click="removeUserDashboard($index)"><span class="glyphicon glyphicon-remove"></span></a></td>
     </tr>
   </table>
 </div>

@@ -1,8 +1,8 @@
 "use strict";
 var helper = angular.module("helper", []);
 
-// all GET requests will return res.data in a promise
-// POST request does not return anything
+// all GET/POST requests will return res.data in a promise
+// DELETE request does not return anything
 helper.factory('RequestFactory', function($http) {
   var getDashboard = function(orgName, repoName) {
     return $http({
@@ -45,11 +45,19 @@ helper.factory('RequestFactory', function($http) {
     });
   };
 
+  var deleteUserDashboard = function(githubId, dashboardId) {
+    $http({
+      method: 'DELETE',
+      url: '/api/users_dashboards/' + githubId + '/' + dashboardId
+    });
+  };
+
   return {
     getDashboard: getDashboard,
     getAllDashboards: getAllDashboards,
     getSetupInfo: getSetupInfo,
-    postDashboard: postDashboard
+    postDashboard: postDashboard,
+    deleteUserDashboard: deleteUserDashboard
   };
 });
 
