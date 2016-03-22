@@ -1,11 +1,15 @@
 "use strict";
 angular.module('add', [])
 .controller('AddController', ['$scope', 'RequestFactory', '$http', 'Socket', '$location',function($scope, RequestFactory, $http, Socket, $location){
+
+  $scope.loading = true;
+
   // Variable to hold returned subscriptions
   $http({
     method: 'GET',
     url: '/api/subscriptions'
   }).then(function (res){
+    $scope.loading = false;
     $scope.subsc = res.data;
   });
 
