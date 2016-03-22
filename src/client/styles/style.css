@@ -23,7 +23,7 @@
 
 .homeDesc {
   padding: 5px 0px 10px 0px;
-  font-size:11px;
+  font-size:12px;
 }
 
 .homeRows:hover .removeButton{
@@ -69,7 +69,7 @@
 
 .addDesc {
   padding: 5px 0px 10px 0px;
-  font-size:11px;
+  font-size:12px;
   width:70%;
 }
 
