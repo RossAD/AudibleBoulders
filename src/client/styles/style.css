@@ -9,6 +9,35 @@
   margin: 2px 0px 2px 0px;
 }
 
+/*Login page styles*/
+.loginBtn a {
+  background-color: #404040;
+  color: #ff8533;
+  display:block;
+  height: 38px;
+  font-size: 16px;
+  font-weight: bold;
+  margin:auto;
+  width: 210px;
+}
+
+.loginBtn a:hover {
+  background-color: #595959;
+  color: #ff8533;
+  display:block;
+  font-size: 16px;
+  font-weight: bold;
+  height: 38px;
+  margin:auto;
+  width: 210px;
+}
+
+.loginImg img{
+  width: 40%;
+  display:block;
+  margin:auto;
+}
+
 
 /*Home page styles*/
 .home {
@@ -16,14 +45,14 @@
 }
 
 .home a:hover {
-  text-decoration: none;
-  font-weight: bold;
   cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .homeDesc {
-  padding: 5px 0px 10px 0px;
   font-size:12px;
+  padding: 5px 0px 10px 0px;
 }
 
 .homeRows:hover .removeButton{
@@ -41,8 +70,8 @@
 }
 
 .removeButton {
-  display: none;
   color: red;
+  display: none;
   float: right;
 }
 
@@ -62,14 +91,14 @@
 }
 
 .add a:hover {
-  text-decoration: none;
-  font-weight: bold;
   cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .addDesc {
-  padding: 5px 0px 10px 0px;
   font-size:12px;
+  padding: 5px 0px 10px 0px;
   width:70%;
 }
 
@@ -84,9 +113,8 @@
 }
 
 .filterTextField {
-  width: 70%;
   margin: 0px 0px 10px 0px;
-  /*border: 5px solid black;*/
+  width: 70%;
 }
 
 .filterTextField td {
@@ -100,11 +128,11 @@
 }
 
 .gitimg {
-  width:50px;
-  height:50px;
   border-radius:50%;
+  height:50px;
   overflow:hidden;
   padding: 2px;
+  width:50px;
 }
 
 .lastCommit {
