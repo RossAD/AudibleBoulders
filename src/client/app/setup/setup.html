@@ -1,4 +1,16 @@
 <h1>Setup</h1>
 
-<p>Your users_id is: {{users_id}}</p>
-<p>Your dashboards_id is: {{dashboards_id}}</p>
+
+<ol style="font-size:125%">
+  <li>Download, unzip, and move the
+  <strong><a href="/gitSpy.zip" download="gitSpy">GitSpy</a></strong>
+  folder into the root directory of your local {{orgName + '/' + repoName}} repository</li>
+  <li>Run "<strong>node gitSpy/gitSpyInit.js</strong>" from the root folder to add GitSpy post-commit hooks</li>
+  <li>Add "<strong>GitSpy/*</strong>" to your .gitignore file to avoid pushing your private GitSpy keys to GitHub</li>
+  <li>Replace the placeholder values in the KEY_USERS.js file with the ones below
+    <ul><strong>user_id</strong>: {{users_id}}</ul>
+    <ul><strong>dashboard_id</strong>: {{dashboards_id}}</ul>
+  </li>
+  <li>Make a commit to start tracking your local file changes on GitSpy</li>
+  <li>Now you are setup with GitSpy  <("<) (^''^) (>")> </li>
+</ol>

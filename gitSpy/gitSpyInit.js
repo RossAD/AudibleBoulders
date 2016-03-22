@@ -18,5 +18,6 @@ function main() {
 
   /** Make files executable **/
   spawnSync('chmod', ['+x', '.git/hooks/post-commit']);
+  console.log("GitSpy hooks added ʕ•ᴥ•ʔ");
 }
 main();
