@@ -16,8 +16,9 @@ angular.module('GitSpy', [
     templateUrl: '/app/home/home.html',
     controller: 'HomeController'
   });
-  $routeProvider.when('/login',{
-    templateUrl: '/app/login/login.html'
+  $routeProvider.when('/login', {
+    templateUrl: '/app/login/login.html',
+    controller: 'LoginController'
   });
   $routeProvider.when('/add', {
     templateUrl: '/app/add/add.html',
