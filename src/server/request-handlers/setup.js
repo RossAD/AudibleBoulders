@@ -11,22 +11,27 @@ module.exports = {
     var responseObject = {};
 
     var selectStr = "SELECT * FROM users WHERE github_id='" + githubId + "';";
-    db.query(selectStr, function (err, results) {
-      if (err) {
-        throw new Error(err);
-      } else {
-        responseObject.users_id = results[0].id;
-        var selectStr = "SELECT * FROM dashboards WHERE org_name='" + org_name + "' AND repo_name='" + repo_name + "'";
-        db.query(selectStr, function (err, results) {
-          if (err) {
-            throw new Error(err);
-          } else {
-            responseObject.dashboards_id = results[0].id;
-
-            res.json(responseObject);
-          }
-        });
+    pool.getConnection(function(err, connection){
+      if(err) {
+        throw err;
       }
+      connection.query(selectStr, function (err, results) {
+        if (err) {
+          throw new Error(err);
+        } else {
+          responseObject.users_id = results[0].id;
+          var selectStr = "SELECT * FROM dashboards WHERE org_name='" + org_name + "' AND repo_name='" + repo_name + "'";
+          connection.query(selectStr, function (err, results) {
+            if (err) {
+              throw new Error(err);
+            } else {
+              responseObject.dashboards_id = results[0].id;
+
+              res.json(responseObject);
+            }
+          });
+        }
+      });
     });
   }
 };
