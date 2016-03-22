@@ -10,6 +10,7 @@ var dashboardsGithubId = require('../request-handlers/dashboards-githubId');
 var dashboardsOrgRepo = require('../request-handlers/dashboards-org-repo');
 var setup = require('../request-handlers/setup');
 var commits = require('../request-handlers/commits');
+var usersDashboards = require('../request-handlers/usersDashboards');
 
 module.exports = function (app) {
   // 'helpers.testy' is a placeholder to test routing, replace with appropriate functions
@@ -18,6 +19,7 @@ module.exports = function (app) {
   app.post('/api/dashboards/', dashboards.handlePost);
   app.get('/api/dashboards/:githubId', dashboardsGithubId.handleGet);
   app.get('/api/dashboards/:orgName/:repoName', dashboardsOrgRepo.handleGet);
+  app.delete('/api/users_dashboards/:githubId/:dashboardId', usersDashboards.handleDelete);
 
   // Get signature hash etc for setup page
   app.get('/api/setup/:orgName/:repoName/:githubId', setup.handleGet);
