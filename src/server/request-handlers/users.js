@@ -1,6 +1,8 @@
 "use strict";
 var db = require('../db');
 var request = require('request');
+var pool = require('../db/index.js');
+
 module.exports = {
   postUser: function (profile, token) {
     var gitId = profile.id;
@@ -9,51 +11,62 @@ module.exports = {
     var name = profile.name;
     var userQry = "SELECT id FROM users WHERE github_id='" + gitId.toString() + "'";
     // Check if user is in table
-    db.query(userQry, function (err, results) {
-      if (err) {
-        throw new Error(err);
+    pool.getConnection(function(err, connection){
+      if(err) {
+        throw err;
       }
-      // If user NOT in table, add user
-      if (results.length === 0) {
-        var addUser = "INSERT into users (git_handle, name, github_id, github_avatar, git_token) VALUES ('"+ gitHandle +"','"+ name +"','"+ gitId +"','"+ avatar +"','"+ token +"')";
-        db.query(addUser, function (err, results) {
-          if (err) {
-            throw new Error(err);
-          } else {
-            return results;
-          }
-        });
-      } else {
-        // If user is in the table check if git token has changed
-        var tokenQry = "SELECT git_token FROM users where github_id='" +gitId.toString()+ "'";
-        db.query(tokenQry, function(err, result) {
-          if (err) {
-            throw new Error(err);
-          } else if(result[0].git_token !== token){
-            // If the tokens are not equal update token
-            var updateToken = "UPDATE users SET git_token='"+token+"' WHERE github_id='"+gitId+"'";
-            db.query(updateToken, function (err, results) {
-              if (err) {
-                throw new Error(err);
-              } else {
-                return results;
-              }
-            });
-            return result;
-          }
-        });
-      }
+      connection.query(userQry, function (err, results) {
+        if (err) {
+          throw new Error(err);
+        }
+        // If user NOT in table, add user
+        if (results.length === 0) {
+          var addUser = "INSERT into users (git_handle, name, github_id, github_avatar, git_token) VALUES ('"+ gitHandle +"','"+ name +"','"+ gitId +"','"+ avatar +"','"+ token +"')";
+          connection.query(addUser, function (err, results) {
+            if (err) {
+              throw new Error(err);
+            } else {
+              return results;
+            }
+          });
+        } else {
+          // If user is in the table check if git token has changed
+          var tokenQry = "SELECT git_token FROM users where github_id='" +gitId.toString()+ "'";
+          connection.query(tokenQry, function(err, result) {
+            if (err) {
+              throw new Error(err);
+            } else if(result[0].git_token !== token){
+              // If the tokens are not equal update token
+              var updateToken = "UPDATE users SET git_token='"+token+"' WHERE github_id='"+gitId+"'";
+              connection.query(updateToken, function (err, results) {
+                if (err) {
+                  throw new Error(err);
+                } else {
+                  return results;
+                }
+              });
+              return result;
+            }
+          });
+        }
+      });
     });
   },
 
   getToken: function (gitID, cb) {
     var tokQry = "SELECT git_token FROM users WHERE github_id='" +  gitID.toString() + "'";
-    db.query(tokQry, function (err, result) {
-      if (err) {
-        throw new Error(err);
-      } else {
-        cb(result[0].git_token);
+    pool.getConnection(function(err, connection){
+      if(err) {
+        throw err;
       }
+      connection.query(tokQry, function (err, result) {
+        if (err) {
+          throw new Error(err);
+        } else {
+          console.log('token result: ', result[0].git_token);
+          cb(result[0].git_token);
+        }
+      });
     });
   },
 

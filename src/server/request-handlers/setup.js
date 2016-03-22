@@ -1,6 +1,7 @@
 "use strict";
 
 var db = require('../db');
+var pool = require('../db/index.js');
 
 module.exports = {
   handleGet: function (req, res, next) {
