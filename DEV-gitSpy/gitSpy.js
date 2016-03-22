@@ -57,7 +57,6 @@ function main() {
     last_pulled_commit: lastPullHash,
     diffs: diffs
   };
-  var HOST = (PORT === 8080) ? 'localhost:8080' : 'www.gitspy.com';
   spawnSync('curl',
     ['-X', 'POST', '-H', 'Content-Type: application/json', '-d',
       data, 'http://www.gitspy.com/api/commits'],
