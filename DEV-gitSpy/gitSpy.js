@@ -2,10 +2,6 @@
 var spawnSync = require('child_process').spawnSync;
 var keys = require('./USER_KEYS');
 
-function throwErr(error) {
-  throw new Error(error);
-}
-
 function parseHash(commit) {
   var HASH_LENGTH = 40;
   return commit.substring(commit.length - HASH_LENGTH);
@@ -19,7 +15,7 @@ function getLastPullHash(gitLog) {
       return parseHash(commit);
     }
   }
-  throwErr("Error: cannot find most recent pull or initial git commit");
+  throw new Error("Error: cannot find most recent pull or initial git commit");
 }
 
 function formatDiffs(gitDiff) {
@@ -39,7 +35,7 @@ function main() {
   /** SERVE ERROR IF KEYS ARE NOT NUMBERS **/
   if (typeof keys.user_id !== "number" ||
     typeof keys.dashboard_id !== "number") {
-    throwErr("Please double check that your gitSpy keys are correct!");
+    throw new Error("Please double check that your gitSpy keys are correct!");
   }
 
   /** Parse most recent commit hash and pull hash from git log **/
@@ -64,7 +60,7 @@ function main() {
   data = JSON.stringify(data);
   spawnSync('curl',
     ['-X', 'POST', '-H', 'Content-Type: application/json', '-d',
-      data, 'http://gitspy.com/api/commits'],
+      data, 'http://www.gitspy.com/api/commits'],
     {encoding: 'utf-8'});
 
   /** console log cute ascii art **/
