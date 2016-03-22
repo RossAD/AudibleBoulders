@@ -1,7 +1,6 @@
 // var ImageToAscii = require('image-to-ascii');
 var spawnSync = require('child_process').spawnSync;
 var keys = require('./USER_KEYS');
-var PORT = require('../src/server/server.js');
 
 function parseHash(commit) {
   var HASH_LENGTH = 40;
@@ -61,7 +60,7 @@ function main() {
   var HOST = (PORT === 8080) ? 'localhost:8080' : 'www.gitspy.com';
   spawnSync('curl',
     ['-X', 'POST', '-H', 'Content-Type: application/json', '-d',
-      data, 'http://' + HOST + '/api/commits'],
+      data, 'http://www.gitspy.com/api/commits'],
     {encoding: 'utf-8'});
 
   /** console log cute ascii art **/
