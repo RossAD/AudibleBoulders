@@ -3,6 +3,7 @@ angular.module('dashboard', [])
 .controller('DashboardController', function ($scope, $routeParams, RequestFactory, Socket) {
   $scope.dashboard = [];
   $scope.users = [];
+  $scope.loading = true;
 
   Socket.on('newUser', function (data) {
     // $scope.users.push(data);
@@ -17,6 +18,7 @@ angular.module('dashboard', [])
     var repoName = $routeParams.repoName;
     RequestFactory.getDashboard(orgName, repoName)
     .then(function (data) {
+      $scope.loading = false;
       $scope.users = data.users;
       $scope.dashboard = data.dashboard;
     });

@@ -9,6 +9,10 @@
     <span> Out of date? </span><button type="button" class="btn btn-info btn-sm" ng-click='getDashboard()'>Update</button>
   </div>
 
+  <div ng-show="loading" class="spinner">
+    <img src="https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif">
+  </div>
+
   <div ng-repeat="user in users">
     <div ng-class="[users, { upToDate: user.last_pulled_commit === dashboard.last_commit, outOfDate: user.last_pulled_commit !== dashboard.last_commit, notSetUp: user.set_up === 0 }]">
       <img class="gitimg" src="{{user.github_avatar}}">

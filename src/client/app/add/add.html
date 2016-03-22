@@ -14,6 +14,10 @@
     </table>
   </div>
 
+  <div ng-show="loading" class="spinner">
+    <img src="https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif">
+  </div>
+
   <table class="table tablecss table-hover">
     <tr class="homeRows" ng-repeat="repo in subsc | filter:search | orderBy:'full_name'">
       <td><span class="glyphicon glyphicon-inbox"></span><a ng-click="postDashboard(repo)">{{repo.full_name}}</a></td>
