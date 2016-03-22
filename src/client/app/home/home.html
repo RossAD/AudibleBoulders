@@ -3,8 +3,8 @@
     Your Dashboards<a href="#/add" ><span class="glyphicon glyphicon-plus-sign" title="Add a new repo"></span></a>
   </div>
   <div class="homeDesc">
-      Don't see your board? It may be a private repo. Allow private repo access <a href="">here</a>.
-    </div>
+    <span ng-show="empty">You don't have any dashboards yet! You should <a href="#/add">add some</a>.</span>
+  </div>
 
   <table class="table tablecss table-hover">
     <tr class="homeRows" ng-repeat="dashboard in dashboards">
