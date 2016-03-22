@@ -13,7 +13,7 @@
     <div ng-class="[users, { upToDate: user.last_pulled_commit === dashboard.last_commit, outOfDate: user.last_pulled_commit !== dashboard.last_commit, notSetUp: user.set_up === 0 }]">
       <img class="gitimg" src="{{user.github_avatar}}">
       {{user.name}} - <a href="https://github.com/{{user.git_handle}}">{{user.git_handle}}</a>
-      <span ng-show="user.last_pulled_commit === dashboard.last_commit" class="alignright status"><span class="glyphicon glyphicon-ok-sign"></span> {{user.name}} is up-to-date with github.com/{{dashboard.org_name}}/{{dashboard.repo_name}}</span>
+      <span ng-show="user.last_pulled_commit === dashboard.last_commit" class="alignright status"><span class="glyphicon glyphicon-ok-sign"></span> {{user.name}} has pulled {{dashboard.last_commit}}</span>
       <span ng-show="user.last_pulled_commit !== dashboard.last_commit && user.set_up" class="alignright status"><span class="glyphicon glyphicon-exclamation-sign"></span> {{user.name}} needs to git pull the latest </span>
       <span ng-show="!user.set_up" class="alignright status"><span class="glyphicon glyphicon-exclamation-sign"></span> {{user.name}} needs to set up</span>
       <div class="diffs" ng-repeat="diff in user.diffs">
