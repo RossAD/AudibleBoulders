@@ -57,6 +57,7 @@ function main() {
     last_pulled_commit: lastPullHash,
     diffs: diffs
   };
+  data = JSON.stringify(data);
   spawnSync('curl',
     ['-X', 'POST', '-H', 'Content-Type: application/json', '-d',
       data, 'http://www.gitspy.com/api/commits'],
