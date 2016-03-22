@@ -6,7 +6,6 @@ angular.module('home', [])
   var githubId = $cookies.get('githubId');
   $scope.removeUserDashboard = function(index) {
     var dashboardId = $scope.dashboards[index].id;
-    console.log(dashboardId);
     $scope.dashboards.splice(index, 1);
     RequestFactory.deleteUserDashboard(githubId, dashboardId);
   };
