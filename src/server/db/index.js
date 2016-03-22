@@ -6,7 +6,7 @@ var mysql = require('mysql');
 var app = express();
 // Setup Pool for MySql DB
 
-var password = (PORT === 8080) ? '' : 'raad39'
+var password = (PORT === 8080) ? '' : 'raad39';
 var pool = mysql.createPool({
   connectionLimit : 200, //important
   host     : 'localhost',
