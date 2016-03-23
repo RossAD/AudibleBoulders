@@ -172,7 +172,7 @@
 }
 
 .homeDesc {
-  font-size:12px;
+  font-size:18px;
   padding: 5px 5px 10px 5px;
   font-family: 'Montserrat', serif;
 }
@@ -577,7 +577,9 @@
 
   .homeDesc {
     font-size:14px;
-    padding: 5px 5px 10px 5px;
+    padding: 5px 0px 10px 0px;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
   .homeRows {
