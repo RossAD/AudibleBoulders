@@ -4,8 +4,11 @@
   <head>
     <meta charset="utf-8" />
     <title>GitSpy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link ref="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css">
   </head>
@@ -14,20 +17,24 @@
     <!-- Nav Bar -->
     <header>
       <div ng-controller="LoginController">
-        <nav class="navbar navbar-light bg-faded" ng-hide="isActivePage('/login')">
-          <a class="navbar-brand" href="#/"><img src="https://c2.staticflickr.com/2/1564/25950557116_5baa0648ef_s.jpg"></a>
-
-          <ul class="nav navbar-nav pull-right">
-            <li class="nav-item active">
-              <a class="nav-link" href="#/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/logout">Logout</a>
-            </li>
-          </ul>
+        <nav class="navbar navbar-light" ng-hide="isActivePage('/login')">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#/"><img src="https://c2.staticflickr.com/2/1564/25950557116_5baa0648ef_s.jpg"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/"><span class="fa fa-home"></span>  Home</a></li>
+                <li><a href="#/about"><span class="fa fa-users"></span> About</a></li>
+                <li><a href="#/logout"><span class="fa fa-sign-out"></span> Logout</a></li>
+              </ul>
+            </div>
+          </div>
         </nav>
       </div>
     </header>
