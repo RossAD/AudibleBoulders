@@ -204,12 +204,6 @@
   float: right;
 }
 
-.removeButton:hover {
-  color: red;
-  display: none;
-  float: right;
-}
-
 
 /*Table css for tables on home/add page*/
 .tablecss {

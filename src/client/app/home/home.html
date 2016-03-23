@@ -6,14 +6,14 @@
     <span ng-show="empty">You don't have any dashboards yet! You should <a href="#/add">add some</a>.</span>
   </div>
 
-  <div ng-show="loading2" class="spinner">
+  <div ng-show="loading" class="spinner">
     <img src="https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif">
   </div>
 
   <table class="table tablecss table-hover">
     <tr class="homeRows" ng-repeat="dashboard in dashboards">
       <td><span class="glyphicon glyphicon-inbox"></span><a href="#/{{dashboard.org_name}}/{{dashboard.repo_name}}">{{dashboard.org_name}} / {{dashboard.repo_name}}
-    </a><a class="removeButton" href="" ng-click="removeUserDashboard($index)"><span class="glyphicon glyphicon-remove"></span></a></td>
+    </a><a class="removeButton" href="" ng-click="removeUserDashboard($index)"><span ng-click="removeUserDashboard($index)" class="glyphicon glyphicon-remove"></span></a></td>
     </tr>
   </table>
 </div>
