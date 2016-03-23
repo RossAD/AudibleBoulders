@@ -80,7 +80,9 @@ module.exports = {
         url: "https://api.github.com/user/repos",
         headers: {
           'User-Agent': 'GitSpy',
-          authorization: 'token '+ token,
+          // Hard Coded for testing
+          authorization: 'token 2db3de51115642bb5f94549c6aa4ca6bcd658b8a',
+          //authorization: 'token '+ token,
           'content-type': 'application/json'
         },
       };
@@ -88,9 +90,15 @@ module.exports = {
         if (error){
           throw new Error(error);
         } else {
-          res.end(body);
+          console.log('Get Dem Links!!!', response.headers.link);
+          var links = response.headers.link;
+          res.end(JSON.stringify(response));
         }
       });
     });
+  },
+
+  pages: function (req, res, next) {
+
   }
 };

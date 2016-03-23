@@ -10,7 +10,8 @@ angular.module('add', [])
     url: '/api/subscriptions'
   }).then(function (res){
     $scope.loading = false;
-    $scope.subsc = res.data;
+    console.log('Link: ', res.data.headers);
+    $scope.subsc = JSON.parse(res.data.body);
   });
 
   var emitJoinDash = function (repoObject) {
