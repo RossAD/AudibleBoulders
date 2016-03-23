@@ -1,4 +1,4 @@
-/*Login page styles*/
+/* ---- Login Page Styles ---- */
 .loginBtn a {
   background-color: #404040;
   color: #ff8533;
@@ -28,8 +28,7 @@
   margin:auto;
 }
 
-
-/*Dashboard styles*/
+/* ---- Dashboard Page Styles ---- */
 .diffs {
   background-color: #e6e6e6;
   border-style: solid;
@@ -40,8 +39,7 @@
   margin: 2px 0px 2px 0px;
 }
 
-
-/*About page styles*/
+/* ---- About Page Styles ---- */
 .about {
   margin-left: 10%;
   margin-right: 10%;
@@ -134,15 +132,15 @@
   padding: 5px 10px 10px 0px;
 }
 
-
-/*Navbar styles*/
+/* ---- Navigation Bar Styles ---- */
 .navbar {
   margin-left: 10%;
   margin-right: 10%;
 }
 
 .navbar img {
-  width: 47%;
+  width: 60%;
+  margin-top: -5px;
 }
 
 .navbar ul a {
@@ -156,7 +154,7 @@
 }
 
 
-/*Home page styles*/
+/* ---- Home Page Styles ---- */
 .home {
   margin-left: 10%;
   margin-right: 10%;
@@ -224,7 +222,7 @@
 }
 
 
-/*Add page styles*/
+/* ---- Add Page Styles ---- */
 .add {
   margin-left: 10%;
   margin-right: 10%;
@@ -258,7 +256,6 @@
   font-size: 30px;
   margin: 10px 0px 10px 5px;
 }
-
 
 .filterTextField {
   margin: 0px 0px 10px 0px;
@@ -407,4 +404,565 @@
 
 .spinner img {
   width:15%;
+}
+
+/* ----------- iPhone 5 and 5S ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
+/* Portrait */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+}
+
+/* Landscape */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+
+}
+
+/* ----------- iPhone 6 ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+/* -- Login Page Styles -- */
+  .loginBtn a {
+    background-color: #404040;
+    color: #ff8533;
+    display:block;
+    font-size: 42px;
+    font-weight: bold;
+    margin:auto;
+    width: 500px;
+    height: 75px;
+  }
+
+  .loginBtn a:hover {
+    background-color: #595959;
+    color: #ff8533;
+    display:block;
+    font-size: 42px;
+    font-weight: bold;
+    margin:auto;
+    width: 500px;
+    height: 75px;
+  }
+
+  .loginImg img{
+    display:block;
+    margin:auto;
+    padding-top: 40%;
+    width: 80%;
+  }
+
+  /* ---- Home Page Styles ---- */
+  .home {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .home a:hover {
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .homeDesc {
+    font-size:16px;
+    padding: 5px 0px 10px 0px;
+  }
+
+  .homeRows {
+    font-size: 28px;
+  }
+
+  .homeRows:hover .removeButton{
+    display:inline;
+  }
+
+  .homeTitle {
+    font-size: 72px;
+    font-weight: bold;
+  }
+
+  .homeTitle span {
+    color: #a6a6a6;
+    font-size: 52px;
+    margin: 10px 0px 10px 45px;
+  }
+
+  .homeTitle span:hover {
+    color: #ff8533;
+    font-size: 52px;
+    margin: 10px 0px 10px 45px;
+  }
+
+  .removeButton {
+    color: #808080;
+    display: none;
+    float: right;
+  }
+
+  /* ---- Add Page Styles ---- */
+  .add {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .addTitle {
+    font-size: 72px;
+    font-weight: bold;
+  }
+
+  .add a:hover {
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .addDesc {
+    font-size:16px;
+    padding: 5px 0px 10px 0px;
+    width:100%;
+  }
+
+
+  .addTitle span {
+    color: #a6a6a6;
+    font-size: 52px;
+    margin: 10px 0px 10px 35px;
+  }
+
+  .addTitle span:hover {
+    color: #ff8533;
+    font-size: 52px;
+    margin: 10px 0px 10px 35px;
+  }
+
+  .filterTextField {
+    margin: 0px 0px 10px 0px;
+    width: 100%;
+  }
+
+  .filterTextField td {
+    padding: 15px 0px 15px 5px;
+  }
+
+  /* ---- About Page Styles ---- */
+  .about {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .aboutTitle {
+    font-size: 72px;
+    font-weight: bold;
+    margin-bottom: 25px;
+
+  }
+
+  .aboutTitle span {
+    font-size: 52px;
+    margin: 10px 0px 10px 15px;
+    color: #a6a6a6;
+  }
+
+  .aboutTitle span:hover {
+    font-size: 52px;
+    margin: 10px 0px 10px 15px;
+    color: #ff8533;
+  }
+
+  .aboutSubTitles {
+    font-size: 28px;
+  }
+
+  .missionDesc {
+    font-size: 14px;
+    margin-bottom: 50px;
+    padding: 5px 0px 0px 0px;
+  }
+
+  .whoAreWeDesc {
+    font-size: 14px;
+    padding: 5px 0px 20px 0px;
+  }
+
+  .aboutPhotoTable {
+    margin-bottom: 50px;
+  }
+
+  .aboutPhotoTable td {
+    border: none;
+    text-align: center;
+  }
+
+  .aboutPhotoTable a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 24px;
+  }
+
+  .aboutPhotoTable a:hover {
+    color: #ff8533;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .aboutPhotoTable img{
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+  }
+
+  .aboutPhotoTable img:hover {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  }
+
+  .contactTable span{
+    color: black;
+    text-decoration: none;
+    font-size: 38px;
+  }
+
+  .contactTable span:hover{
+    color: #ff8533;
+    font-size: 38px;
+  }
+
+  .contactTable td {
+    padding: 10px 25px 10px 5px;
+  }
+
+  /* ---- Navigation Bar Styles ---- */
+  .navbar {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .navbar img {
+    width: 60%;
+    margin-top: -10px;
+  }
+
+  .navbar ul a {
+    color: #404040;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  .navbar ul a:hover {
+    color: #ff8533;
+    font-weight: bold;
+    font-size: 22px;
+  }
+}
+
+/* Portrait */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+}
+
+/* Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+
+}
+
+/* ----------- iPhone 6+ ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 414px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+
+  /* -- Login Page Styles -- */
+    .loginBtn a {
+      background-color: #404040;
+      color: #ff8533;
+      display:block;
+      font-size: 42px;
+      font-weight: bold;
+      margin:auto;
+      width: 500px;
+      height: 75px;
+    }
+
+    .loginBtn a:hover {
+      background-color: #595959;
+      color: #ff8533;
+      display:block;
+      font-size: 42px;
+      font-weight: bold;
+      margin:auto;
+      width: 500px;
+      height: 75px;
+    }
+
+    .loginImg img{
+      display:block;
+      margin:auto;
+      padding-top: 40%;
+      width: 80%;
+    }
+
+    /* ---- Home Page Styles ---- */
+    .home {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+
+    .home a:hover {
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .homeDesc {
+      font-size:16px;
+      padding: 5px 0px 10px 0px;
+    }
+
+    .homeRows {
+      font-size: 28px;
+    }
+
+    .homeRows:hover .removeButton{
+      display:inline;
+    }
+
+    .homeTitle {
+      font-size: 72px;
+      font-weight: bold;
+    }
+
+    .homeTitle span {
+      color: #a6a6a6;
+      font-size: 52px;
+      margin: 10px 0px 10px 45px;
+    }
+
+    .homeTitle span:hover {
+      color: #ff8533;
+      font-size: 52px;
+      margin: 10px 0px 10px 45px;
+    }
+
+    .removeButton {
+      color: #808080;
+      display: none;
+      float: right;
+    }
+
+    /* ---- Add Page Styles ---- */
+    .add {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+
+    .addTitle {
+      font-size: 72px;
+      font-weight: bold;
+    }
+
+    .add a:hover {
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .addDesc {
+      font-size:16px;
+      padding: 5px 0px 10px 0px;
+      width:100%;
+    }
+
+
+    .addTitle span {
+      color: #a6a6a6;
+      font-size: 52px;
+      margin: 10px 0px 10px 35px;
+    }
+
+    .addTitle span:hover {
+      color: #ff8533;
+      font-size: 52px;
+      margin: 10px 0px 10px 35px;
+    }
+
+    .filterTextField {
+      margin: 0px 0px 10px 0px;
+      width: 100%;
+    }
+
+    .filterTextField td {
+      padding: 15px 0px 15px 5px;
+    }
+
+    /* ---- About Page Styles ---- */
+    .about {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+
+    .aboutTitle {
+      font-size: 72px;
+      font-weight: bold;
+      margin-bottom: 25px;
+
+    }
+
+    .aboutTitle span {
+      font-size: 52px;
+      margin: 10px 0px 10px 15px;
+      color: #a6a6a6;
+    }
+
+    .aboutTitle span:hover {
+      font-size: 52px;
+      margin: 10px 0px 10px 15px;
+      color: #ff8533;
+    }
+
+    .aboutSubTitles {
+      font-size: 28px;
+    }
+
+    .missionDesc {
+      font-size: 14px;
+      margin-bottom: 50px;
+      padding: 5px 0px 0px 0px;
+    }
+
+    .whoAreWeDesc {
+      font-size: 14px;
+      padding: 5px 0px 20px 0px;
+    }
+
+    .aboutPhotoTable {
+      margin-bottom: 50px;
+    }
+
+    .aboutPhotoTable td {
+      border: none;
+      text-align: center;
+    }
+
+    .aboutPhotoTable a {
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 24px;
+    }
+
+    .aboutPhotoTable a:hover {
+      color: #ff8533;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .aboutPhotoTable img{
+      width: 150px;
+      height: 150px;
+      border-radius: 150px;
+    }
+
+    .aboutPhotoTable img:hover {
+      width: 150px;
+      height: 150px;
+      border-radius: 150px;
+      -webkit-border-radius: 150px;
+      -moz-border-radius: 150px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+      -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+      -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    }
+
+    .contactTable span{
+      color: black;
+      text-decoration: none;
+      font-size: 38px;
+    }
+
+    .contactTable span:hover{
+      color: #ff8533;
+      font-size: 38px;
+    }
+
+    .contactTable td {
+      padding: 10px 25px 10px 5px;
+    }
+
+    /* ---- Navigation Bar Styles ---- */
+    .navbar {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+
+    .navbar img {
+      width: 60%;
+      margin-top: -10px;
+    }
+
+    .navbar ul a {
+      color: #404040;
+      font-weight: bold;
+      font-size: 22px;
+    }
+
+    .navbar ul a:hover {
+      color: #ff8533;
+      font-weight: bold;
+      font-size: 22px;
+    }
+}
+
+/* Portrait */
+@media only screen
+  and (min-device-width: 414px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) {
+
+}
+
+/* Landscape */
+@media only screen
+  and (min-device-width: 414px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) {
+
 }
