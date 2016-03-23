@@ -258,17 +258,18 @@
 }
 
 .filterTextField {
-  margin: 0px 0px 10px 0px;
+  margin: 10px 0px 15px 0px;
   width: 100%;
 }
 
 .filterTextField td {
   padding: 0px 0px 0px 5px;
+  font-size: 24px;
 }
 
 .filterTextField input[type="text"] {
-  width: 400px;
-  height: 40px;
+  width: 450px;
+  height: 60px;
 }
 
 /* ---- Dashboard Page Styles ---- */
@@ -560,12 +561,13 @@
   }
 
   .filterTextField {
-    margin: 0px 0px 10px 0px;
+    margin: 10px 0px 15px 0px;
     width: 100%;
   }
 
   .filterTextField td {
-    padding: 15px 0px 15px 5px;
+    padding: 0px 0px 0px 5px;
+    font-size: 24px;
   }
 
   .filterTextField input[type="text"] {
