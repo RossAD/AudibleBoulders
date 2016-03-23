@@ -173,7 +173,7 @@
 
 .homeDesc {
   font-size:12px;
-  padding: 5px 0px 10px 0px;
+  padding: 5px 5px 10px 5px;
   font-family: 'Montserrat', serif;
 }
 
@@ -577,7 +577,7 @@
 
   .homeDesc {
     font-size:14px;
-    padding: 5px 0px 10px 0px;
+    padding: 5px 5px 10px 5px;
   }
 
   .homeRows {
@@ -907,6 +907,10 @@
     width:50px;
   }
 
+  .dashboardUser {
+    position: relative;
+  }
+
   .dashboardUser a {
     text-decoration: none;
     color: black;
@@ -957,9 +961,9 @@
   }
 
   .alignright {
-    float: right;
-    position: relative;
-    top: -10px;
+    position: absolute;
+    top: 2px;
+    right: 4px;
   }
 
   .add-repo {
