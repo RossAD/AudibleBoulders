@@ -2,4 +2,4 @@
 module.exports = {
   user_id: 4,
   dashboard_id: 1
-}
+};

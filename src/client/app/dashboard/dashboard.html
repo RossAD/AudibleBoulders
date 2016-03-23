@@ -1,12 +1,15 @@
-<div ng-controller='DashboardController'>
+<div class="dashboard" ng-controller='DashboardController'>
 
-  <a href="#/{{dashboard.org_name}}/{{dashboard.repo_name}}/setup"><button type="button" class="btn btn-info btn-sm">Setup instructions</button></a>
+  <div class="dashboardTitle">
+    <h1>{{dashboard.org_name}} / <a href="{{dashboard.repo_link}}">{{dashboard.repo_name}}</a> - {{dashboard.branch}} branch <a href="#/{{dashboard.org_name}}/{{dashboard.repo_name}}/setup"><button type="button" class="btn btn-info btn-sm">Setup instructions</button></a></h1>
+  </div>
 
-  <h1>{{dashboard.org_name}} / <a href="{{dashboard.repo_link}}">{{dashboard.repo_name}}</a> - {{dashboard.branch}} branch</h1>
-  <div class='lastCommit'>
-    <h3>Most recent commit at github.com/{{dashboard.org_name}}/{{dashboard.repo_name}}:</h3>
-    <h3>{{dashboard.last_commit}}</h3>
-    <span> Out of date? </span><button type="button" class="btn btn-info btn-sm" ng-click='getDashboard()'>Update</button>
+  <div class="lastCommit">
+    <div>Most recent commit at github.com/{{dashboard.org_name}}/{{dashboard.repo_name}}: {{dashboard.last_commit}}</div>
+  </div>
+
+  <div class="updateBtn">
+    <div>Out of date?<button type="button" class="btn btn-info btn-sm" ng-click='getDashboard()'>Update</button></div>
   </div>
 
   <div ng-show="loading" class="spinner">
