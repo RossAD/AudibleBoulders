@@ -10,7 +10,15 @@ angular.module('add', [])
     url: '/api/subscriptions'
   }).then(function (res){
     $scope.loading = false;
-    console.log('Link: ', res.data.headers);
+    var linkTest = res.data.headers.link.split(' ');
+    var testLink = '<https://api.github.com/search/code?q=addClass+user%3Amozilla&page=15>; rel="next", <https://api.github.com/search/code?q=addClass+user%3Amozilla&page=34>; rel="last", <https://api.github.com/search/code?q=addClass+user%3Amozilla&page=1>; rel="first", <https://api.github.com/search/code?q=addClass+user%3Amozilla&page=13>; rel="prev"';
+    var splitty = testLink.split(' ');
+    var regLink = [];
+    var pattern = /(<|>;|,|"|rel=)/ig;
+    for(var i = 0; i < linkTest.length; i++){
+      regLink.push(linkTest[i].replace(pattern, ""));
+    }
+    console.log('Link: ', regLink);
     $scope.subsc = JSON.parse(res.data.body);
   });
 
