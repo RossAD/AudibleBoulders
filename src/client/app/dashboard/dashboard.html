@@ -6,7 +6,7 @@
 
   <div ng-show="!loading">
     <div class="dashboardTitle">
-      {{dashboard.org_name}} / <a href="{{dashboard.repo_link}}">{{dashboard.repo_name}}</a>
+      {{dashboard.org_name}} / <a href="{{dashboard.repo_link}}">{{dashboard.repo_name}}</a><a href="#/"><span class="glyphicon glyphicon-circle-arrow-left" title="Go back home"></span></a>
     </div>
 
     <div class="dashboardBranch">
@@ -14,7 +14,7 @@
     </div>
 
     <div class="dashboardSetupBtn">
-      <button type="button" class="btn btn-info btn-sm">Setup instructions</button></h1>
+      <a href="#/{{dashboard.org_name}}/{{dashboard.repo_name}}/setup"><button type="button" class="btn btn-info btn-sm">Setup instructions</button></a>
     </div>
 
     <div class="lastCommit">

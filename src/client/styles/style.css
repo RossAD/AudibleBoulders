@@ -49,34 +49,36 @@
   font-size: 52px;
   font-weight: bold;
   margin-bottom: 25px;
-
 }
 
 .aboutTitle span {
   font-size: 30px;
-  margin: 10px 0px 10px 15px;
+  margin: 10px 0px 10px 10px;
   color: #a6a6a6;
 }
 
 .aboutTitle span:hover {
   font-size: 30px;
-  margin: 10px 0px 10px 15px;
+  margin: 10px 0px 10px 10px;
   color: #ff8533;
 }
 
 .aboutSubTitles {
   font-size: 28px;
+  font-family: 'Montserrat', serif;
 }
 
 .missionDesc {
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 50px;
   padding: 5px 0px 0px 0px;
+  font-family: 'Montserrat', serif;
 }
 
 .whoAreWeDesc {
-  font-size: 14px;
+  font-size: 16px;
   padding: 5px 0px 15px 0px;
+  font-family: 'Montserrat', serif;
 }
 
 .aboutPhotoTable {
@@ -172,10 +174,12 @@
 .homeDesc {
   font-size:12px;
   padding: 5px 0px 10px 0px;
+  font-family: 'Montserrat', serif;
 }
 
 .homeRows {
   font-size: 18px;
+  font-family: 'Montserrat', serif;
 }
 
 .homeRows:hover .removeButton{
@@ -190,13 +194,13 @@
 .homeTitle span {
   color: #a6a6a6;
   font-size: 30px;
-  margin: 10px 0px 10px 15px;
+  margin: 10px 0px 10px 20px;
 }
 
 .homeTitle span:hover {
   color: #ff8533;
   font-size: 30px;
-  margin: 10px 0px 10px 15px;
+  margin: 10px 0px 10px 20px;
 }
 
 .removeButton {
@@ -241,6 +245,7 @@
   font-size:14px;
   padding: 5px 0px 10px 0px;
   width:100%;
+  font-family: 'Montserrat', serif;
 }
 
 .addTitle {
@@ -263,6 +268,7 @@
 .filterTextField {
   margin: 10px 0px 15px 0px;
   width: 100%;
+  font-family: 'Montserrat', serif;
 }
 
 .filterTextField td {
@@ -273,6 +279,48 @@
 .filterTextField input[type="text"] {
   width: 450px;
   height: 50px;
+}
+
+/* ---- Setup Page Styles ---- */
+.setup {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.setupTitle {
+  font-size: 52px;
+  font-weight: bold;
+  padding: 10px 0px 10px 0px;
+}
+
+.setupTitle span {
+  color: #a6a6a6;
+  font-size: 30px;
+  margin: 10px 0px 10px 20px;
+}
+
+.setupTitle span:hover {
+  color: #ff8533;
+  font-size: 30px;
+  margin: 1px 0px 10px 20px;
+}
+
+.setupBody {
+  font-size: 16px;
+  padding: 0px 0px 15px 0px;
+  border-radius: 10px
+}
+
+.setupBody a {
+  color: #ff8533;
+}
+
+.setupBody div {
+  background-color: #e6e6e6;
+  margin: 10px 0px 10px 0px;
+  padding: 10px 10px 10px 10px;
+  border-radius: 5px;
+  font-family: 'Montserrat', serif;
 }
 
 /* ---- Dashboard Page Styles ---- */
@@ -300,10 +348,12 @@
   margin: 5px 0px 0px 0px;
   font-size: 18px;
   font-weight: bold;
+  font-family: 'Montserrat', serif;
 }
 
 .dashboardSetupBtn {
   margin: 10px 0px 10px 0px;
+  font-family: 'Montserrat', serif;
 }
 
 .lastCommit {
@@ -311,6 +361,7 @@
   font-size: 14px;
   padding: 5px 5px;
   margin: 10px 0px 10px 0px;
+  font-family: 'Montserrat', serif;
 }
 
 .lastCommit span {
@@ -321,6 +372,7 @@
 
 .users {
   margin: 25px 0px 25px 0px;
+  font-family: 'Montserrat', serif;
 }
 
 .gitimg {
@@ -329,6 +381,10 @@
   overflow:hidden;
   padding: 2px;
   width:50px;
+}
+
+.dashboardUser {
+  font-family: 'Montserrat', serif;
 }
 
 .dashboardUser a {
@@ -501,8 +557,8 @@
 
   /* ---- Home Page Styles ---- */
   .home {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 0%;
+    margin-right: 0%;
     margin-top: 5%;
   }
 
@@ -512,6 +568,13 @@
     text-decoration: none;
   }
 
+  .homeTitle {
+    font-size: 32px;
+    font-weight: bold;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
   .homeDesc {
     font-size:14px;
     padding: 5px 0px 10px 0px;
@@ -519,27 +582,24 @@
 
   .homeRows {
     font-size: 14px;
+    margin-left: 0%;
+    margin-right: 0%;
   }
 
   .homeRows:hover .removeButton{
     display:inline;
   }
 
-  .homeTitle {
-    font-size: 32px;
-    font-weight: bold;
-  }
-
   .homeTitle span {
     color: #a6a6a6;
     font-size: 26px;
-    margin: 10px 0px 10px 30px;
+    margin: 10px 0px 10px 25px;
   }
 
   .homeTitle span:hover {
     color: #ff8533;
     font-size: 26px;
-    margin: 10px 0px 10px 30px;
+    margin: 10px 0px 10px 25px;
   }
 
   .removeButton {
@@ -550,13 +610,15 @@
 
   /* ---- Add Page Styles ---- */
   .add {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 0%;
+    margin-right: 0%;
   }
 
   .addTitle {
     font-size: 32px;
     font-weight: bold;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
   .add a:hover {
@@ -568,23 +630,25 @@
   .addDesc {
     font-size:14px;
     padding: 5px 0px 10px 0px;
-    width:100%;
+    width: 95%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
   .addTitle span {
     color: #a6a6a6;
     font-size: 26px;
-    margin: 10px 0px 10px 20px;
+    margin: 10px 0px 10px 15px;
   }
 
   .addTitle span:hover {
     color: #ff8533;
     font-size: 26px;
-    margin: 10px 0px 10px 20px;
+    margin: 10px 0px 10px 15px;
   }
 
   .filterTextField {
-    margin: 10px 0px 15px 0px;
+    margin: 10px 10px 15px 10px;
     width: 100%;
   }
 
@@ -742,6 +806,45 @@
     color: #ff8533;
   }
 
+  /* ---- Setup Page Styles ---- */
+  .setup {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .setupTitle {
+    font-size: 32px;
+    font-weight: bold;
+    padding: 10px 0px 10px 0px;
+  }
+
+  .setupTitle span {
+    color: #a6a6a6;
+    font-size: 26px;
+    margin: 10px 0px 10px 20px;
+  }
+
+  .setupTitle span:hover {
+    color: #ff8533;
+    font-size: 26px;
+    margin: 1px 0px 10px 20px;
+  }
+
+  .setupBody {
+    font-size: 14px;
+    /*background-color: #e6e6e6;*/
+    padding: 0px 0px 15px 0px;
+    border-radius: 10px
+  }
+
+  .setupBody a {
+    color: #ff8533;
+  }
+
+  .setupBody li {
+    padding: 5px 0px 5px 0px;
+  }
+
   /* ---- Dashboard Page Styles ---- */
   .dashboard {
     margin-left: 5%;
@@ -753,6 +856,18 @@
     padding: 0px;
     font-weight: bold;
     line-height: 30px;
+  }
+
+  .dashboardTitle span {
+    color: #a6a6a6;
+    font-size: 26px;
+    margin: 10px 0px 10px 20px;
+  }
+
+  .dashboardTitle span:hover {
+    color: #ff8533;
+    font-size: 26px;
+    margin: 1px 0px 10px 20px;
   }
 
   .dashboardTitle a {
