@@ -259,15 +259,19 @@
 
 .filterTextField {
   margin: 0px 0px 10px 0px;
-  width: 70%;
+  width: 100%;
 }
 
 .filterTextField td {
   padding: 0px 0px 0px 5px;
 }
 
+.filterTextField input[type="text"] {
+  width: 400px;
+  height: 40px;
+}
 
-/*Dashboard page styles*/
+/* ---- Dashboard Page Styles ---- */
 .dashboard {
   margin-left: 10%;
   margin-right: 10%;
@@ -564,6 +568,11 @@
     padding: 15px 0px 15px 5px;
   }
 
+  .filterTextField input[type="text"] {
+    width: 450px;
+    height: 60px;
+  }
+
   /* ---- About Page Styles ---- */
   .about {
     margin-left: 10%;
@@ -829,6 +838,11 @@
 
     .filterTextField td {
       padding: 15px 0px 15px 5px;
+    }
+
+    .filterTextField input[type="text"] {
+      width: 450px;
+      height: 60px;
     }
 
     /* ---- About Page Styles ---- */
