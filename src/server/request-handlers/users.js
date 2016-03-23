@@ -77,7 +77,7 @@ module.exports = {
     module.exports.getToken(id,function(token){
       token = token;
       var options = {
-        url: "https://api.github.com/users/"+ gitHandle +"/subscriptions",
+        url: "https://api.github.com/user/repos",
         headers: {
           'User-Agent': 'GitSpy',
           authorization: 'token '+ token,

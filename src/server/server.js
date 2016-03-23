@@ -62,7 +62,7 @@ function (accessToken, refreshToken, profile, done) {
 
 // GITHUB LOGIN
 app.get('/login/github',
-  passport.authenticate('github', {scope: ['user:email']}));
+  passport.authenticate('github', {scope: ['user:email','read:org', 'public_repo']}));
 
 app.get('/login/github_callback',
   passport.authenticate('github', {failureRedirect: '/'}),

@@ -60,7 +60,11 @@ function main() {
   data = JSON.stringify(data);
   spawnSync('curl',
     ['-X', 'POST', '-H', 'Content-Type: application/json', '-d',
+<<<<<<< Updated upstream:DEV-gitSpy/gitSpy.js
       data, 'http://www.gitspy.com/api/commits'],
+=======
+      data, 'http://localhost:8080/api/commits'],
+>>>>>>> Stashed changes:gitSpy/gitSpy.js
     {encoding: 'utf-8'});
 
   /** console log cute ascii art **/
