@@ -1,6 +1,5 @@
 "use strict";
 
-var db = require('../db');
 var pool = require('../db/index.js');
 
 module.exports = {

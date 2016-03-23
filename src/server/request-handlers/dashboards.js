@@ -1,6 +1,5 @@
 "use strict";
 
-var db = require('../db');
 var request = require('request');
 var pool = require('../db/index.js');
 
