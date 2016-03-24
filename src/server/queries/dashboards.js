@@ -34,6 +34,18 @@ module.exports = {
   },
   updateLastCommit: function (orgName, repoName, newSha1, newMsg, callback) {
     // no return value
+    pool.getConnection(function (err, connection) {
+      if (err) {
+        throw new Error(err);
+      }
+      var updateStr = "UPDATE dashboards SET last_commit_sha1='" + newSha1 + "', last_commit_msg='" + newMsg + "' WHERE org_name='" + orgName + "' AND repo_name='" + repoName + "';";
+      connection.query(updateStr, function (err, results) {
+        if (callback) {
+          callback(err, results);
+        }
+        connection.release();
+      });
+    });
   },
   findOrCreate: function (orgName, repoName, callback) {
     // return id and a bool for whether it was a find or a create
