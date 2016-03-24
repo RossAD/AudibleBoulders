@@ -19,7 +19,7 @@ module.exports = {
       });
     });
   },
-  getAll: function (githubId, callback) {
+  getAllByGithubId: function (githubId, callback) {
     // return an array of all dashboard objects (with all fields) associated with github_id
     pool.getConnection(function (err, connection) {
       if (err) {
