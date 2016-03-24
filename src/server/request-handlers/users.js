@@ -88,7 +88,8 @@ module.exports = {
         if (error){
           throw new Error(error);
         } else {
-          res.end(body);
+          var links = response.headers.link;
+          res.end(JSON.stringify(response));
         }
       });
     });

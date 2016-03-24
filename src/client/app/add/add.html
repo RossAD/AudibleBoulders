@@ -23,5 +23,10 @@
       <td><span class="glyphicon glyphicon-inbox"></span><a ng-click="postDashboard(repo)">{{repo.full_name}}</a></td>
     </tr>
   </table>
-
+  <div class="pages">
+      <a ng-click="pages('first')"> First </a>
+      <a ng-click="pages('prev')"> Prev </a>
+      <a ng-click="pages('next')"> Next </a>
+      <a ng-click="pages('last')"> Last </a>
+  </div>
 </div>
