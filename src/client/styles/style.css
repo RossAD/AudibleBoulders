@@ -398,6 +398,7 @@
 .dashboardUser {
   font-family: 'Montserrat', serif;
   position: relative;
+  margin-bottom: 10px;
 }
 
 .dashboardUser a {
