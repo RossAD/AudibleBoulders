@@ -865,7 +865,6 @@
 
   .setupBody {
     font-size: 14px;
-    /*background-color: #e6e6e6;*/
     padding: 0px 0px 15px 0px;
     border-radius: 10px
   }
@@ -923,8 +922,8 @@
 
   .lastCommit {
     background-color: #cad8ed;
-    font-size: 14px;
-    padding: 5px 5px;
+    font-size: 12px;
+    padding: 5px 5px 5px 5px;
     margin: 10px 0px 10px 0px;
   }
 
