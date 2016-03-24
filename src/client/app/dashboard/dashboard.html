@@ -23,11 +23,17 @@
 
     <div class="dashboardUser" ng-repeat="user in users">
       <div ng-class="[users, { upToDate: user.last_pulled_commit === dashboard.last_commit, outOfDate: user.last_pulled_commit !== dashboard.last_commit, notSetUp: user.set_up === 0 }]">
-        <img class="gitimg" src="{{user.github_avatar}}">
-        {{user.name}} - <a href="https://github.com/{{user.git_handle}}">{{user.git_handle}}</a>
-        <span ng-show="user.last_pulled_commit === dashboard.last_commit" class="alignright status"><span class="glyphicon glyphicon-ok-sign"></span> {{user.name}} has pulled {{dashboard.last_commit}}</span>
-        <span ng-show="user.last_pulled_commit !== dashboard.last_commit && user.set_up" class="alignright status"><span class="glyphicon glyphicon-exclamation-sign"></span> {{user.name}} needs to git pull the latest </span>
-        <div ng-show="!user.set_up" class="alignright status"><span class="glyphicon glyphicon-exclamation-sign"></span> {{user.name}} needs to set up</div>
+        <div class="dashboardUserCommit">
+          <span ng-show="user.last_pulled_commit === dashboard.last_commit" class="status"><span class="glyphicon glyphicon-ok-sign"></span> {{user.name}} has pulled {{dashboard.last_commit}}</span>
+          <span ng-show="user.last_pulled_commit !== dashboard.last_commit && user.set_up" class="status"><span class="glyphicon glyphicon-exclamation-sign"></span> {{user.name}} needs to git pull the latest </span>
+          <div ng-show="!user.set_up" class="status"><span class="glyphicon glyphicon-exclamation-sign"></span> {{user.name}} needs to set up</div>
+        </div>
+
+        <div class="dashboardUserInfo">
+          <img class="gitimg" src="{{user.github_avatar}}">
+          {{user.name}} - <a href="https://github.com/{{user.git_handle}}">{{user.git_handle}}</a>
+        </div>
+
         <div class="diffs" ng-repeat="diff in user.diffs">
           {{diff.file}} - {{diff.mod_type}} - {{diff.commit_message}}
         </div>
