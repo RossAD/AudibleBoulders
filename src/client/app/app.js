@@ -1,6 +1,7 @@
 "use strict";
 angular.module('GitSpy', [
   'add',
+  'about',
   'dashboard',
   'home',
   'login',

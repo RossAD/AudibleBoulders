@@ -2,6 +2,7 @@
   <div class="homeTitle">
     Your Dashboards<a href="#/add" ><span class="glyphicon glyphicon-plus-sign" title="Add a new repo"></span></a>
   </div>
+
   <div class="homeDesc">
     <span ng-show="empty">You don't have any dashboards yet! You should <a href="#/add">add some</a>.</span>
   </div>
@@ -13,7 +14,7 @@
   <table class="table tablecss table-hover">
     <tr class="homeRows" ng-repeat="dashboard in dashboards">
       <td><span class="glyphicon glyphicon-inbox"></span><a href="#/{{dashboard.org_name}}/{{dashboard.repo_name}}">{{dashboard.org_name}} / {{dashboard.repo_name}}
-    </a><a class="removeButton" href="" ng-click="removeUserDashboard($index)"><span ng-click="removeUserDashboard($index)" class="glyphicon glyphicon-remove"></span></a></td>
+    </a><a class="removeButton" href="" ng-click="removeUserDashboard($index)"><span class="glyphicon glyphicon-remove"></span></a></td>
     </tr>
   </table>
 </div>
