@@ -4,8 +4,7 @@ var pool = require('../db/index.js');
 
 module.exports = {
   getOne: function (githubId) {
-    // return bool (we only need to check if user already exists)
-    // alternatively, return user record if exists, or null if not
+    // return user object (with all fields) or null if none
   },
   getDashboardUsers: function (dashboardId) {
     // do a join between users_dashboards and users, where users_dashboards.dashboards_id matches dashboardId
@@ -22,9 +21,6 @@ module.exports = {
         // responseObject, but we do need it in order to query the diffs table.
         // Recommend storing the results of this query in a separate variable (i.e. not responseObject.users),
         // and adding fields to each user in responseObject.users upon completion of the diffs query
-  },
-  getToken: function (githubId) {
-    // return token
   },
   updateToken: function (githubId, newToken) {
     // update token

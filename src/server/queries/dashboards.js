@@ -9,12 +9,6 @@ module.exports = {
   getAll: function (githubId) {
     // return an array of all dashboard objects (with all fields) associated with github_id
   },
-  getId: function (orgName, repoName) {
-    // return id of dashboard entry with matching org_name, repo_name
-  },
-  getLastCommitSha1: function (orgName, repoName) {
-    // return last_commit_sha1 of dashboard with matching org_name repo_name
-  },
   updateLastCommit: function (newSha1, newMsg, orgName, repoName) {
     // no return value
   },
