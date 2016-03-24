@@ -37,10 +37,11 @@ module.exports = {
       pool.query(insertStr, function (err, results) {
         if (err) {
           callback(err, null);
-        }
-        counter.diffsInserted++;
-        if (counter.diffsInserted === diffsArray.length) {
-          callback(null, "Diffs inserted");
+        } else {
+          counter.diffsInserted++;
+          if (counter.diffsInserted === diffsArray.length) {
+            callback(null, "Diffs inserted");
+          }
         }
       });
     }
