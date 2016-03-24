@@ -11,6 +11,7 @@ var dashboardsOrgRepo = require('../request-handlers/dashboards-org-repo');
 var setup = require('../request-handlers/setup');
 var commits = require('../request-handlers/commits');
 var usersDashboards = require('../request-handlers/usersDashboards');
+var github = require('../query/github.js');
 
 module.exports = function (app) {
   // 'helpers.testy' is a placeholder to test routing, replace with appropriate functions
@@ -29,6 +30,7 @@ module.exports = function (app) {
 
   // Get user GitHub Subscriptions
   app.get('/api/subscriptions/', users.userSub);
+  app.post('/api/repos/' , github.handlePost);
 
   // Error handling
   app.use(helpers.errorLogger);
