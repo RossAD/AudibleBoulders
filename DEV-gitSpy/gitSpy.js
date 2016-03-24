@@ -60,7 +60,7 @@ function main() {
   data = JSON.stringify(data);
   spawnSync('curl',
     ['-X', 'POST', '-H', 'Content-Type: application/json', '-d',
-      data, 'http://localhost:8080/api/commits'],
+      data, 'http://www.gitspy.com/api/commits'],
     {encoding: 'utf-8'});
 
   /** console log cute ascii art **/
