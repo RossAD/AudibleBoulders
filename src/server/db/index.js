@@ -19,5 +19,8 @@ module.exports = {
     pool.getConnection(function(err, connection) {
       callback(err, connection);
     });
+  },
+  getPool: function() {
+    return pool;
   }
 };
