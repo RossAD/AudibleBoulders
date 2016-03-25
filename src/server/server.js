@@ -1,17 +1,24 @@
 /*jshint loopfunc: true */
 "use strict";
+
+/** Create Server and Set Port **/
 var PORT = module.exports = process.env.PORT || 8080; // Set port
 var express = require('express');
 var app = express();
-var path = require('path');
-var bodyparser = require('body-parser');
+
+/** Create DB Connection and Require User Queries**/
+var db = module.parent ?
+  require('./db').createPool('test', PORT) : require('./db').createPool('app', PORT);
+var users = require('./request-handlers/users.js');
+
+/** Github Auth and Sessions **/
 var keys = require('./config/keys.js');
 var passport = require('passport');
 var cookieparser = require('cookie-parser');
 var GithubStrategy = require('passport-github2').Strategy;
 var session = require('express-session');
-var db = require('./db');
-var users = require('./request-handlers/users.js');
+
+/** Socket Dependencies **/
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
