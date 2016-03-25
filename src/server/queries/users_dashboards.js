@@ -44,12 +44,29 @@ module.exports = {
       }
     });
   },
-  setUpTrue: function (signatureHash, callback) {
-    // for that users_dashboards record, set set_up to 1
+  unassociateUser: function (githubId, dashboardId, callback) {
+    // delete record with matching githubId and dashboardId
     // no return value
+    var deleteStr = "DELETE FROM users_dashboards WHERE users_github_id=" + githubId + " AND dashboards_id=" + dashboardId + ";";
+    pool.query(deleteStr, function (err, results) {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, "User unassociated from dashboard");
+      }
+    });
   },
-  deleteOne: function (signatureHash, callback) {
-    // delete record with matching signature_hash
+  updateOne: function (signatureHash, updateParams, callback) {
+    // updateParams should include last_pulled_commit_sha1, last_pulled_commit_msg, and commit_branch
+    // calling this method will also always set set_up to 1
     // no return value
+    var updateStr = "UPDATE users_dashboards SET last_pulled_commit_sha1='" + updateParams.last_pulled_commit_sha1 + "', last_pulled_commit_msg='" + updateParams.last_pulled_commit_msg + "', commit_branch='" + updateParams.commit_branch + "', set_up=1 WHERE signature_hash='" + signatureHash + "';";
+    pool.query(updateStr, function (err, results) {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, "User is updated for this dashboard");
+      }
+    });
   }
 };
