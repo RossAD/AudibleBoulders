@@ -5,11 +5,25 @@ var pool = require('../db/index.js');
 module.exports = {
   // NOTE: by "return", we really mean "pass to callback as results arg"
 
+  addOne: function (userObject, callback) {
+
+  },
+
   getOne: function (githubId, callback) {
     // return user object (with all fields) or null if none
+    var selectStr = "SELECT * FROM users WHERE github_id='" + githubId + "';";
+    pool.query(selectStr, function (err, results) {
+      if (err) {
+        callback(err, null);
+      } else {
+        var userObject = (results && results.length > 0) ? results[0] : null;
+        callback(null, userObject);
+      }
+    });
   },
   getDashboardUsers: function (dashboardId, callback) {
-    // do a join between users_dashboards and users, where users_dashboards.dashboards_id matches dashboardId
+    // do a join between users_dashboards and users
+    // get the records for which users_dashboards.dashboards_id matches dashboardId
     // return an array of user objects, where each user object includes properties:
       // github_handle
       // github_name
@@ -23,12 +37,46 @@ module.exports = {
         // responseObject, but we do need it in order to query the diffs table.
         // Recommend storing the results of this query in a separate variable (i.e. not responseObject.users),
         // and adding fields to each user in responseObject.users upon completion of the diffs query
+    var selectStr = "SELECT github_handle, github_name, github_avatar, set_up, last_pulled_commit_sha1, last_pulled_commit_msg, signature_hash FROM users_dashboards INNER JOIN users ON users_dashboards.users_github_id=users.github_id WHERE dashboards_id='" + dashboardId + "'";
+    pool.query(selectStr, function (err, results) {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, results);
+      }
+    });
   },
+  // NOTE: broaden this to update any field
   updateToken: function (githubId, newToken, callback) {
     // update token
     // no return value
+    var updateStr = "UPDATE users SET github_token='" + newToken + "' WHERE github_id='" + githubId + "';";
+    pool.query(updateStr, function (err, results) {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, "Token updated");
+      }
+    });
   },
-  findOrCreate: function (githubId, callback) {
+  updateOrCreate: function (userObject, callback) {
+    // userObject should include properties for all users fields
     // return token and some kind of bool for whether it was a find or create
+
+    // call getOne to see if user already exists
+    module.exports.getOne(userObject.github_id, function (err, result) {
+      if (err) {
+        callback(err, null);
+      } else if (result) {
+        // user DOES exist
+        // update the user token, then:
+        callback(null, {github_token: result.github_token, isNewUser: false});
+      } else {
+        // user DOES NOT exist - create a new user entry
+        // return user token and bool
+
+      }
+
+    });
   }
 };
