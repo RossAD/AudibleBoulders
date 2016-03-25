@@ -11,10 +11,10 @@ angular.module('add', [])
 
   // Function to parse page information
   var linkParse = function(linkBody) {
-    $scope.nxt = false;
-    $scope.lst = false;
-    $scope.fst = false;
-    $scope.prv = false;
+    $scope.nxt = true;
+    $scope.lst = true;
+    $scope.fst = true;
+    $scope.prv = true;
     var regLink = [];
     var splitLink = linkBody.split(' ');
     var pattern = /(<|>;|,|"|rel=)/ig;
@@ -25,22 +25,22 @@ angular.module('add', [])
     regLink.forEach(function(item, index){
       if(index % 2 !== 0){
         if(item === 'next'){
-          $scope.nxt = true;
+          $scope.nxt = false;
           console.log('Assign Link! ', item);
           next = {link:regLink[index-1]};
           console.log('assigned link: ', next);
         } else if(item === 'last') {
-          $scope.lst = true;
+          $scope.lst = false;
           console.log('Assign Link! ', item);
           last={link:regLink[index-1]};
           console.log('assigned link: ', last);
         } else if(item === 'first') {
-          $scope.fst = true;
+          $scope.fst = false;
           console.log('Assign Link! ', item);
           first={link:regLink[index-1]};
           console.log('assigned link: ', first);
         } else if(item === 'prev') {
-          $scope.prv = true;
+          $scope.prv = false;
           console.log('Assign Link! ', item);
           prev={link:regLink[index-1]};
           console.log('assigned link: ', prev);

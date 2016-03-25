@@ -1,5 +1,5 @@
 "use strict";
 angular.module('about', [])
-.controller('AboutController', ['$scope', 'RequestFactory', '$http',function($scope, RequestFactory, $http){
+.controller('AboutController', ['$scope', 'RequestFactory', '$http', function($scope, RequestFactory, $http){
 
 }]);
