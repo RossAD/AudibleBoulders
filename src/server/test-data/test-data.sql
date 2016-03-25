@@ -1,4 +1,4 @@
-USE app;
+USE test;
 
 INSERT into users (id, git_handle, name, github_id, github_avatar) VALUES (1, "yaliceme", "Alice Yu", "123", "alice.jpg");
 INSERT into users (id, git_handle, name, github_id, github_avatar) VALUES (2, "rhombus33", "Diamond Wheeler", "456", "diamond.jpg");

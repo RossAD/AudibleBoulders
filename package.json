@@ -7,6 +7,9 @@
     "start": "nodemon src/server/server.js",
     "initDB": "mysql -u root -p < src/server/schema.sql",
     "openDB": "mysql -u root -p app",
+    "initTestDB": "mysql -u root -p < src/server/test-schema.sql",
+    "openTestDB": "mysql -u root -p test",
+    "addTestData": "npm run initTestDB && mysql -u root < src/server/test-data/test-data.sql",
     "lint": "jshint src",
     "test": "karma start karma.conf.js",
     "forever" : "forever start src/server/server.js"
