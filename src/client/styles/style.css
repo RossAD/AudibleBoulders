@@ -272,6 +272,17 @@
   height: 50px;
 }
 
+.pages ul li{
+  display: inline-block;
+  float: center;
+  height: 2ex;
+  width: 4ex;
+}
+
+.pages ul li:hover{
+  color: #ff8533;
+}
+
 /* ---- Setup Page Styles ---- */
 .setup {
   margin-left: 10%;

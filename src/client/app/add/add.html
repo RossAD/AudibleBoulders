@@ -24,9 +24,11 @@
     </tr>
   </table>
   <div class="pages">
-      <a ng-click="pages('first')"> First </a>
-      <a ng-click="pages('prev')"> Prev </a>
-      <a ng-click="pages('next')"> Next </a>
-      <a ng-click="pages('last')"> Last </a>
+    <ul>
+      <li class="fa fa-fast-backward fa-2x" ng-show="fst" ng-click="pages('first')"></li>
+      <li class="fa fa-step-backward fa-2x" ng-show="prv" ng-click="pages('prev')"></li>
+      <li class="fa fa-step-forward fa-2x" ng-show="nxt" ng-click="pages('next')"></li>
+      <li class="fa fa-fast-forward fa-2x" ng-show="lst" ng-click="pages('last')"></li>
+    </ul>
   </div>
 </div>
