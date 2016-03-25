@@ -1,8 +1,10 @@
 "use strict";
 
 var pool = require('../db/index.js').getPool();
+var promise = require('bluebird');
 
-module.exports = {
+// NOTE: when using the methods in this module, append "Async" to the end of the method name
+module.exports = promise.promisifyAll({
   // NOTE: by "return", we really mean "pass to callback as results arg"
 
   addOne: function (userObject, callback) {
@@ -94,4 +96,4 @@ module.exports = {
       }
     });
   }
-};
+});
