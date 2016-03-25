@@ -6,12 +6,13 @@ module.exports = {
   // NOTE: by "return", we really mean "pass to callback as results arg"
 
   addOne: function (userObject, callback) {
+    // userObject should include properties for all users fields
     var insertStr = "INSERT INTO users (github_id, github_handle, github_name, github_avatar, github_token) VALUES (" + userObject.github_id.toString() + ", '" + userObject.github_handle + "', '" + userObject.github_name + "', '" + userObject.github_avatar + "', '" + userObject.github_token + "');";
     pool.query(insertStr, function (err, results) {
       if (err) {
         callback(err, null);
       } else {
-        callback(null, "User inserted");
+        callback(null, "User added");
       }
     });
   },
@@ -53,7 +54,7 @@ module.exports = {
     });
   },
   updateOne: function (userObject, callback) {
-    // update user record
+    // userObject should include properties for all users fields
     // no return value
     var updateStr = "UPDATE users SET github_handle='" + userObject.github_handle + "', github_name='" + userObject.github_name + "', github_avatar='" + userObject.github_avatar + "', github_token='" + userObject.github_token + "' WHERE github_id=" + userObject.github_id.toString() + ";";
     pool.query(updateStr, function (err, results) {
@@ -66,22 +67,31 @@ module.exports = {
   },
   updateOrCreate: function (userObject, callback) {
     // userObject should include properties for all users fields
-    // return token and some kind of bool for whether it was a find or create
+    // no return value
 
     // call getOne to see if user already exists
     module.exports.getOne(userObject.github_id, function (err, result) {
       if (err) {
         callback(err, null);
       } else if (result) {
-        // user DOES exist
-        // update the user token, then:
-        callback(null, {github_token: result.github_token, isNewUser: false});
+        // user DOES exist - update user
+        module.exports.updateOne(userObject, function (err, result) {
+          if (err) {
+            callback(err, null);
+          } else {
+            callback(null, "User updated");
+          }
+        });
       } else {
         // user DOES NOT exist - create a new user entry
-        // return user token and bool
-
+        module.exports.addOne(userObject, function (err, result) {
+          if (err) {
+            callback(err, null);
+          } else {
+            callback(null, "User added");
+          }
+        });
       }
-
     });
   }
 };
