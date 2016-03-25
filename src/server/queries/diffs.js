@@ -1,7 +1,7 @@
 /*jshint loopfunc: true */
 "use strict";
 
-var pool = require('../db/index.js');
+var pool = require('../db/index.js').getPool();
 
 module.exports = {
   // NOTE: by "return", we really mean "pass to callback as results arg"
