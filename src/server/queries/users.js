@@ -6,9 +6,15 @@ module.exports = {
   // NOTE: by "return", we really mean "pass to callback as results arg"
 
   addOne: function (userObject, callback) {
-
+    var insertStr = "INSERT INTO users (github_id, github_handle, github_name, github_avatar, github_token) VALUES (" + userObject.github_id.toString() + ", '" + userObject.github_handle + "', '" + userObject.github_name + "', '" + userObject.github_avatar + "', '" + userObject.github_token + "');";
+    pool.query(insertStr, function (err, results) {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, "User inserted");
+      }
+    });
   },
-
   getOne: function (githubId, callback) {
     // return user object (with all fields) or null if none
     var selectStr = "SELECT * FROM users WHERE github_id='" + githubId + "';";
@@ -46,16 +52,15 @@ module.exports = {
       }
     });
   },
-  // NOTE: broaden this to update any field
-  updateToken: function (githubId, newToken, callback) {
-    // update token
+  updateOne: function (userObject, callback) {
+    // update user record
     // no return value
-    var updateStr = "UPDATE users SET github_token='" + newToken + "' WHERE github_id='" + githubId + "';";
+    var updateStr = "UPDATE users SET github_handle='" + userObject.github_handle + "', github_name='" + userObject.github_name + "', github_avatar='" + userObject.github_avatar + "', github_token='" + userObject.github_token + "' WHERE github_id=" + userObject.github_id.toString() + ";";
     pool.query(updateStr, function (err, results) {
       if (err) {
         callback(err, null);
       } else {
-        callback(null, "Token updated");
+        callback(null, "User updated");
       }
     });
   },
