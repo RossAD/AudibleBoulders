@@ -70,12 +70,12 @@ module.exports = {
     // no return value
 
     // call getOne to see if user already exists
-    module.exports.getOne(userObject.github_id, function (err, result) {
+    this.getOne(userObject.github_id, function (err, result) {
       if (err) {
         callback(err, null);
       } else if (result) {
         // user DOES exist - update user
-        module.exports.updateOne(userObject, function (err, result) {
+        this.updateOne(userObject, function (err, result) {
           if (err) {
             callback(err, null);
           } else {
@@ -84,7 +84,7 @@ module.exports = {
         });
       } else {
         // user DOES NOT exist - create a new user entry
-        module.exports.addOne(userObject, function (err, result) {
+        this.addOne(userObject, function (err, result) {
           if (err) {
             callback(err, null);
           } else {
