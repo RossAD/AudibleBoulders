@@ -18,7 +18,7 @@ var users_dashboards = module.exports = promise.promisifyAll({
   },
   addOne: function (githubId, dashboardId, callback) {
     // use simple githubId + dashboardId concatenation for "hash" for now, guarantees uniqueness. substitute a proper hash later
-    var signatureHash = githubId.toString + '@' + dashboardId.toString();
+    var signatureHash = githubId.toString() + '@' + dashboardId.toString();
     var insertStr = "INSERT INTO users_dashboards (users_github_id, dashboards_id, set_up, signature_hash) VALUES (" + githubId.toString() + ", " + dashboardId.toString() + ", 0, '" + signatureHash + "');";
     pool.query(insertStr, function (err, results) {
       if (err) {
