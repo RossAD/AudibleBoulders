@@ -113,9 +113,10 @@ angular.module('add', [])
   };
 
   $scope.postDashboard = function (repoObject) {
-    RequestFactory.postDashboard(repoObject)
+    var dashboardInfo = {org_name: repoObject.owner.login, repo_name: repoObject.name};
+    RequestFactory.postDashboard(dashboardInfo)
     .then(function () {
-      emitJoinDash(repoObject);
+      emitJoinDash(dashboardInfo);
     });
   };
 }]);

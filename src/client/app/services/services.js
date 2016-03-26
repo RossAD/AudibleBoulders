@@ -53,11 +53,11 @@ helper.factory('RequestFactory', function($http) {
     });
   };
 
-  var postDashboard = function(newDashboard) {
+  var postDashboard = function(dashboardInfo) {
     return $http({
       method: 'POST',
       url: '/api/dashboards/',
-      data: newDashboard
+      data: dashboardInfo
     })
     .then(function (res) {
       return res.data;
