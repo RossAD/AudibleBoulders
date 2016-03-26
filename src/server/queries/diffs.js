@@ -13,11 +13,7 @@ var diffs = module.exports = promise.promisifyAll({
     // no return value
     var deleteStr = "DELETE FROM diffs WHERE users_dashboards_signature_hash='" + signatureHash + "';";
     pool.query(deleteStr, function (err, results) {
-      if (err) {
-        callback(err, null);
-      } else {
-        callback(null, "Diffs deleted");
-      }
+      callback(err, "Diffs deleted");
     });
   },
   addAll: function (signatureHash, diffsArray, callback) {
@@ -46,11 +42,7 @@ var diffs = module.exports = promise.promisifyAll({
     // return an array of diff objects that have a matching users_dashboards_signature_hash
     var selectStr = "SELECT * FROM diffs WHERE users_dashboards_signature_hash='" + signatureHash + "';";
     pool.query(selectStr, function (err, results) {
-      if (err) {
-        callback(err, null);
-      } else {
-        callback(null, results);
-      }
+      callback(err, results);
     });
   }
 });
