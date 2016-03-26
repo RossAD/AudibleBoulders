@@ -15,10 +15,10 @@ var repos = require('../new-request-handlers/repos.js');
 
 module.exports = function (app) {
   // Interact with dashboards
-  app.post('/api/dashboards/', dashboards.handlePost);
-  app.get('/api/dashboards/:githubId', dashboardsGithubId.handleGet);
-  app.get('/api/dashboards/:orgName/:repoName', dashboardsOrgRepo.handleGet);
-  app.delete('/api/users_dashboards/:githubId/:dashboardId', usersDashboards.handleDelete);
+  app.post('/api/dashboards/', dashboards.handlePost); // for when user joins and/or creates a dashboard from #/add
+  app.get('/api/dashboards/:githubId', dashboardsGithubId.handleGet); // for displaying all dashboards user has already joined, on #/home
+  app.get('/api/dashboards/:orgName/:repoName', dashboardsOrgRepo.handleGet); // for getting all information needed to render a particular #/:orgName/:repoName dashbaorad
+  app.delete('/api/users_dashboards/:githubId/:dashboardId', usersDashboards.handleDelete); // for when user removes themselves from a dashboard by clicking x on #/
 
   // Get signature hash etc for setup page
   app.get('/api/setup/:orgName/:repoName/:githubId', setup.handleGet);
