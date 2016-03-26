@@ -54,7 +54,7 @@ var diffs = module.exports = promise.promisifyAll({
       if (err) {
         throw new Error(err);
       }
-      var selectStr = "SELECT FROM diffs WHERE users_dashboards_signature_hash='" + signatureHash + "';";
+      var selectStr = "SELECT * FROM diffs WHERE users_dashboards_signature_hash='" + signatureHash + "';";
       connection.query(selectStr, function (err, results) {
         callback(err, results);
         connection.release();
