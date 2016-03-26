@@ -67,9 +67,17 @@ var users = module.exports = promise.promisifyAll({
       }
     });
   },
-  updateOrCreate: function (userObject, callback) {
-    // userObject should include properties for all users fields
+  updateOrCreate: function (profile, token, callback) {
+    // profile and token are what's received from passport
+    // sample input for profile: https://api.github.com/user/2690580
     // no return value
+    var userObject = {
+      github_id: profile.id,
+      github_handle: profile.login,
+      github_name: profile.name,
+      github_avatar: profile.avatar_url,
+      github_token: token
+    };
 
     // call getOne to see if user already exists
     users.getOne(userObject.github_id, function (err, result) {

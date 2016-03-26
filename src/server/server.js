@@ -9,7 +9,7 @@ var app = express();
 /** Create DB Connection and Require User Queries**/
 var db = module.parent ?
   require('./db').createPool('test', PORT) : require('./db').createPool('app', PORT);
-var users = require('./new-request-handlers/users.js');
+var users = require('./queries/users.js');
 
 /** Github Auth and Sessions **/
 var keys = require('./config/keys.js');
@@ -62,7 +62,9 @@ function (accessToken, refreshToken, profile, done) {
   // TODO: DB query to create profile id, change to access DB
   process.nextTick(function () {
     token(accessToken);
-    users.postUser(profile._json, accessToken);
+    users.updateOrCreate(profile._json, accessToken, function (err, result) {
+      if (err) throw new Error(err);
+    });
     return done(null, profile._json);
   });
 }));
