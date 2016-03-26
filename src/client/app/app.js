@@ -34,7 +34,7 @@ angular.module('GitSpy', [
     templateUrl: '/app/dashboard/dashboard.html',
     controller: 'DashboardController'
   });
-  $routeProvider.when('/:dashboardId/setup', {
+  $routeProvider.when('/:orgName/:repoName/setup', {
     templateUrl: '/app/setup/setup.html',
     controller: 'SetupController'
   });
