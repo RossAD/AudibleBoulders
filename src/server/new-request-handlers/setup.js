@@ -14,8 +14,8 @@ module.exports = {
       .then(function(dashboard) {
         return users_dashboards.getOneAsync(githubId, dashboard.id);
       })
-      .then(function(users_dashboards) {
-        responseObject.signature_hash = users_dashboards.signature_hash;
+      .then(function(users_dashboards_object) {
+        responseObject.signature_hash = users_dashboards_object.signature_hash;
         res.json(responseObject);
       })
       .catch(function(e) {
