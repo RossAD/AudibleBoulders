@@ -5,7 +5,7 @@ var pool = require('../db/index.js').getPool();
 var promise = require('bluebird');
 
 // NOTE: when using the methods in this module, append "Async" to the end of the method name
-module.exports = promise.promisifyAll({
+var diffs = module.exports = promise.promisifyAll({
   // NOTE: by "return", we really mean "pass to callback as results arg"
 
   deleteAll: function (signatureHash, callback) {

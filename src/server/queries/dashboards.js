@@ -4,7 +4,7 @@ var pool = require('../db/index.js').getPool();
 var promise = require('bluebird');
 
 // NOTE: when using the methods in this module, append "Async" to the end of the method name
-module.exports = promise.promisifyAll({
+var dashboards = module.exports = promise.promisifyAll({
   // NOTE: by "return", we really mean "pass to callback as results arg"
 
   getOne: function (orgName, repoName, callback) {
@@ -21,7 +21,7 @@ module.exports = promise.promisifyAll({
     // e.g. {dashboards_id: 1234, isNewDashboard: true}
 
     // call getOne to see if dashboard already exists
-    this.getOne(orgName, repoName, function (err, dashboardObject) {
+    dashboards.getOne(orgName, repoName, function (err, dashboardObject) {
       if (err) {
         callback(err, null);
       } else if (dashboardObject) {

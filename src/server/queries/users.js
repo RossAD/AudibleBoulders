@@ -4,7 +4,7 @@ var pool = require('../db/index.js').getPool();
 var promise = require('bluebird');
 
 // NOTE: when using the methods in this module, append "Async" to the end of the method name
-module.exports = promise.promisifyAll({
+var users = module.exports = promise.promisifyAll({
   // NOTE: by "return", we really mean "pass to callback as results arg"
 
   addOne: function (userObject, callback) {
@@ -72,12 +72,12 @@ module.exports = promise.promisifyAll({
     // no return value
 
     // call getOne to see if user already exists
-    this.getOne(userObject.github_id, function (err, result) {
+    users.getOne(userObject.github_id, function (err, result) {
       if (err) {
         callback(err, null);
       } else if (result) {
         // user DOES exist - update user
-        this.updateOne(userObject, function (err, result) {
+        users.updateOne(userObject, function (err, result) {
           if (err) {
             callback(err, null);
           } else {
@@ -86,7 +86,7 @@ module.exports = promise.promisifyAll({
         });
       } else {
         // user DOES NOT exist - create a new user entry
-        this.addOne(userObject, function (err, result) {
+        users.addOne(userObject, function (err, result) {
           if (err) {
             callback(err, null);
           } else {
