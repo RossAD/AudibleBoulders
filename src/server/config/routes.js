@@ -21,7 +21,7 @@ module.exports = function (app) {
   app.delete('/api/users_dashboards/:githubId/:dashboardId', usersDashboards.handleDelete);
 
   // Get signature hash etc for setup page
-  app.get('/api/setup/:orgName/:repoName/:githubId', setup.handleGet);
+  app.get('/api/setup/:dashboardId/:githubId', setup.handleGet);
 
   // 'Commit' interaction
   app.post('/api/commits/', commits.handlePost);

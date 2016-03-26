@@ -43,10 +43,10 @@ helper.factory('RequestFactory', function($http) {
     });
   };
 
-  var getSetupInfo = function(orgName, repoName, githubId) {
+  var getSetupInfo = function(dashboardId, githubId) {
     return $http({
       method: 'GET',
-      url: '/api/setup/' + orgName + '/' + repoName + '/' + githubId
+      url: '/api/setup/' + dashboardId + '/' + githubId
     })
     .then(function (res) {
       return res.data;
