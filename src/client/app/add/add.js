@@ -91,6 +91,11 @@ angular.module('add', [])
     linked = res.data.headers.link;
     if(linked !== undefined){
       linkParse(linked);
+    } else {
+      $scope.fst = true;
+      $scope.lst = true;
+      $scope.nxt = true;
+      $scope.prv = true;
     }
     console.log('Any Links? ',linked);
     $scope.subsc = JSON.parse(res.data.body);
