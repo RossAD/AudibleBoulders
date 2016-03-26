@@ -11,19 +11,13 @@ var diffs = module.exports = promise.promisifyAll({
   deleteAll: function (signatureHash, callback) {
     // delete all records from diffs that have a matching users_dashboards_signature_hash
     // no return value
-    pool.getConnection(function (err, connection) {
+    var deleteStr = "DELETE FROM diffs WHERE users_dashboards_signature_hash='" + signatureHash + "';";
+    pool.query(deleteStr, function (err, results) {
       if (err) {
-        throw new Error(err);
+        callback(err, null);
+      } else {
+        callback(null, "Diffs deleted");
       }
-      var deleteStr = "DELETE FROM diffs WHERE users_dashboards_signature_hash='" + signatureHash + "';";
-      connection.query(deleteStr, function (err, results) {
-        if (err) {
-          callback(err, null);
-        } else {
-          callback(null, "Diffs deleted");
-        }
-        connection.release();
-      });
     });
   },
   addAll: function (signatureHash, diffsArray, callback) {
@@ -50,15 +44,13 @@ var diffs = module.exports = promise.promisifyAll({
   },
   getAll: function (signatureHash, callback) {
     // return an array of diff objects that have a matching users_dashboards_signature_hash
-    pool.getConnection(function (err, connection) {
+    var selectStr = "SELECT * FROM diffs WHERE users_dashboards_signature_hash='" + signatureHash + "';";
+    pool.query(selectStr, function (err, results) {
       if (err) {
-        throw new Error(err);
+        callback(err, null);
+      } else {
+        callback(null, results);
       }
-      var selectStr = "SELECT * FROM diffs WHERE users_dashboards_signature_hash='" + signatureHash + "';";
-      connection.query(selectStr, function (err, results) {
-        callback(err, results);
-        connection.release();
-      });
     });
   }
 });
