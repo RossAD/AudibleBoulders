@@ -313,13 +313,13 @@
 }
 
 .pages ul .end{
-    float: center;
-    font-family: 'Montserrat', serif;
-      font-size: 2em;
-    text-align: center;
-    vertical-align: middle;
-    height: 1em;
-    width: 1em;
+  float: center;
+  font-family: 'Montserrat', serif;
+  font-size: 2em;
+  text-align: center;
+  vertical-align: middle;
+  height: 1em;
+  width: 1em;
 }
 
 .pages ul li:hover{
@@ -328,21 +328,15 @@
   -webkit-box-sizing: border-box; 
   width: 1em;
   height: 1em;
-  color: black;
+  color: #ff8533;
   font-weight: bold;
   z-index: 1;
-  background-color: #fbfbfb;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, .8);
-  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .8);
-  -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, .8);
   cursor: pointer;
 }
 
 .pages ul li:active{
-    transition: all .2s ease;
-    box-shadow: 0 0 0.5px rgba(0, 0, 0, 0);
-    -webkit-box-shadow: 0 0 0.5px rgba(0, 0, 0, 0);
-    -moz-box-shadow: 0 0 0.5px rgba(0, 0, 0, 0);
+  transition: all .2s ease;
+  font-weight: normal;
 }
 
 /* ---- Setup Page Styles ---- */
