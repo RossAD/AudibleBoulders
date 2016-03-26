@@ -29,8 +29,8 @@ module.exports = function (app) {
   app.post('/api/commits/', commits.handlePost);
 
   // Get user GitHub Subscriptions
-  app.get('/api/subscriptions/', users.userSub);
-  app.post('/api/repos/' , repos.handlePost);
+  app.get('/api/repos/', users.userSub);
+  app.post('/api/repos/', repos.handlePost);
 
   // Error handling
   app.use(helpers.errorLogger);

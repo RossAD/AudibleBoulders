@@ -85,7 +85,7 @@ angular.module('add', [])
 
   $http({
     method: 'GET',
-    url: '/api/subscriptions'
+    url: '/api/repos'
   }).then(function (res){
     $scope.loading = false;
     linked = res.data.headers.link;
