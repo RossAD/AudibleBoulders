@@ -18,7 +18,7 @@ module.exports = {
       })
       .then(function (userDashboard) {
         console.log('ud:', userDashboard);
-      })
+      });
   }
 
     // get users_id based on githubId
