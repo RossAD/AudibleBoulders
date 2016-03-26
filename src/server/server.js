@@ -9,7 +9,7 @@ var app = express();
 /** Create DB Connection and Require User Queries**/
 var db = module.parent ?
   require('./db').createPool('test', PORT) : require('./db').createPool('app', PORT);
-var users = require('./request-handlers/users.js');
+var users = require('./new-request-handlers/users.js');
 
 /** Github Auth and Sessions **/
 var keys = require('./config/keys.js');
