@@ -9,12 +9,25 @@ var dashboards = module.exports = promise.promisifyAll({
 
   getOne: function (orgName, repoName, callback) {
     // return dashboard object (with all fields) or null if none
+    var selectStr = "SELECT * FROM dashboards WHERE org_name='" + orgName + "' AND repo_name='" + repoName + "';";
+    pool.query(selectStr, function (err, results) {
+      var dashboardObject = (results && results.length > 0) ? results[0] : null;
+      callback(err, dashboardObject);
+    });
   },
   getAll: function (githubId, callback) {
     // return an array of all dashboard objects (with all fields) associated with github_id
+    var selectStr = "SELECT dashboards.id, org_name, repo_name, branch_name, last_commit_sha1, last_commit_msg FROM users_dashboards INNER JOIN dashboards ON users_dashboards.dashboards_id=dashboards.id WHERE users_github_id= " + githubId + ";";
+    pool.query(selectStr, function (err, results) {
+      callback(err, results);
+    });
   },
   updateLastCommit: function (newSha1, newMsg, orgName, repoName, callback) {
     // no return value
+    var updateStr = "UPDATE dashboards SET last_commit_sha1='" + newSha1 + "', last_commit_msg='" + newMsg + "' WHERE org_name='" + orgName + "' AND repo_name='" + repoName + "';";
+    pool.query(updateStr, function (err, results) {
+      callback(err, results);
+    });
   },
   findOrCreate: function (orgName, repoName, callback) {
     // return id and a bool for whether it was a find or a create

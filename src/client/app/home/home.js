@@ -20,6 +20,7 @@ angular.module('home', [])
     .then(function (dashboards) {
       $scope.loading = false;
       $scope.dashboards = dashboards;
+      console.log(dashboards);
       isEmpty();
     });
   };
