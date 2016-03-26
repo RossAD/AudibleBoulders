@@ -14,7 +14,10 @@ module.exports = {
       .then(function (result) {
         if (result.isNewDashboard) {
           // dashboard is new, add users_dashboards record immediately
-          users_dashboards.addOneAsync(githubId, result.dashboards_id);
+          users_dashboards.addOneAsync(githubId, result.dashboards_id)
+            .then(function () {
+              res.end(201);
+            });
         } else {
           // dashboard exists already, check if users_dashboards record also exists already
           var dashboardId = result.dashboards_id;
@@ -22,7 +25,12 @@ module.exports = {
             .then(function (result) {
               if (!result) {
                 // users_dashboards record does not yet exist, add it
-                users_dashboards.addOneAsync(githubId, dashboardId);
+                users_dashboards.addOneAsync(githubId, dashboardId)
+                  .then(function () {
+                    res.end(201);
+                  });
+              } else {
+                res.end(200);
               }
             });
         }

@@ -21,7 +21,7 @@ module.exports = {
           if (error){
             throw new Error(error);
           } else {
-            res.end(JSON.stringify(response));
+            res.json(response);
           }
         });
       })
