@@ -1,4 +1,4 @@
-<div class="add">
+<div class="add" ng-animate-ref="add">
   <div class="addTitle">Join a Dashboard <a href="#/"><span class="glyphicon glyphicon-circle-arrow-left" title="Go back home"></span></a></div>
 
   <div class="addDesc">
@@ -24,9 +24,15 @@
     </tr>
   </table>
   <div class="pages">
-      <a ng-click="pages('first')"> First </a>
-      <a ng-click="pages('prev')"> Prev </a>
-      <a ng-click="pages('next')"> Next </a>
-      <a ng-click="pages('last')"> Last </a>
+    <ul>
+      <li class="fa fa-angle-double-left fa-2x" ng-class="{'vis-hidden': fst}"
+        ng-click="pages('first')"></li>
+      <li class="end" ng-class="{'vis-hidden': prv}"
+        ng-click="pages('prev')">Previous</li>
+      <li class="end" ng-class="{'vis-hidden': nxt}"
+        ng-click="pages('next')">Next</li>
+      <li class="fa fa-angle-double-right fa-2x" ng-class="{'vis-hidden': lst}"
+        ng-click="pages('last')"></li>
+    </ul>
   </div>
 </div>

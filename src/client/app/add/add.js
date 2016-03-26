@@ -8,51 +8,59 @@ angular.module('add', [])
   var prev;
   var next;
   var last;
-
+  // Hide page buttons on page load
+  if($scope.loading){
+    $scope.fst = true;
+    $scope.lst = true;
+    $scope.nxt = true;
+    $scope.prv = true;
+  } else {
+    $scope.fst = false;
+    $scope.lst = false;
+    $scope.nxt = false;
+    $scope.prv = false;
+  }
+  
   // Function to parse page information
   var linkParse = function(linkBody) {
+    $scope.nxt = true;
+    $scope.lst = true;
+    $scope.fst = true;
+    $scope.prv = true;
     var regLink = [];
     var splitLink = linkBody.split(' ');
     var pattern = /(<|>;|,|"|rel=)/ig;
     for(var i = 0; i < splitLink.length; i++) {
       regLink.push(splitLink[i].replace(pattern, ""));
     }
-    console.log('Links: ', regLink);
     regLink.forEach(function(item, index){
       if(index % 2 !== 0){
         if(item === 'next'){
-          console.log('Assign Link! ', item);
+          $scope.nxt = false;
           next = {link:regLink[index-1]};
-          console.log('assigned link: ', next);
         } else if(item === 'last') {
-          console.log('Assign Link! ', item);
+          $scope.lst = false;
           last={link:regLink[index-1]};
-          console.log('assigned link: ', last);
         } else if(item === 'first') {
-          console.log('Assign Link! ', item);
+          $scope.fst = false;
           first={link:regLink[index-1]};
-          console.log('assigned link: ', first);
         } else if(item === 'prev') {
-          console.log('Assign Link! ', item);
+          $scope.prv = false;
           prev={link:regLink[index-1]};
-          console.log('assigned link: ', prev);
         }
       }
     });
   };
   // Function to get next page of results
-  var pagePost = function(url) {
-    $http({
-      method: 'POST',
-      url: '/api/repos/',
-      data: url
-    }).then(function (res){
+  var pagePost = function(url){
+    RequestFactory.postPage(url, function(res){
       linked = res.data.headers.link;
       linkParse(linked);
       $scope.subsc = [];
       $scope.subsc = JSON.parse(res.data.body);
     });
   };
+
   // Function to check which page button was pressed
   $scope.pages = function(page){
     if(page === 'first'){
@@ -61,7 +69,6 @@ angular.module('add', [])
       } else {
         window.alert("You are on the First Page");
       }
-      console.log('');
     } else if(page === 'prev'){
       if(prev !== undefined) {
         pagePost(prev);
@@ -74,27 +81,25 @@ angular.module('add', [])
       } else {
         window.alert("You are on the Last Page");
       }
-      console.log('Next Page: ', next);
     } else if(page === 'last'){
       if(last !== undefined) {
         pagePost(last);
       } else {
         window.alert("You are on the Last Page");
       }
-      console.log('Last Page: ', last);
-    } else {
-
     }
   };
-
-  $http({
-    method: 'GET',
-    url: '/api/subscriptions'
-  }).then(function (res){
+  // Initial Call to get User Repos
+  RequestFactory.getRepos(function(res){
     $scope.loading = false;
     linked = res.data.headers.link;
     if(linked !== undefined){
       linkParse(linked);
+    } else {
+      $scope.fst = true;
+      $scope.lst = true;
+      $scope.nxt = true;
+      $scope.prv = true;
     }
     console.log('Any Links? ',linked);
     $scope.subsc = JSON.parse(res.data.body);

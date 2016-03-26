@@ -8,6 +8,7 @@ angular.module('GitSpy', [
   'setup',
   'ngRoute',
   'ngCookies',
+  'ngAnimate',
   'helper',
   'logout',
   'btford.socket-io'
