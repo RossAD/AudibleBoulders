@@ -15,13 +15,13 @@ module.exports = {
             'User-Agent': 'GitSpy',
             authorization: 'token '+ userObject.github_token,
             'content-type': 'application/json'
-          },
+          }
         };
         request.get(options, function(error, response, body) {
           if (error){
             throw new Error(error);
           } else {
-            res.end(body);
+            res.end(JSON.stringify(response));
           }
         });
       })
