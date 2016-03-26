@@ -8,7 +8,19 @@ angular.module('add', [])
   var prev;
   var next;
   var last;
-
+  // Hide page buttons on page load
+  if($scope.loading){
+    $scope.fst = true;
+    $scope.lst = true;
+    $scope.nxt = true;
+    $scope.prv = true;
+  } else {
+    $scope.fst = false;
+    $scope.lst = false;
+    $scope.nxt = false;
+    $scope.prv = false;
+  }
+  
   // Function to parse page information
   var linkParse = function(linkBody) {
     $scope.nxt = true;
@@ -40,18 +52,15 @@ angular.module('add', [])
     });
   };
   // Function to get next page of results
-  var pagePost = function(url) {
-    $http({
-      method: 'POST',
-      url: '/api/repos/',
-      data: url
-    }).then(function (res){
+  var pagePost = function(url){
+    RequestFactory.postPage(url, function(res){
       linked = res.data.headers.link;
       linkParse(linked);
       $scope.subsc = [];
       $scope.subsc = JSON.parse(res.data.body);
     });
   };
+
   // Function to check which page button was pressed
   $scope.pages = function(page){
     if(page === 'first'){
@@ -78,15 +87,10 @@ angular.module('add', [])
       } else {
         window.alert("You are on the Last Page");
       }
-    } else {
-
     }
   };
-
-  $http({
-    method: 'GET',
-    url: '/api/repos'
-  }).then(function (res){
+  // Initial Call to get User Repos
+  RequestFactory.getRepos(function(res){
     $scope.loading = false;
     linked = res.data.headers.link;
     if(linked !== undefined){

@@ -4,6 +4,25 @@ var helper = angular.module("helper", []);
 // all GET/POST requests will return res.data in a promise
 // DELETE request does not return anything
 helper.factory('RequestFactory', function($http) {
+  var getRepos = function(callback){
+    $http({
+      method: 'GET',
+      url: '/api/repos'
+    }).then(function(res){
+      callback(res);
+    });
+  };
+
+  var postPage = function(url, callback){
+    $http({
+      method: 'POST',
+      url: '/api/repos',
+      data: url
+    }).then(function(res){
+      callback(res);
+    });
+  };
+
   var getDashboard = function(orgName, repoName) {
     return $http({
       method: 'GET',
@@ -57,7 +76,9 @@ helper.factory('RequestFactory', function($http) {
     getAllDashboards: getAllDashboards,
     getSetupInfo: getSetupInfo,
     postDashboard: postDashboard,
-    deleteUserDashboard: deleteUserDashboard
+    deleteUserDashboard: deleteUserDashboard,
+    getRepos: getRepos,
+    postPage: postPage
   };
 });
 
