@@ -21,29 +21,20 @@ angular.module('add', [])
     for(var i = 0; i < splitLink.length; i++) {
       regLink.push(splitLink[i].replace(pattern, ""));
     }
-    console.log('Links: ', regLink);
     regLink.forEach(function(item, index){
       if(index % 2 !== 0){
         if(item === 'next'){
           $scope.nxt = false;
-          console.log('Assign Link! ', item);
           next = {link:regLink[index-1]};
-          console.log('assigned link: ', next);
         } else if(item === 'last') {
           $scope.lst = false;
-          console.log('Assign Link! ', item);
           last={link:regLink[index-1]};
-          console.log('assigned link: ', last);
         } else if(item === 'first') {
           $scope.fst = false;
-          console.log('Assign Link! ', item);
           first={link:regLink[index-1]};
-          console.log('assigned link: ', first);
         } else if(item === 'prev') {
           $scope.prv = false;
-          console.log('Assign Link! ', item);
           prev={link:regLink[index-1]};
-          console.log('assigned link: ', prev);
         }
       }
     });
@@ -69,7 +60,6 @@ angular.module('add', [])
       } else {
         window.alert("You are on the First Page");
       }
-      console.log('');
     } else if(page === 'prev'){
       if(prev !== undefined) {
         pagePost(prev);
@@ -82,14 +72,12 @@ angular.module('add', [])
       } else {
         window.alert("You are on the Last Page");
       }
-      console.log('Next Page: ', next);
     } else if(page === 'last'){
       if(last !== undefined) {
         pagePost(last);
       } else {
         window.alert("You are on the Last Page");
       }
-      console.log('Last Page: ', last);
     } else {
 
     }
