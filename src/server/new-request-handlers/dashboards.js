@@ -16,7 +16,7 @@ module.exports = {
           // dashboard is new, add users_dashboards record immediately
           users_dashboards.addOneAsync(githubId, result.dashboards_id)
             .then(function () {
-              res.end(201);
+              res.sendStatus(201);
             });
         } else {
           // dashboard exists already, check if users_dashboards record also exists already
@@ -27,10 +27,10 @@ module.exports = {
                 // users_dashboards record does not yet exist, add it
                 users_dashboards.addOneAsync(githubId, dashboardId)
                   .then(function () {
-                    res.end(201);
+                    res.sendStatus(201);
                   });
               } else {
-                res.end(200);
+                res.sendStatus(200);
               }
             });
         }
