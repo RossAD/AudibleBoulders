@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "start": "nodemon src/server/server.js",
-    "initDB": "mysql -u root -p < src/server/schema.sql",
+    "initDB": "mysql -u root < src/server/schema.sql",
     "openDB": "mysql -u root -p app",
     "initTestDB": "mysql -u root < src/server/test-schema.sql",
     "openTestDB": "mysql -u root -p test",
