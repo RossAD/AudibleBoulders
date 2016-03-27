@@ -6,36 +6,36 @@
 
   <div ng-show="!loading">
     <div class="dashboardTitle">
-      {{dashboard.org_name}} / <a href="{{dashboard.repo_link}}">{{dashboard.repo_name}}</a><a href="#/"><span class="glyphicon glyphicon-circle-arrow-left" title="Go back home"></span></a>
+      {{orgName}} / <a href="{{dashboard.repo_link}}">{{repoName}}</a><a href="#/"><span class="glyphicon glyphicon-circle-arrow-left" title="Go back home"></span></a>
     </div>
 
     <div class="dashboardBranch">
-        {{dashboard.branch}} branch
+        master branch
     </div>
 
     <div class="dashboardSetupBtn">
-      <a href="#/{{dashboard.org_name}}/{{dashboard.repo_name}}/setup"><button type="button" class="btn btn-info btn-sm">Setup instructions</button></a>
+      <a href="#/{{orgName}}/{{repoName}}/setup"><button type="button" class="btn btn-info btn-sm">Setup instructions</button></a>
     </div>
 
     <div class="lastCommit">
-      Most recent commit at github.com/{{dashboard.org_name}}/{{dashboard.repo_name}}: <span>{{dashboard.last_commit}}</span>
+      Most recent commit at github.com/{{orgName}}/{{repoName}}: <span>{{dashboard.last_commit_sha1}}</span>
     </div>
 
     <div class="dashboardUser" ng-repeat="user in users">
-      <div ng-class="[users, { upToDate: user.last_pulled_commit === dashboard.last_commit, outOfDate: user.last_pulled_commit !== dashboard.last_commit, notSetUp: user.set_up === 0 }]">
+      <div ng-class="[users, { upToDate: user.last_pulled_commit_sha1 === dashboard.last_commit_sha1, outOfDate: user.last_pulled_commit_sha1 !== dashboard.last_commit_sha1, notSetUp: user.set_up === 0 }]">
         <div class="dashboardUserCommit">
-          <span ng-show="user.last_pulled_commit === dashboard.last_commit" class="status"><span class="glyphicon glyphicon-ok-sign"></span> {{user.name}} has pulled {{dashboard.last_commit}}</span>
-          <span ng-show="user.last_pulled_commit !== dashboard.last_commit && user.set_up" class="status"><span class="glyphicon glyphicon-exclamation-sign"></span> {{user.name}} needs to git pull</span>
-          <div ng-show="!user.set_up" class="status"><span class="glyphicon glyphicon-exclamation-sign"></span> {{user.name}} needs to set up</div>
+          <span ng-show="user.last_pulled_commit_sha1 === dashboard.last_commit_sha1" class="status"><span class="glyphicon glyphicon-ok-sign"></span> {{user.github_name}} has pulled {{dashboard.last_commit_sha1}}</span>
+          <span ng-show="user.last_pulled_commit_sha1 !== dashboard.last_commit_sha1 && user.set_up" class="status"><span class="glyphicon glyphicon-exclamation-sign"></span> {{user.github_name}} needs to git pull</span>
+          <div ng-show="!user.set_up" class="status"><span class="glyphicon glyphicon-exclamation-sign"></span> {{user.github_name}} needs to set up</div>
         </div>
 
         <div class="dashboardUserInfo">
           <img class="gitimg" src="{{user.github_avatar}}">
-          {{user.name}} - <a href="https://github.com/{{user.git_handle}}">{{user.git_handle}}</a>
+          {{user.github_name}} - <a href="https://github.com/{{user.github_handle}}">{{user.github_handle}}</a>
         </div>
 
         <div class="diffs" ng-repeat="diff in user.diffs">
-          {{diff.file}} - {{diff.mod_type}} - {{diff.commit_message}}
+          {{diff.mod_type}} - {{diff.file}}
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 "use strict";
 angular.module('dashboard', [])
 .controller('DashboardController', function ($scope, $routeParams, RequestFactory, Socket) {
-  $scope.dashboard = [];
-  $scope.users = [];
+  $scope.orgName = $routeParams.orgName;
+  $scope.repoName = $routeParams.repoName;
   $scope.loading = true;
 
   Socket.on('newUser', function (data) {
