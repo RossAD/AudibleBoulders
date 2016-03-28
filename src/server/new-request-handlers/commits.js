@@ -21,6 +21,9 @@ module.exports = {
       .then(function() {
         return diffs.addAllAsync(signatureHash, commitDiffs);
       })
+      .then(function() {
+        res.sendStatus(201);
+      })
       .catch(function(e) {
         console.log("Error: ", e);
       });
