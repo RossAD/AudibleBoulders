@@ -14,10 +14,10 @@ describe('Testing API End Points', function (done) {
    done();
   });
 
-      var requestWithSession = request.defaults({jar: true});
+    var requestWithSession = request.defaults({jar: true});
 
 
-    it('/api/dashboards/:githubId route should return status code 200', function (done) {
+    xit('/api/dashboards/:githubId route should return status code 200', function (done) {
       var options = {
         'method': 'GET',
         'uri': 'http://localhost:8080/api/dashboards/123'
@@ -35,7 +35,7 @@ describe('Testing API End Points', function (done) {
       });
     });
 
-    it('/api/dashboards/:githubId route should return data in request body', function (done) {
+    xit('/api/dashboards/:githubId route should return data in request body', function (done) {
       var options = {
         'method': 'GET',
         'uri': 'http://localhost:8080/api/dashboards/123'
@@ -58,7 +58,7 @@ describe('Testing API End Points', function (done) {
         'method': 'POST',
         'uri': 'http://localhost:8080/api/dashboards/',
         'json': {
-          commits_url: 'https://api.github.com/repos/yaliceme/Audibleboulders/commits{/sha}',
+          commits_url: 'https://api.github.com/repos/alberthuynh91/Audibleboulders/commits{/sha}',
           html_url: 'https://github.com/AudibleBoulders/AudibleBoulders',
           default_branch: 'master',
           owner: {
@@ -85,6 +85,11 @@ describe('Testing API End Points', function (done) {
       var options = {
         'method': 'GET',
         'uri': 'http://localhost:8080/api/dashboards/AudibleBoulders/AudibleBoulders/',
+        'headers': {
+          'User-Agent': 'GitSpy',
+          'authorization': 'token e5886e015c68c1181f0edd5f6ed514b39bb4d59a',
+          'content-type': 'application/json'
+        }
       };
 
       var j = request.jar();
@@ -117,7 +122,7 @@ describe('Testing API End Points', function (done) {
       });
     });
 
-    it('/api/users_dashboards/:githubId/:dashboardId route should delete a dashboard' , function (done) {
+    xit('/api/users_dashboards/:githubId/:dashboardId route should delete a dashboard' , function (done) {
       var options = {
         'method': 'DELETE',
         'uri': 'http://localhost:8080/api/users_dashboards/5342581/2',
@@ -130,7 +135,7 @@ describe('Testing API End Points', function (done) {
       });
     });
 
-    it('/api/setup/:orgName/:repoName/:githubId route should get signature hash for setup page' , function (done) {
+    xit('/api/setup/:orgName/:repoName/:githubId route should get signature hash for setup page' , function (done) {
       var options = {
         'method': 'GET',
         'uri': 'http://localhost:8080/api/setup/AudibleBoulders/AudibleBoulders/5342581',
@@ -142,7 +147,7 @@ describe('Testing API End Points', function (done) {
       });
     });
 
-    it('/api/commits/ route should create a new commit for given user' , function (done) {
+    xit('/api/commits/ route should create a new commit for given user' , function (done) {
       var options = {
         'method': 'POST',
         'uri': 'http://localhost:8080/api/commits/',
@@ -160,7 +165,7 @@ describe('Testing API End Points', function (done) {
       });
     });
 
-    it('/api/repos/ route should get user repos from github' , function (done) {
+    xit('/api/repos/ route should get user repos from github' , function (done) {
       var options = {
         'method': 'POST',
         'uri': 'http://localhost:8080/api/repos/',
@@ -183,7 +188,7 @@ describe('Testing API End Points', function (done) {
       });
     });
 
-    it('/api/repos/ route should get user repos from github' , function (done) {
+    xit('/api/repos/ route should get user repos from github' , function (done) {
       var options = {
         'method': 'GET',
         'uri': 'http://localhost:8080/api/repos/',
