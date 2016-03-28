@@ -6,7 +6,7 @@ var diffs = require('../queries/diffs.js');
 
 module.exports = {
   handlePost: function (req, res, next) {
-    var signatureHash = req.body.dashboards_signature_hash;
+    var signatureHash = req.body.signature_hash;
     var commitDiffs = req.body.diffs;
     var newParams = {
       last_pulled_commit_sha1: req.body.last_pulled_commit_sha1,
