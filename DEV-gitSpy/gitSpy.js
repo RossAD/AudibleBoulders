@@ -56,7 +56,7 @@ function main() {
   if (key.signature_hash === "YOUR SIGNATURE_HASH HERE") {
     // set error to true and console error if there is not an initial commit or recent PR
     error = true;
-    console.log("Error: Please input your gitSpy key!");
+    console.log("Error: Please input your gitSpy signature_hash!");
   }
 
   /** Parse most recent commit hash and pull hash from git log **/
