@@ -1,5 +1,4 @@
-// INSERT YOUR OWN KEYS WITHOUT THE QUOTES ^_^
+// INSERT YOUR SIGNATURE HASH (v''v)
 module.exports = {
-  user_id: "YOUR USER_ID HERE",
-  dashboard_id: "YOUR DASHBOARD_ID HERE"
+  signature_hash: "YOUR SIGNATURE_HASH HERE"
 };
