@@ -52,8 +52,8 @@ module.exports = {
         return github.queryAsync(commitUrl, userToken);
       })
       .then(function (commit) {
-        var commitSha1 = commit.sha;
         var parseCommit = JSON.parse(commit.body);
+        var commitSha1 = parseCommit.sha;
         var commitMsg = parseCommit.commit.message;
         return dashboards.updateLastCommitAsync(orgName, repoName, commitSha1, commitMsg);
       })
