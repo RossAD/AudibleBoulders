@@ -34,8 +34,28 @@
           {{user.github_name}} - <a href="https://github.com/{{user.github_handle}}">{{user.github_handle}}</a>
         </div>
 
-        <div class="diffs" ng-repeat="diff in user.diffs">
-          {{diff.mod_type}} - {{diff.file}}
+        <div class="modTypeTitle" ng-show="hasModified(user.diffs)">
+          MODIFIED
+        </div>
+
+        <div class="diffs" ng-repeat="diff in user.diffs" ng-show="diff.mod_type === 'M'">
+            {{diff.file}}
+        </div>
+
+        <div class="modTypeTitle" ng-show="hasAdded(user.diffs)">
+          ADDED
+        </div>
+
+        <div class="diffs" ng-repeat="diff in user.diffs" ng-show="diff.mod_type === 'A'">
+            {{diff.file}}
+        </div>
+
+        <div class="modTypeTitle" ng-show="hasRemoved(user.diffs)">
+          REMOVED
+        </div>
+
+        <div class="diffs" ng-repeat="diff in user.diffs" ng-show="diff.mod_type === 'R'">
+            {{diff.file}}
         </div>
       </div>
     </div>
