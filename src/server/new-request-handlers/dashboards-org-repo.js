@@ -69,10 +69,7 @@ module.exports = {
       })
       .then(function (dashboardUsers) {
         var usersWithSigHashes = dashboardUsers;
-
-        for (var i = 0; i < usersWithSigHashes.length; i++) {
-          var thisUser = usersWithSigHashes[i];
-
+        usersWithSigHashes.forEach(function (thisUser) {
           diffs.getAllAsync(thisUser.signature_hash)
             .then(function (diffsArray) {
               responseObject.users.push({
@@ -89,7 +86,7 @@ module.exports = {
                 res.json(responseObject);
               }
             });
-        }
+        });
       });
   }
 };
