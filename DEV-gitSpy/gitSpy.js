@@ -1,6 +1,6 @@
 // var ImageToAscii = require('image-to-ascii');
 var spawnSync = require('child_process').spawnSync;
-var keys = require('./USER_KEYS');
+var key = require('./USER_KEYS');
 var HASH_LENGTH = 40;
 var error = false;
 
@@ -52,8 +52,8 @@ function getBranch(gitBranch) {
 }
 
 function main() {
-  /** SERVE ERROR IF KEYS ARE NOT NUMBERS **/
-  if (keys.signature_hash === "YOUR SIGNATURE_HASH HERE") {
+  /** SERVE ERROR IF KEY ARE NOT NUMBERS **/
+  if (key.signature_hash === "YOUR SIGNATURE_HASH HERE") {
     // set error to true and console error if there is not an initial commit or recent PR
     error = true;
     console.log("Error: Please input your gitSpy key!");
@@ -81,7 +81,7 @@ function main() {
   var data = {
     last_pulled_commit_sha1: lastPull.sha1,
     last_pulled_commit_msg: lastPull.msg,
-    signature_hash: keys.signature_hash,
+    signature_hash: key.signature_hash,
     commit_branch: commitBranch,
     diffs: diffs
   };
