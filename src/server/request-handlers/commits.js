@@ -52,7 +52,7 @@ module.exports = {
                   if (err) {
                     throw new Error(err);
                   }
-                  res.send(201);
+                  res.sendStatus(201);
                 });
               } else {
                 var updateUptodateTrue = "UPDATE users_dashboards SET set_up='1', up_to_date='1', last_pulled_commit='" + last_pulled_commit +"' WHERE users_id='" + users_id.toString() + "' AND dashboards_id='" + dashboards_id.toString() + "';";
@@ -60,7 +60,7 @@ module.exports = {
                   if (err) {
                     throw new Error(err);
                   }
-                  res.send(201);
+                  res.sendStatus(201);
                 });
               }
             });
