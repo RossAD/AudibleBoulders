@@ -9,10 +9,10 @@ module.exports = {
     users.getOneAsync(gitID)
       .then(function(usrObj){
         var token = usrObj.token;
-        github.queryAsync(req.body.link, usrObj.github_token)
-          .then(function(nextPage){
-            res.json(nextPage);
-          });
+        return github.queryAsync(req.body.link, usrObj.github_token);
+      })
+      .then(function(nextPage){
+        res.json(nextPage);
       });
   }
 };
