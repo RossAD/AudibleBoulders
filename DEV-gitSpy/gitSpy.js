@@ -9,7 +9,6 @@ function parseHash(commit) {
 }
 
 function parseMessage(commit) {
-  // console.log(JSON.stringify(commit));
   var newLineIndex = commit.indexOf('\t');
   var endOfFirstLineIndex = newLineIndex !== -1 ? newLineIndex : commit.length - HASH_LENGTH;
   return commit.substring(0, endOfFirstLineIndex);
