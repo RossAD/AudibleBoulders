@@ -1,6 +1,6 @@
 // var ImageToAscii = require('image-to-ascii');
 var spawnSync = require('child_process').spawnSync;
-var key = require('./USER_KEYS');
+var key = require('./SIGNATURE_HASH');
 var HASH_LENGTH = 40;
 var error = false;
 
