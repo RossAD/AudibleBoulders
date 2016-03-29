@@ -9,19 +9,17 @@ var users = module.exports = promise.promisifyAll({
 
   addOne: function (userObject, callback) {
     // userObject should include properties for all users fields
-    var insertStr = "INSERT INTO users (github_id, github_handle, github_name, github_avatar, github_token) VALUES (" + userObject.github_id.toString() + ", '" + userObject.github_handle + "', '" + userObject.github_name + "', '" + userObject.github_avatar + "', '" + userObject.github_token + "');";
-    pool.query(insertStr, function (err, results) {
+    pool.query('INSERT INTO users (github_id, github_handle, github_name, github_avatar, github_token) VALUES (?, ?, ?, ?, ?)', [userObject.github_id, userObject.github_handle, userObject.github_name, userObject.github_avatar, userObject.github_token], function (err, results) {
       if (err) {
         callback(err, null);
       } else {
-        callback(null, "User added");
+        callback(null, 'User added');
       }
     });
   },
   getOne: function (githubId, callback) {
     // return user object (with all fields) or null if none
-    var selectStr = "SELECT * FROM users WHERE github_id='" + githubId + "';";
-    pool.query(selectStr, function (err, results) {
+    pool.query('SELECT * FROM users WHERE github_id=?', [githubId], function (err, results) {
       if (err) {
         callback(err, null);
       } else {
@@ -46,8 +44,7 @@ var users = module.exports = promise.promisifyAll({
         // responseObject, but we do need it in order to query the diffs table.
         // Recommend storing the results of this query in a separate variable (i.e. not responseObject.users),
         // and adding fields to each user in responseObject.users upon completion of the diffs query
-    var selectStr = "SELECT github_handle, github_name, github_avatar, set_up, last_pulled_commit_sha1, last_pulled_commit_msg, signature_hash FROM users_dashboards INNER JOIN users ON users_dashboards.users_github_id=users.github_id WHERE dashboards_id='" + dashboardId + "'";
-    pool.query(selectStr, function (err, results) {
+    pool.query('SELECT github_handle, github_name, github_avatar, set_up, last_pulled_commit_sha1, last_pulled_commit_msg, signature_hash FROM users_dashboards INNER JOIN users ON users_dashboards.users_github_id=users.github_id WHERE dashboards_id=?', [dashboardId], function (err, results) {
       if (err) {
         callback(err, null);
       } else {
@@ -58,12 +55,11 @@ var users = module.exports = promise.promisifyAll({
   updateOne: function (userObject, callback) {
     // userObject should include properties for all users fields
     // no return value
-    var updateStr = "UPDATE users SET github_handle='" + userObject.github_handle + "', github_name='" + userObject.github_name + "', github_avatar='" + userObject.github_avatar + "', github_token='" + userObject.github_token + "' WHERE github_id=" + userObject.github_id.toString() + ";";
-    pool.query(updateStr, function (err, results) {
+    pool.query('UPDATE users SET github_handle=?, github_name=?, github_avatar=?, github_token=? WHERE github_id=?', [userObject.github_handle, userObject.github_name, userObject.github_avatar, userObject.github_token, userObject.github_id], function (err, results) {
       if (err) {
         callback(err, null);
       } else {
-        callback(null, "User updated");
+        callback(null, 'User updated');
       }
     });
   },
@@ -89,7 +85,7 @@ var users = module.exports = promise.promisifyAll({
           if (err) {
             callback(err, null);
           } else {
-            callback(null, "User updated");
+            callback(null, 'User updated');
           }
         });
       } else {
@@ -98,7 +94,7 @@ var users = module.exports = promise.promisifyAll({
           if (err) {
             callback(err, null);
           } else {
-            callback(null, "User added");
+            callback(null, 'User added');
           }
         });
       }
