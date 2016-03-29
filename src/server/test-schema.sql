@@ -4,58 +4,49 @@ CREATE DATABASE test;
 
 USE test;
 
-DROP TABLE IF EXISTS users;
-
 CREATE TABLE users (
-  id int NOT NULL AUTO_INCREMENT,
-  git_handle varchar(39) NOT NULL UNIQUE,
-  name varchar(256),
-  signature varchar(200),
-  github_id varchar(200),
-  github_avatar varchar(200),
-  git_token varchar(200),
-  PRIMARY KEY (id)
+  github_id int NOT NULL,
+  github_handle varchar(64) NOT NULL,
+  github_name varchar(256),
+  github_avatar varchar(256),
+  github_token varchar(256) NOT NULL,
+  PRIMARY KEY (github_id)
 );
-
-DROP TABLE IF EXISTS dashboards;
 
 CREATE TABLE dashboards (
   id int NOT NULL AUTO_INCREMENT,
-  repo_link varchar(200) NOT NULL,
-  branch varchar(200),
-  org_name varchar(200),
-  repo_name varchar(200),
-  last_commit varchar(200),
+  org_name varchar(256) NOT NULL,
+  repo_name varchar(256) NOT NULL,
+  branch_name varchar(256) NOT NULL,
+  last_commit_sha1 varchar(64),
+  last_commit_msg varchar(256),
   PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS users_dashboards;
-
 CREATE TABLE users_dashboards (
   id int NOT NULL AUTO_INCREMENT,
-  users_id int NOT NULL,
+  users_github_id int NOT NULL,
   dashboards_id int NOT NULL,
   set_up tinyint,
-  up_to_date tinyint,
-  last_pulled_commit varchar(200),
+  last_pulled_commit_sha1 varchar(64),
+  last_pulled_commit_msg varchar(256),
+  commit_branch varchar(256),
+  signature_hash varchar(128) NOT NULL UNIQUE,
   PRIMARY KEY (id),
-  FOREIGN KEY (users_id)
-    REFERENCES users(id),
+  FOREIGN KEY (users_github_id)
+    REFERENCES users(github_id),
   FOREIGN KEY (dashboards_id)
     REFERENCES dashboards(id)
 );
 
-DROP TABLE IF EXISTS diffs;
-
 CREATE TABLE diffs (
   id int NOT NULL AUTO_INCREMENT,
-  users_dashboards_id int NOT NULL,
-  file varchar(200),
-  mod_type varchar(20),
-  commit_message varchar(200),
+  file varchar(256) NOT NULL,
+  mod_type varchar(32) NOT NULL,
+  users_dashboards_signature_hash varchar(128) NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (users_dashboards_id)
-    REFERENCES users_dashboards(id)
+  FOREIGN KEY (users_dashboards_signature_hash)
+    REFERENCES users_dashboards(signature_hash)
 );
 
 

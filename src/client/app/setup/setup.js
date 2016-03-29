@@ -7,7 +7,6 @@ angular.module('setup', [])
   var githubId = $cookies.get('githubId');
   RequestFactory.getSetupInfo(orgName, repoName, githubId)
   .then(function (setupInfo) {
-    $scope.users_id = setupInfo.users_id;
-    $scope.dashboards_id = setupInfo.dashboards_id;
+    $scope.signature_hash = setupInfo.signature_hash;
   });
 }]);
