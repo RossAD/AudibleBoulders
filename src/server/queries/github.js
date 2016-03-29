@@ -18,7 +18,7 @@ var github = module.exports = promise.promisifyAll({
       if (err) {
         callback(err, null);
       } else {
-        callback(null, JSON.parse(body));
+        callback(null, response);
       }
     });
   }

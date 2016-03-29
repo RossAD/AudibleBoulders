@@ -53,7 +53,8 @@ module.exports = {
       })
       .then(function (commit) {
         var commitSha1 = commit.sha;
-        var commitMsg = commit.commit.message;
+        var parseCommit = JSON.parse(commit.body);
+        var commitMsg = parseCommit.commit.message;
         return dashboards.updateLastCommitAsync(orgName, repoName, commitSha1, commitMsg);
       })
       .then(function () {
