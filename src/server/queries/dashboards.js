@@ -9,22 +9,20 @@ var dashboards = module.exports = promise.promisifyAll({
 
   getOne: function (orgName, repoName, callback) {
     // return dashboard object (with all fields) or null if none
-    var selectStr = "SELECT * FROM dashboards WHERE org_name='" + orgName + "' AND repo_name='" + repoName + "';";
-    pool.query(selectStr, function (err, results) {
+    pool.query('SELECT * FROM dashboards WHERE org_name=? AND repo_name=?', [orgName, repoName], function (err, results) {
       var dashboardObject = (results && results.length > 0) ? results[0] : null;
       callback(err, dashboardObject);
     });
   },
   getAllByGithubId: function (githubId, callback) {
     // return an array of all dashboard objects (with all fields) associated with github_id
-    var selectStr = "SELECT dashboards.id, org_name, repo_name, branch_name, last_commit_sha1, last_commit_msg FROM users_dashboards INNER JOIN dashboards ON users_dashboards.dashboards_id=dashboards.id WHERE users_github_id= " + githubId + ";";
-    pool.query(selectStr, function (err, results) {
+    pool.query('SELECT dashboards.id, org_name, repo_name, branch_name, last_commit_sha1, last_commit_msg FROM users_dashboards INNER JOIN dashboards ON users_dashboards.dashboards_id=dashboards.id WHERE users_github_id=?', [githubId], function (err, results) {
       callback(err, results);
     });
   },
   updateLastCommit: function (orgName, repoName, newSha1, newMsg, callback) {
     // no return value
-    pool.query("UPDATE dashboards SET last_commit_sha1=?, last_commit_msg=? WHERE org_name=? AND repo_name=?", [newSha1, newMsg, orgName, repoName], function (err, results) {
+    pool.query('UPDATE dashboards SET last_commit_sha1=?, last_commit_msg=? WHERE org_name=? AND repo_name=?', [newSha1, newMsg, orgName, repoName], function (err, results) {
       callback(err, results);
     });
   },
@@ -41,22 +39,14 @@ var dashboards = module.exports = promise.promisifyAll({
         callback(null, {dashboards_id: dashboardObject.id, isNewDashboard: false});
       } else {
         // dashboard DOES NOT exist - create a new dashboard entry
-        pool.getConnection(function (err, connection) {
+        var branchName = 'master'; // TODO: eventually, we will pass in branchName as an arg and use that, for now default to master
+        pool.query("INSERT INTO dashboards (org_name, repo_name, branch_name) VALUES (?, ?, ?)", [orgName, repoName, branchName], function (err, results) {
           if (err) {
-            throw new Error(err);
+            callback(err, null);
+          } else {
+            var dashboards_id = results.insertId;
+            callback(null, {dashboards_id: dashboards_id, isNewDashboard: true});
           }
-          // TODO: eventually, we will pass in branchName as an arg and use that, for now default to master
-          var branchName = "master";
-          var insertStr = "INSERT INTO dashboards (org_name, repo_name, branch_name) VALUES ('" + orgName + "', '" + repoName + "', '" + branchName + "');";
-          connection.query(insertStr, function (err, results) {
-            if (err) {
-              callback(err, null);
-            } else {
-              var dashboards_id = results.insertId;
-              callback(null, {dashboards_id: dashboards_id, isNewDashboard: true});
-            }
-            connection.release();
-          });
         });
       }
     });
