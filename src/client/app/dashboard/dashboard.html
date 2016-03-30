@@ -2,9 +2,6 @@
 
   <div ng-show="loading" class="spinner">
       <i class="fa fa-circle-o-notch fa-4x fa-spin"></i>
-    
-      <!--<img
-        src="https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif">--!>
   </div>
 
   <div ng-show="!loading">
@@ -42,7 +39,7 @@
         <div class="dashboardUserInfo">
           <img class="gitimg" src="{{user.github_avatar}}">
           <span id="dashboardGitName">{{user.github_name}}</span>
-          <span id="dashboardGitHandle"><a href="https://github.com/{{user.github_handle}}">@{{user.github_handle}}</a></span>
+          <span target-tab id="dashboardGitHandle"><a href="https://github.com/{{user.github_handle}}">@{{user.github_handle}}</a></span>
         </div>
 
         <div class="diffsDiv">
