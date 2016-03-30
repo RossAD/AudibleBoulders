@@ -21,10 +21,10 @@
       Most recent commit at github.com/{{orgName}}/{{repoName}}: <span>{{dashboard.last_commit_sha1}}</span>
     </div>
 
-    <div class="conflicts">
+    <div class="potentialConflicts" ng-show="conflicts.length">
       Potential conflicts:
       <ul>
-        <li ng-repeat="conflict in conflicts">{{conflict.file}} has been touched by:<span ng-repeat="user in conflict.users"> {{user.github_handle}}</span></li>
+        <li ng-repeat="conflict in conflicts">{{conflict.file}} is being touched by:<span ng-repeat="user in conflict.users"> {{user.github_handle}}<span ng-show="user !== conflict.users[conflict.users.length-1]">,</span></span></li>
       </ul>
     </div>
 
