@@ -10,6 +10,25 @@ angular.module('dashboard', [])
   $scope.removed = false;
   $scope.storage = {};
 
+  $scope.conflicts = [];
+
+  // example $scope.conflicts collection
+  // ===================================
+  // $scope.conflicts = [
+  //   { file: 'test1.js',
+  //     users: [
+  //       {github_handle: 'yaliceme'},
+  //       {github_handle: 'rhombus'}
+  //     ]
+  //   },
+  //   { file: 'test2.js',
+  //     users: [
+  //       {github_handle: 'alberthyunh'},
+  //       {github_handle: 'rossad'}
+  //     ]
+  //   }
+  // ];
+
   Socket.on('newUser', function (data) {
     // $scope.users.push(data);
   });
