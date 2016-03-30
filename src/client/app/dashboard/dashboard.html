@@ -4,7 +4,12 @@
       <i class="fa fa-circle-o-notch fa-4x fa-spin"></i>
   </div>
 
-  <div ng-show="!loading">
+  <div ng-show="!loading && !hasData" class="dashboardTitle">
+    This dashboard does not exist, or you do not have authorization to access it.
+  </div>
+
+  <div ng-show="!loading && hasData">
+
     <div class="dashboardTitle">
       {{orgName}} / <a target-tab href="{{repoLink}}">{{repoName}}</a><a href="#/"><span class="glyphicon glyphicon-circle-arrow-left" title="Go back home"></span></a>
     </div>
