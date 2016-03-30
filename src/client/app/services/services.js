@@ -27,9 +27,10 @@ helper.factory('RequestFactory', function($http) {
     return $http({
       method: 'GET',
       url: '/api/dashboards/' + orgName + '/' + repoName
-    })
-    .then(function (res) {
+    }).then(function (res) {
       return res.data;
+    }).catch(function (err) {
+      return null;
     });
   };
 
@@ -37,8 +38,7 @@ helper.factory('RequestFactory', function($http) {
     return $http({
       method: 'GET',
       url: '/api/dashboards/' + githubId
-    })
-    .then(function (res) {
+    }).then(function (res) {
       return res.data;
     });
   };
@@ -47,8 +47,7 @@ helper.factory('RequestFactory', function($http) {
     return $http({
       method: 'GET',
       url: '/api/setup/' + orgName + '/' + repoName + '/' + githubId
-    })
-    .then(function (res) {
+    }).then(function (res) {
       return res.data;
     });
   };
@@ -58,8 +57,7 @@ helper.factory('RequestFactory', function($http) {
       method: 'POST',
       url: '/api/dashboards/',
       data: dashboardInfo
-    })
-    .then(function (res) {
+    }).then(function (res) {
       return res.data;
     });
   };
