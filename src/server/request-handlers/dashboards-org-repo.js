@@ -66,14 +66,14 @@ module.exports = {
                     return github.queryAsync(commitUrl, userToken);
                   })
                   .then(function (commit) {
-                    var parseCommit = JSON.parse(commit.body);
-                    var commitSha1 = parseCommit.sha;
+                    var parsedCommit = JSON.parse(commit.body);
+                    var commitSha1 = parsedCommit.sha;
                     // only use the first line of the commit message
                     var commitMsg;
-                    if (parseCommit.commit.message.indexOf('\n') === -1) {
-                      commitMsg = parseCommit.commit.message;
+                    if (parsedCommit.commit.message.indexOf('\n') === -1) {
+                      commitMsg = parsedCommit.commit.message;
                     } else {
-                      commitMsg = parseCommit.commit.message.substring(0, parseCommit.commit.message.indexOf('\n'));
+                      commitMsg = parsedCommit.commit.message.substring(0, parsedCommit.commit.message.indexOf('\n'));
                     }
                     return dashboards.updateLastCommitAsync(orgName, repoName, commitSha1, commitMsg);
                   })
