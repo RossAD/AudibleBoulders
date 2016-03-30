@@ -29,6 +29,10 @@
   visibility:hidden;
 }
 
+.alignleft {
+    float: left;
+  }
+
 /* ----------- iPhone 5 and 5S ----------- */
 
 /* Portrait and Landscape */
@@ -388,10 +392,6 @@
   }
 
   /* ---- Dashboard Page Styles ---- */
-  .dashboard {
-    margin-left: 5%;
-    margin-right: 5%;
-  }
 
   .dashboardTitle {
     font-size: 32px;
@@ -424,10 +424,12 @@
     margin: 5px 0px 0px 0px;
     font-size: 18px;
     font-weight: bold;
+    font-family: 'Montserrat', serif;
   }
 
   .dashboardSetupBtn {
     margin: 10px 0px 10px 0px;
+    font-family: 'Montserrat', serif;
   }
 
   .lastCommit {
@@ -435,34 +437,27 @@
     font-size: 12px;
     padding: 5px 5px 5px 5px;
     margin: 10px 0px 10px 0px;
+    font-family: 'Montserrat', serif;
   }
 
   .users {
     margin: 25px 0px 25px 0px;
+    font-family: 'Montserrat', serif;
   }
 
   .gitimg {
     border-radius:50%;
-    height:50px;
     overflow:hidden;
     padding: 2px;
-    width:50px;
+    height:75px;
+    width:75px;
+    padding: 5px 5px 5px 5px;
   }
 
   .dashboardUser {
+    font-family: 'Montserrat', serif;
+    margin-bottom: 5px;
     position: relative;
-  }
-
-  .dashboardUser a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-  }
-
-  .dashboardUser a:hover {
-    text-decoration: none;
-    color: #ff8533;
-    font-weight: bold;
   }
 
   .dashboardUserCommit {
@@ -470,8 +465,45 @@
     border-bottom: solid 1px gray;
   }
 
+  .status {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
   .dashboardUserInfo {
     padding: 5px 0px 5px 0px;
+  }
+
+  .diffsDiv {
+    margin: 10px 5px 10px 5px;
+  }
+
+  #dashboardGitName {
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+  #dashboardGitHandle > a{
+    text-decoration: none;
+    font-size: 0.8em;
+    font-weight: lighter;
+    color: #666666;
+  }
+
+  #dashboardGitHandle > a:hover{
+    text-decoration: none;
+    color: #000000;
+  }
+
+  .modTypeTitle {
+    font-weight: bold;
+    margin: 15px 0px 5px 0px;
+    font-size: 1.2em;
+  }
+
+  .diffs {
+    padding: 0px 5px 0px 5px;
+    font-size: 1.0em;
   }
 
   .upToDate {
@@ -500,11 +532,6 @@
     border-radius: 5px;
     padding: 5px 5px;
     opacity: 0.5;
-  }
-
-  .status {
-    font-size: 12px;
-    font-weight: bold;
   }
 
   .alignleft {
@@ -956,8 +983,8 @@
 
   /* ---- Dashboard Page Styles ---- */
   .dashboard {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
   }
 
   .dashboardTitle {
@@ -991,10 +1018,12 @@
     margin: 5px 0px 0px 0px;
     font-size: 16px;
     font-weight: bold;
+    font-family: 'Montserrat', serif;
   }
 
   .dashboardSetupBtn {
     margin: 10px 0px 10px 0px;
+    font-family: 'Montserrat', serif;
   }
 
   .lastCommit {
@@ -1003,34 +1032,27 @@
     padding: 5px 5px 5px 5px;
     margin: 10px 0px 10px 0px;
     word-wrap: break-word;
+    font-family: 'Montserrat', serif;
   }
 
   .users {
     margin: 25px 0px 25px 0px;
+    font-family: 'Montserrat', serif;
   }
 
   .gitimg {
     border-radius:50%;
-    height:50px;
+    height:75px;
     overflow:hidden;
     padding: 2px;
-    width:50px;
+    width:75px;
+    padding: 5px 5px 5px 5px;
   }
 
   .dashboardUser {
     position: relative;
-  }
-
-  .dashboardUser a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-  }
-
-  .dashboardUser a:hover {
-    text-decoration: none;
-    color: #ff8533;
-    font-weight: bold;
+    font-family: 'Montserrat', serif;
+    margin-bottom: 5px;
   }
 
   .dashboardUserCommit {
@@ -1040,6 +1062,47 @@
 
   .dashboardUserInfo {
     padding: 5px 0px 5px 0px;
+  }
+
+  .status {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .dashboardUserInfo {
+    padding: 5px 0px 5px 0px;
+  }
+
+  .diffsDiv {
+    margin: 10px 5px 10px 5px;
+  }
+
+  #dashboardGitName {
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+
+  #dashboardGitHandle > a{
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: lighter;
+    color: #666666;
+  }
+
+  #dashboardGitHandle > a:hover{
+    text-decoration: none;
+    color: #000000;
+  }
+
+  .modTypeTitle {
+    font-weight: bold;
+    margin: 15px 0px 5px 5px;
+    font-size: 1.3em;
+  }
+
+  .diffs {
+    padding: 0px 5px 0px 15px;
+    font-size: 1.0em;
   }
 
   .upToDate {
@@ -1069,11 +1132,6 @@
     border-radius: 5px;
     padding: 5px 5px;
     opacity: 0.5;
-  }
-
-  .status {
-    font-size: 12px;
-    font-weight: bold;
   }
 
   .alignleft {
@@ -1511,10 +1569,12 @@
     margin: 5px 0px 0px 0px;
     font-size: 18px;
     font-weight: bold;
+    font-family: 'Montserrat', serif;
   }
 
   .dashboardSetupBtn {
     margin: 10px 0px 10px 0px;
+    font-family: 'Montserrat', serif;
   }
 
   .lastCommit {
@@ -1522,34 +1582,27 @@
     font-size: 12px;
     padding: 5px 5px 5px 5px;
     margin: 10px 0px 10px 0px;
+    font-family: 'Montserrat', serif;
   }
 
   .users {
     margin: 25px 0px 25px 0px;
+    font-family: 'Montserrat', serif;
   }
 
   .gitimg {
     border-radius:50%;
-    height:50px;
+    height:75px;
     overflow:hidden;
     padding: 2px;
-    width:50px;
+    width:75px;
+    padding: 5px 5px 5px 5px;
   }
 
   .dashboardUser {
     position: relative;
-  }
-
-  .dashboardUser a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-  }
-
-  .dashboardUser a:hover {
-    text-decoration: none;
-    color: #ff8533;
-    font-weight: bold;
+    font-family: 'Montserrat', serif;
+    margin-bottom: 5px;
   }
 
   .dashboardUserCommit {
@@ -1557,8 +1610,45 @@
     border-bottom: solid 1px gray;
   }
 
+  .status {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
   .dashboardUserInfo {
     padding: 5px 0px 5px 0px;
+  }
+
+  .diffsDiv {
+    margin: 10px 5px 10px 5px;
+  }
+
+  #dashboardGitName {
+    font-size: 1.8em;
+    font-weight: bold;
+  }
+
+  #dashboardGitHandle > a{
+    text-decoration: none;
+    font-size: 1.0em;
+    font-weight: lighter;
+    color: #666666;
+  }
+
+  #dashboardGitHandle > a:hover{
+    text-decoration: none;
+    color: #000000;
+  }
+
+  .modTypeTitle {
+    font-weight: bold;
+    margin: 5px 0px 5px 0px;
+    font-size: 1.4em;
+  }
+
+  .diffs {
+    padding: 0px 5px 0px 5px;
+    font-size: 1em;
   }
 
   .upToDate {
@@ -1666,9 +1756,9 @@
   }
 }
 
-/* ===== == = === 37.5em (600px) === = == ===== */
+/* ===== == = === 68.75em (1100px) === = == ===== */
 
-@media only screen and (min-width: 37.5em) {
+@media only screen and (min-width: 68.75em) {
   /* ---- Login Page Styles ---- */
   .loginBtn a {
     background-color: #404040;
@@ -1701,8 +1791,8 @@
 
   /* ---- About Page Styles ---- */
   .about {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 17%;
+    margin-right: 17%;
   }
 
   .aboutTitle {
@@ -1712,13 +1802,13 @@
   }
 
   .aboutTitle span {
-    font-size: 30px;
+    font-size: 34px;
     margin: 10px 0px 10px 10px;
     color: #a6a6a6;
   }
 
   .aboutTitle span:hover {
-    font-size: 30px;
+    font-size: 34px;
     margin: 10px 0px 10px 10px;
     color: #ff8533;
   }
@@ -1796,8 +1886,8 @@
 
   /* ---- Navigation Bar Styles ---- */
   .navbar {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 17%;
+    margin-right: 17%;
   }
 
   .navbar img {
@@ -1821,8 +1911,9 @@
 
   /* ---- Home Page Styles ---- */
   .home {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 17%;
+    margin-right: 17%;
+    margin-top: 0px;
   }
 
   .home a:hover {
@@ -1832,14 +1923,15 @@
   }
 
   .homeDesc {
-    font-size:18px;
-    padding: 5px 5px 10px 5px;
     font-family: 'Montserrat', serif;
+    font-size: 18px;
+    padding: 5px 5px 10px 5px;
+    margin: 0px 0px 0px 0px;
   }
 
   .homeRows {
-    font-size: 18px;
     font-family: 'Montserrat', serif;
+    font-size: 18px;
   }
 
   .homeRows:hover .removeButton{
@@ -1849,6 +1941,7 @@
   .homeTitle {
     font-size: 52px;
     font-weight: bold;
+    margin: 0px 0px 0px 0px;
   }
 
   .homeTitle span {
@@ -1891,8 +1984,8 @@
 
   /* ---- Add Page Styles ---- */
   .add {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 17%;
+    margin-right: 17%;
   }
 
   .add a:hover {
@@ -1906,22 +1999,24 @@
     padding: 5px 0px 10px 0px;
     width:100%;
     font-family: 'Montserrat', serif;
+    margin: 0px 0px 0px 0px;
   }
 
   .addTitle {
     font-size: 52px;
     font-weight: bold;
+    margin: 0px 0px 0px 0px;
   }
 
   .addTitle span {
     color: #a6a6a6;
-    font-size: 30px;
+    font-size: 34px;
     margin: 10px 0px 10px 5px;
   }
 
   .addTitle span:hover {
     color: #ff8533;
-    font-size: 30px;
+    font-size: 34px;
     margin: 10px 0px 10px 5px;
   }
 
@@ -1943,8 +2038,8 @@
 
   /* ---- Setup Page Styles ---- */
   .setup {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 17%;
+    margin-right: 17%;
   }
 
   .setupTitle {
@@ -1955,13 +2050,13 @@
 
   .setupTitle span {
     color: #a6a6a6;
-    font-size: 30px;
+    font-size: 34px;
     margin: 10px 0px 10px 20px;
   }
 
   .setupTitle span:hover {
     color: #ff8533;
-    font-size: 30px;
+    font-size: 34px;
     margin: 1px 0px 10px 20px;
   }
 
@@ -1985,12 +2080,12 @@
 
   /* ---- Dashboard Page Styles ---- */
   .dashboard {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 17%;
+    margin-right: 17%;
   }
 
   .dashboardTitle {
-    font-size: 52px;
+    font-size: 48px;
     padding: 0px;
     font-weight: bold;
     line-height: 50px;
@@ -1998,13 +2093,13 @@
 
   .dashboardTitle span {
     color: #a6a6a6;
-    font-size: 30px;
+    font-size: 34px;
     margin: 10px 0px 10px 20px;
   }
 
   .dashboardTitle span:hover {
     color: #ff8533;
-    font-size: 30px;
+    font-size: 34px;
     margin: 1px 0px 10px 20px;
   }
 
@@ -2018,7 +2113,7 @@
 
   .dashboardBranch {
     margin: 5px 0px 0px 0px;
-    font-size: 18px;
+    font-size: 1.2em;
     font-weight: bold;
     font-family: 'Montserrat', serif;
   }
@@ -2029,8 +2124,7 @@
   }
 
   .lastCommit {
-    background-color: #7498D0;
-
+    background-color: #CAD8ED;
     font-size: 14px;
     padding: 5px 5px;
     margin: 10px 0px 10px 0px;
@@ -2042,81 +2136,81 @@
     font-family: 'Montserrat', serif;
   }
 
-  .gitimg {
-    border-radius:50%;
-    height:50px;
-    overflow:hidden;
-    padding: 2px;
-    width:50px;
-  }
-
   .dashboardUser {
     font-family: 'Montserrat', serif;
     position: relative;
-    margin-bottom: 10px;
-  }
-
-  .dashboardUser a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-  }
-
-  .dashboardUser a:hover {
-    text-decoration: none;
-    color: #ff8533;
-    font-weight: bold;
+    margin-bottom: 5px;
   }
 
   .dashboardUserCommit {
     padding: 0px 0px 5px 0px;
   }
 
+  .status {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .gitimg {
+    border-radius:50%;
+    height:75px;
+    width:75px;
+    overflow:hidden;
+    padding: 5px 5px 5px 5px;
+  }
+
   .dashboardUserInfo {
     padding: 5px 0px 5px 0px;
   }
 
+  .diffsDiv {
+    margin: 10px 5px 10px 5px;
+  }
+
+  #dashboardGitName {
+    font-size: 1.8em;
+    font-weight: bold;
+  }
+
+  #dashboardGitHandle > a{
+    text-decoration: none;
+    font-size: 1.0em;
+    font-weight: lighter;
+    color: #666666;
+  }
+
+  #dashboardGitHandle > a:hover{
+    text-decoration: none;
+    color: #000000;
+  }
+
   .modTypeTitle {
-    margin: 10px 0px 0px 5px;
-    font-size: 1.3em;
+    font-weight: bold;
+    margin: 15px 0px 5px 5px;
+    font-size: 1.4em;
   }
 
   .diffs {
-
     padding: 0px 5px 0px 15px;
-    margin: 0px 0px 0px 0px;
+    font-size: 1.2em;
   }
 
   .upToDate {
-    /*background-color: #c1f0c1;*/
-    background-color: #F1f1f1;
+    background-color: #c1f0c1;
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
     border-color: #A9A9A9;
     border-radius: 5px;
-    padding: 5px 0px 5px 0px;
-    box-shadow: 2px 2px 2px #888888;
-  }
-
-  .upToDate > div span{
-    color: #7498D0;
-    font-size: 1.3em;
+    padding: 5px 5px;
   }
 
   .outOfDate {
     /*background-color: #ffb3b3;*/
-    background-color: #e6e6e6;
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
     border-color: #A9A9A9;
     border-radius: 5px;
     padding: 5px 5px;
-    box-shadow: 2px 2px 2px #888888;
-  }
-
-  .outOfDate > div span {
-    color: #e60000;
-    font-size: 1.3em;
   }
 
   .notSetUp {
@@ -2127,20 +2221,6 @@
     border-radius: 5px;
     padding: 5px 5px;
     opacity: 0.5;
-  }
-
-  .notSetUp > div span {
-    color: #333333;
-    font-size: 1.3em;
-  }
-
-  .status {
-    font-size: 12px;
-    font-weight: bold;
-  }
-
-  .alignleft {
-    float: left;
   }
 
   .alignright {
@@ -2204,10 +2284,7 @@
   }
 }
 
-/* ===== == = === 48em (768px) === = == ===== */
 
-@media only screen and (min-width : 48em) {
-}
 
 /* ===== == = === 56.25em (900px) === = == ===== */
 

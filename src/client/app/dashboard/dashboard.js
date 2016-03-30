@@ -36,9 +36,9 @@ angular.module('dashboard', [])
     return false;
   };
 
-  $scope.hasRemoved = function (diffs) {
+  $scope.hasDeleted = function (diffs) {
     for (var i = 0; i < diffs.length; i++) {
-      if (diffs[i].mod_type === 'R') {
+      if (diffs[i].mod_type === 'D') {
         return true;
       }
     }
@@ -53,6 +53,7 @@ angular.module('dashboard', [])
       $scope.loading = false;
       $scope.users = data.users;
       $scope.dashboard = data.dashboard;
+      console.log('users:', $scope.users);
     });
   };
 

@@ -24,38 +24,36 @@
     <div class="dashboardUser" ng-repeat="user in users">
       <div ng-class="[users, { upToDate: user.last_pulled_commit_sha1 === dashboard.last_commit_sha1, outOfDate: user.last_pulled_commit_sha1 !== dashboard.last_commit_sha1, notSetUp: user.set_up === 0 }]">
         <div class="dashboardUserCommit">
-          <span ng-show="user.last_pulled_commit_sha1 === dashboard.last_commit_sha1" class="status"><span class="glyphicon glyphicon-ok-sign"></span> {{user.github_name}} has pulled {{dashboard.last_commit_sha1}}</span>
-          <span ng-show="user.last_pulled_commit_sha1 !== dashboard.last_commit_sha1 && user.set_up" class="status"><span class="glyphicon glyphicon-exclamation-sign"></span> {{user.github_name}} needs to git pull</span>
+          <div ng-show="user.last_pulled_commit_sha1 === dashboard.last_commit_sha1" class="status"><span class="glyphicon glyphicon-ok-sign"></span> {{user.github_name}} has pulled {{dashboard.last_commit_sha1}}</div>
+          <div ng-show="user.last_pulled_commit_sha1 !== dashboard.last_commit_sha1 && user.set_up" class="status"><span class="glyphicon glyphicon-exclamation-sign"></span> {{user.github_name}} needs to git pull</div>
           <div ng-show="!user.set_up" class="status"><span class="glyphicon glyphicon-exclamation-sign"></span> {{user.github_name}} needs to set up</div>
         </div>
 
         <div class="dashboardUserInfo">
           <img class="gitimg" src="{{user.github_avatar}}">
-          {{user.github_name}} - <a href="https://github.com/{{user.github_handle}}">{{user.github_handle}}</a>
+          <span id="dashboardGitName">{{user.github_name}}</span>
+          <span id="dashboardGitHandle"><a href="https://github.com/{{user.github_handle}}">@{{user.github_handle}}</a></span>
         </div>
 
-        <div class="modTypeTitle" ng-show="hasModified(user.diffs)">
-          MODIFIED
-        </div>
-
-        <div class="diffs" ng-repeat="diff in user.diffs" ng-show="diff.mod_type === 'M'">
-            {{diff.file}}
-        </div>
-
-        <div class="modTypeTitle" ng-show="hasAdded(user.diffs)">
-          ADDED
-        </div>
-
-        <div class="diffs" ng-repeat="diff in user.diffs" ng-show="diff.mod_type === 'A'">
-            {{diff.file}}
-        </div>
-
-        <div class="modTypeTitle" ng-show="hasRemoved(user.diffs)">
-          REMOVED
-        </div>
-
-        <div class="diffs" ng-repeat="diff in user.diffs" ng-show="diff.mod_type === 'R'">
-            {{diff.file}}
+        <div class="diffsDiv">
+          <div class="modTypeTitle" ng-show="hasModified(user.diffs)">
+            MODIFIED
+          </div>
+          <div class="diffs" ng-repeat="diff in user.diffs" ng-show="diff.mod_type === 'M'">
+              <i class="fa fa-file-text"></i> {{diff.file}}
+          </div>
+          <div class="modTypeTitle" ng-show="hasAdded(user.diffs)">
+            ADDED
+          </div>
+          <div class="diffs" ng-repeat="diff in user.diffs" ng-show="diff.mod_type === 'A'">
+              <i class="fa fa-file-text"></i> {{diff.file}}
+          </div>
+          <div class="modTypeTitle" ng-show="hasDeleted(user.diffs)">
+            REMOVED
+          </div>
+          <div class="diffs" ng-repeat="diff in user.diffs" ng-show="diff.mod_type === 'D'">
+              <i class="fa fa-file-text"></i> {{diff.file}}
+          </div>
         </div>
       </div>
     </div>
