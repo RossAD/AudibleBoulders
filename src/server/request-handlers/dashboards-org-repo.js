@@ -68,7 +68,13 @@ module.exports = {
                   .then(function (commit) {
                     var parseCommit = JSON.parse(commit.body);
                     var commitSha1 = parseCommit.sha;
-                    var commitMsg = parseCommit.commit.message;
+                    // only use the first line of the commit message
+                    var commitMsg;
+                    if (parseCommit.commit.message.indexOf('\n') === -1) {
+                      commitMsg = parseCommit.commit.message;
+                    } else {
+                      commitMsg = parseCommit.commit.message.substring(0, parseCommit.commit.message.indexOf('\n'));
+                    }
                     return dashboards.updateLastCommitAsync(orgName, repoName, commitSha1, commitMsg);
                   })
                   // attach full dashboard data to responseObject
