@@ -32,7 +32,45 @@
 .alignleft {
     float: left;
   }
-
+/*------------Add Pagination Buttons------*/
+.pages ul li{
+   display: table-cell;
+   padding-left: 0.2em;
+   padding-right: 0.2em;
+   float: center;
+   text-align: center;
+   vertical-align: middle;
+   height: 1em;
+   width: 1em;
+   border-radius: 5px;
+ }
+ 
+ .pages ul .end{
+   float: center;
+   font-family: 'Montserrat', serif;
+   font-size: 1.4em;
+   text-align: center;
+   vertical-align: middle;
+   height: 1em;
+   width: 1em;
+ }
+ 
+ .pages ul li:hover{
+   box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   width: 1em;
+   height: 1em;
+   color: #ff8533;
+   font-weight: bold;
+   z-index: 1;
+   cursor: pointer;
+ }
+ 
+ .pages ul li:active{
+   transition: all .2s ease;
+   font-weight: normal;
+ }
 /* ----------- iPhone 5 and 5S ----------- */
 
 /* Portrait and Landscape */

@@ -1,12 +1,15 @@
 <div class="dashboard" ng-controller='DashboardController' ng-animate-ref="dashboard">
 
   <div ng-show="loading" class="spinner">
-    <img src="https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif">
+      <i class="fa fa-circle-o-notch fa-4x fa-spin"></i>
+    
+      <!--<img
+        src="https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif">--!>
   </div>
 
   <div ng-show="!loading">
     <div class="dashboardTitle">
-      {{orgName}} / <a href="{{repoLink}}">{{repoName}}</a><a href="#/"><span class="glyphicon glyphicon-circle-arrow-left" title="Go back home"></span></a>
+      {{orgName}} / <a target-tab href="{{repoLink}}">{{repoName}}</a><a href="#/"><span class="glyphicon glyphicon-circle-arrow-left" title="Go back home"></span></a>
     </div>
 
     <div class="dashboardBranch">
