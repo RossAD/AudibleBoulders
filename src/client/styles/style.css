@@ -1756,9 +1756,9 @@
   }
 }
 
-/* ===== == = === 68.75em (1100px) === = == ===== */
+/* ===== == = === 56.25em (900px) === = == ===== */
 
-@media only screen and (min-width: 68.75em) {
+@media only screen and (min-width: 56.25em) {
   /* ---- Login Page Styles ---- */
   .loginBtn a {
     background-color: #404040;
