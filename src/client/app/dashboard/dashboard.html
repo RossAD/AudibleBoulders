@@ -1,12 +1,12 @@
 <div class="dashboard" ng-controller='DashboardController' ng-animate-ref="dashboard">
 
   <div ng-show="loading" class="spinner">
-    <img src="https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif">
+      <i class="fa fa-circle-o-notch fa-4x fa-spin"></i>
   </div>
 
   <div ng-show="!loading">
     <div class="dashboardTitle">
-      {{orgName}} / <a href="{{repoLink}}">{{repoName}}</a><a href="#/"><span class="glyphicon glyphicon-circle-arrow-left" title="Go back home"></span></a>
+      {{orgName}} / <a target-tab href="{{repoLink}}">{{repoName}}</a><a href="#/"><span class="glyphicon glyphicon-circle-arrow-left" title="Go back home"></span></a>
     </div>
 
     <div class="dashboardBranch">
@@ -39,7 +39,7 @@
         <div class="dashboardUserInfo">
           <img class="gitimg" src="{{user.github_avatar}}">
           <span id="dashboardGitName">{{user.github_name}}</span>
-          <span id="dashboardGitHandle"><a href="https://github.com/{{user.github_handle}}">@{{user.github_handle}}</a></span>
+          <span target-tab id="dashboardGitHandle"><a href="https://github.com/{{user.github_handle}}">@{{user.github_handle}}</a></span>
         </div>
 
         <div class="diffsDiv">
