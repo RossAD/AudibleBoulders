@@ -469,6 +469,7 @@
   .status {
     font-size: 1em;
     font-weight: bold;
+    word-wrap: break-word;
   }
 
   .dashboardUserInfo {
@@ -1068,6 +1069,7 @@
   .status {
     font-size: 1em;
     font-weight: bold;
+    word-wrap: break-word;
   }
 
   .dashboardUserInfo {
@@ -1615,6 +1617,7 @@
   .status {
     font-size: 1em;
     font-weight: bold;
+    word-wrap: break-word;
   }
 
   .dashboardUserInfo {
@@ -1684,6 +1687,7 @@
   .status {
     font-size: 12px;
     font-weight: bold;
+    word-wrap: break-word;
   }
 
   .alignleft {
@@ -2152,6 +2156,7 @@
   .status {
     font-size: 1em;
     font-weight: bold;
+    word-wrap: break-word;
   }
 
   .gitimg {
