@@ -9,6 +9,7 @@ angular.module('dashboard', [])
   $scope.added = false;
   $scope.removed = false;
   $scope.storage = {};
+  $scope.hasData = false;
 
   $scope.conflicts = [];
   // example $scope.conflicts
@@ -130,9 +131,12 @@ angular.module('dashboard', [])
     RequestFactory.getDashboard(orgName, repoName)
     .then(function (data) {
       $scope.loading = false;
-      $scope.users = data.users;
-      $scope.dashboard = data.dashboard;
-      parseConflicts();
+      if (data.users && data.dashboard) {
+        $scope.hasData = true;
+        $scope.users = data.users;
+        $scope.dashboard = data.dashboard;
+        parseConflicts();
+      }
     });
   };
 
