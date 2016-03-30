@@ -22,10 +22,11 @@ module.exports = {
         return diffs.addAllAsync(signatureHash, commitDiffs);
       })
       .then(function() {
-        res.sendStatus(201);
+        return res.sendStatus(201);
       })
       .catch(function(e) {
         console.log("Error: ", e);
+        return res.sendStatus(400);
       });
   }
 };
