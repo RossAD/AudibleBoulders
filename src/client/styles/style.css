@@ -441,6 +441,15 @@
     word-wrap: break-word;
   }
 
+  .potentialConflicts {
+    background-color: #ff8533;
+    font-size: 12px;
+    padding: 5px 5px 5px 5px;
+    margin: 10px 0px 10px 0px;
+    font-family: 'Montserrat', serif;
+    word-wrap: break-word;
+  }
+
   .users {
     margin: 25px 0px 25px 0px;
     font-family: 'Montserrat', serif;
@@ -1037,6 +1046,15 @@
     font-family: 'Montserrat', serif;
   }
 
+  .potentialConflicts {
+    background-color: #ff8533;
+    font-size: 11px;
+    padding: 5px 5px 5px 5px;
+    margin: 10px 0px 10px 0px;
+    word-wrap: break-word;
+    font-family: 'Montserrat', serif;
+  }
+
   .users {
     margin: 25px 0px 25px 0px;
     font-family: 'Montserrat', serif;
@@ -1590,6 +1608,15 @@
     word-wrap: break-word;
   }
 
+  .potentialConflicts {
+    background-color: #ff8533;
+    font-size: 12px;
+    padding: 5px 5px 5px 5px;
+    margin: 10px 0px 10px 0px;
+    font-family: 'Montserrat', serif;
+    word-wrap: break-word;
+  }
+
   .users {
     margin: 25px 0px 25px 0px;
     font-family: 'Montserrat', serif;
@@ -2132,6 +2159,15 @@
 
   .lastCommit {
     background-color: #CAD8ED;
+    font-size: 14px;
+    padding: 5px 5px;
+    margin: 10px 0px 10px 0px;
+    font-family: 'Montserrat', serif;
+    word-wrap: break-word;
+  }
+
+  .potentialConflicts {
+    background-color: #ff8533;
     font-size: 14px;
     padding: 5px 5px;
     margin: 10px 0px 10px 0px;

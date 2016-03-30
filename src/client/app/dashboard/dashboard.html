@@ -21,6 +21,13 @@
       Most recent commit at github.com/{{orgName}}/{{repoName}}: <span>{{dashboard.last_commit_sha1}}</span>
     </div>
 
+    <div class="potentialConflicts" ng-show="conflicts.length">
+      Potential conflicts:
+      <ul>
+        <li ng-repeat="conflict in conflicts">{{conflict.file}} is being touched by:<span ng-repeat="user in conflict.users"> {{user.github_handle}}<span ng-show="user !== conflict.users[conflict.users.length-1]">,</span></span></li>
+      </ul>
+    </div>
+
     <div class="dashboardUser" ng-repeat="user in users">
       <div ng-class="[users, { upToDate: user.last_pulled_commit_sha1 === dashboard.last_commit_sha1, outOfDate: user.last_pulled_commit_sha1 !== dashboard.last_commit_sha1, notSetUp: user.set_up === 0 }]">
         <div class="dashboardUserCommit">
