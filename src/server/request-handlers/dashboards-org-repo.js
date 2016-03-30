@@ -110,6 +110,10 @@ module.exports = {
               }
             });
         });
+      })
+      .catch(function (e) {
+        console.error(e);
+        res.sendStatus(404);
       });
   }
 };
