@@ -438,6 +438,7 @@
     padding: 5px 5px 5px 5px;
     margin: 10px 0px 10px 0px;
     font-family: 'Montserrat', serif;
+    word-wrap: break-word;
   }
 
   .users {
@@ -1583,6 +1584,7 @@
     padding: 5px 5px 5px 5px;
     margin: 10px 0px 10px 0px;
     font-family: 'Montserrat', serif;
+    word-wrap: break-word;
   }
 
   .users {
@@ -2129,6 +2131,7 @@
     padding: 5px 5px;
     margin: 10px 0px 10px 0px;
     font-family: 'Montserrat', serif;
+    word-wrap: break-word;
   }
 
   .users {
