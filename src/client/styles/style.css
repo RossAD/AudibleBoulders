@@ -499,7 +499,7 @@
 
   .modTypeTitle {
     font-weight: bold;
-    margin: 15px 0px 5px 0px;
+    margin: 15px 0px 5px 2px;
     font-size: 1.2em;
   }
 
@@ -1067,7 +1067,7 @@
   }
 
   .status {
-    font-size: 1em;
+    font-size: 0.8em;
     font-weight: bold;
     word-wrap: break-word;
   }
@@ -1078,10 +1078,11 @@
 
   .diffsDiv {
     margin: 10px 5px 10px 5px;
+    word-wrap: break-word;
   }
 
   #dashboardGitName {
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: bold;
   }
 
@@ -1099,12 +1100,12 @@
 
   .modTypeTitle {
     font-weight: bold;
-    margin: 15px 0px 5px 5px;
+    margin: 15px 0px 5px 2px;
     font-size: 1.3em;
   }
 
   .diffs {
-    padding: 0px 5px 0px 15px;
+    padding: 0px 5px 0px 5px;
     font-size: 1.0em;
   }
 
@@ -1615,7 +1616,7 @@
   }
 
   .status {
-    font-size: 1em;
+    font-size: 0.8em;
     font-weight: bold;
     word-wrap: break-word;
   }
@@ -1629,7 +1630,7 @@
   }
 
   #dashboardGitName {
-    font-size: 1.8em;
+    font-size: 1.4em;
     font-weight: bold;
   }
 
