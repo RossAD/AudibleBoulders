@@ -1,36 +1,25 @@
 "use strict";
 
-var pool = require('../db/index.js');
+var users_dashboards = require('../queries/users_dashboards.js');
+var dashboards = require('../queries/dashboards.js');
 
 module.exports = {
   handleGet: function (req, res, next) {
-    var org_name = req.params.orgName;
-    var repo_name = req.params.repoName;
+    var orgName = req.params.orgName;
+    var repoName = req.params.repoName;
     var githubId = req.params.githubId;
     var responseObject = {};
 
-    var selectStr = "SELECT * FROM users WHERE github_id='" + githubId + "';";
-    pool.getConnection(function(err, connection){
-      if(err) {
-        throw err;
-      }
-      connection.query(selectStr, function (err, results) {
-        if (err) {
-          throw new Error(err);
-        } else {
-          responseObject.users_id = results[0].id;
-          var selectStr = "SELECT * FROM dashboards WHERE org_name='" + org_name + "' AND repo_name='" + repo_name + "'";
-          connection.query(selectStr, function (err, results) {
-            if (err) {
-              throw new Error(err);
-            } else {
-              responseObject.dashboards_id = results[0].id;
-
-              res.json(responseObject);
-            }
-          });
-        }
+    dashboards.getOneAsync(orgName, repoName)
+      .then(function(dashboard) {
+        return users_dashboards.getOneAsync(githubId, dashboard.id);
+      })
+      .then(function(users_dashboards_object) {
+        responseObject.signature_hash = users_dashboards_object.signature_hash;
+        res.json(responseObject);
+      })
+      .catch(function(e) {
+        console.log("Error: ", e);
       });
-    });
   }
 };
