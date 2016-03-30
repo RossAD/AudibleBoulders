@@ -3,13 +3,16 @@ var helper = angular.module("helper", []);
 
 // all GET/POST requests will return res.data in a promise
 // DELETE request does not return anything
-helper.factory('RequestFactory', function($http) {
+helper.factory('RequestFactory', function($http, $location) {
   var getRepos = function(callback){
     $http({
       method: 'GET',
       url: '/api/repos'
     }).then(function(res){
       callback(res);
+    })
+    .catch(function(e) {
+      $location.path('/logout');
     });
   };
 

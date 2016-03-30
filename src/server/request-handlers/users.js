@@ -17,6 +17,7 @@ module.exports = {
             'content-type': 'application/json'
           }
         };
+        console.log('in error');
         request.get(options, function(error, response, body) {
           if (error){
             throw new Error(error);
@@ -27,6 +28,7 @@ module.exports = {
       })
       .catch(function (err) {
         console.error(err);
+        res.sendStatus(400);
       });
   }
 };
