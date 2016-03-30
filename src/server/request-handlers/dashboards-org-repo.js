@@ -2,6 +2,7 @@
 "use strict";
 
 var dashboards = require('../queries/dashboards');
+var users_dashboards = require('../queries/users_dashboards');
 var users = require('../queries/users');
 var diffs = require('../queries/diffs');
 var github = require('../queries/github');
@@ -46,7 +47,28 @@ module.exports = {
     // commitUrl hardcoded for master branch for now
     var commitUrl = 'https://api.github.com/repos/' + orgName + '/' + repoName + '/commits/master';
 
-    users.getOneAsync(githubId)
+    // first check if dashboard exists
+    dashboards.getOneAsync(orgName, repoName)
+      .then(function (dashboard) {
+        if (dashboard) {
+          responseObject.dashboard.id = dashboard.id;
+        } else {
+          res.sendStatus(404);
+        }
+      })
+      // next check if this user is a member of this dashboard
+      .then(function () {
+        return users_dashboards.getOneAsync(githubId, responseObject.dashboard.id);
+      })
+      .then(function (recordObject) {
+        if (!recordObject) {
+          res.sendStatus(403);
+        }
+      })
+      // query github with user token to update last_commit
+      .then(function () {
+        return users.getOneAsync(githubId);
+      })
       .then(function (user) {
         var userToken = user.github_token;
         return github.queryAsync(commitUrl, userToken);
@@ -57,17 +79,19 @@ module.exports = {
         var commitMsg = parseCommit.commit.message;
         return dashboards.updateLastCommitAsync(orgName, repoName, commitSha1, commitMsg);
       })
+      // attach full dashboard data to responseObject
       .then(function () {
         return dashboards.getOneAsync(orgName, repoName);
       })
       .then(function (dashboard) {
-        responseObject.dashboard.id = dashboard.id;
         responseObject.dashboard.last_commit_sha1 = dashboard.last_commit_sha1;
         responseObject.dashboard.last_commit_msg = dashboard.last_commit_msg;
+        // get all users belonging to this dashboard
         return users.getDashboardUsersAsync(responseObject.dashboard.id);
       })
       .then(function (dashboardUsers) {
         var usersWithSigHashes = dashboardUsers;
+        // get diffs for each user
         usersWithSigHashes.forEach(function (thisUser) {
           diffs.getAllAsync(thisUser.signature_hash)
             .then(function (diffsArray) {
