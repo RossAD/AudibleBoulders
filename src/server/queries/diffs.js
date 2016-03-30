@@ -26,6 +26,9 @@ var diffs = module.exports = promise.promisifyAll({
     // we use counter to determine when all diffs have been successfully inserted, so that we can invoke the callback at that point
     // counter is an object instead of a number so that it will be mutable
     // i.e. if the counter object changes in one asychronous query, it will also be changed in the other queries
+    if (diffsArray.length === 0) {
+      callback(null, 'Diffs inserted');
+    }
     for (var i = 0; i < diffsArray.length; i++) {
       var diffObject = diffsArray[i];
       pool.query('INSERT INTO diffs (file, mod_type, users_dashboards_signature_hash) VALUES (?, ?, ?)', [diffObject.file, diffObject.mod_type, signatureHash], function (err, results) {
