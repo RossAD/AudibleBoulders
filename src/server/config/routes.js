@@ -4,14 +4,14 @@
 var helpers = require('./helpers.js');
 
 // request handlers
-var users = require('../new-request-handlers/users');
-var dashboards = require('../new-request-handlers/dashboards');
-var dashboardsGithubId = require('../new-request-handlers/dashboards-githubId');
-var dashboardsOrgRepo = require('../new-request-handlers/dashboards-org-repo');
-var setup = require('../new-request-handlers/setup');
-var commits = require('../new-request-handlers/commits');
-var usersDashboards = require('../new-request-handlers/usersDashboards');
-var repos = require('../new-request-handlers/repos.js');
+var users = require('../request-handlers/users');
+var dashboards = require('../request-handlers/dashboards');
+var dashboardsGithubId = require('../request-handlers/dashboards-githubId');
+var dashboardsOrgRepo = require('../request-handlers/dashboards-org-repo');
+var setup = require('../request-handlers/setup');
+var commits = require('../request-handlers/commits');
+var usersDashboards = require('../request-handlers/usersDashboards');
+var repos = require('../request-handlers/repos.js');
 
 module.exports = function (app) {
   // Interact with dashboards
