@@ -15,11 +15,7 @@ var github = module.exports = promise.promisifyAll({
       }
     };
     request.get(options, function (err, response, body) {
-      if (err) {
-        callback(err, null);
-      } else {
-        callback(null, response);
-      }
+      callback(err, response);
     });
   }
 });

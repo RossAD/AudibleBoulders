@@ -2,7 +2,6 @@ var fs = require('fs');
 var spawnSync = require('child_process').spawnSync;
 
 var spyUpdate = '/usr/local/bin/spyupdate';
-var preCommit = './.git/hooks/pre-commit';
 var postReWritePath = './.git/hooks/post-rewrite';
 var postCommitPath = './.git/hooks/post-commit';
 var runGitSpy = '#!/bin/sh\nnode gitSpy/gitSpy.js';
@@ -17,16 +16,14 @@ function createFile(path, content) {
 }
 
 function main() {
-    /** Create post-rewrite and post-commit scripts **/
+/** Create post-rewrite and post-commit scripts **/
   createFile(postCommitPath, runGitSpy);
   createFile(postReWritePath, runGitSpy);
-  createFile(preCommit, runGitSpy);
   createFile(spyUpdate, runSpyUpdate);
 
 /** Make files executable **/
   spawnSync('chmod', ['+x', '.git/hooks/post-commit']);
   spawnSync('chmod', ['+x', '.git/hooks/post-rewrite']);
-  spawnSync('chmod', ['+x', '.git/hooks/pre-commit']);
   spawnSync('chmod', ['+xr', '/usr/local/bin/spyupdate']);
   console.log("GitSpy hooks added and spyUpdate executable added ʕ•ᴥ•ʔ");
 }

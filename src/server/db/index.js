@@ -15,11 +15,6 @@ module.exports = {
       debug    :  false
     });
   },
-  getConnection : function(callback) {
-    pool.getConnection(function(err, connection) {
-      callback(err, connection);
-    });
-  },
   getPool: function() {
     return pool;
   }

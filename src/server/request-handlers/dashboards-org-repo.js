@@ -64,8 +64,6 @@ module.exports = {
         responseObject.dashboard.id = dashboard.id;
         responseObject.dashboard.last_commit_sha1 = dashboard.last_commit_sha1;
         responseObject.dashboard.last_commit_msg = dashboard.last_commit_msg;
-      })
-      .then(function () {
         return users.getDashboardUsersAsync(responseObject.dashboard.id);
       })
       .then(function (dashboardUsers) {
