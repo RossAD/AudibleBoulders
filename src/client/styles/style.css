@@ -32,6 +32,15 @@
 .alignleft {
     float: left;
   }
+/*-----------Logged In User Styling-------*/
+.loggedIn span{
+  position: absolute;
+  margin-top:20px;
+  z-index:1;
+  display: inline-block;
+  font-family: 'Montserrat', serif;
+  vertical-align: center;
+}
 /*------------Add Pagination Buttons------*/
 .pages ul li{
    display: table-cell;
