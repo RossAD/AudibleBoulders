@@ -66,9 +66,15 @@ module.exports = {
                     return github.queryAsync(commitUrl, userToken);
                   })
                   .then(function (commit) {
-                    var parseCommit = JSON.parse(commit.body);
-                    var commitSha1 = parseCommit.sha;
-                    var commitMsg = parseCommit.commit.message;
+                    var parsedCommit = JSON.parse(commit.body);
+                    var commitSha1 = parsedCommit.sha;
+                    // only use the first line of the commit message
+                    var commitMsg;
+                    if (parsedCommit.commit.message.indexOf('\n') === -1) {
+                      commitMsg = parsedCommit.commit.message;
+                    } else {
+                      commitMsg = parsedCommit.commit.message.substring(0, parsedCommit.commit.message.indexOf('\n'));
+                    }
                     return dashboards.updateLastCommitAsync(orgName, repoName, commitSha1, commitMsg);
                   })
                   // attach full dashboard data to responseObject
@@ -95,6 +101,7 @@ module.exports = {
                             set_up: thisUser.set_up,
                             last_pulled_commit_sha1: thisUser.last_pulled_commit_sha1,
                             last_pulled_commit_msg: thisUser.last_pulled_commit_msg,
+                            commit_branch: thisUser.commit_branch,
                             diffs: diffsArray
                           });
                           if (responseObject.users.length === usersWithSigHashes.length) {
