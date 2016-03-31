@@ -22,7 +22,7 @@ module.exports = {
         return diffs.addAllAsync(signatureHash, commitDiffs);
       })
       .then(function() {
-        return res.sendStatus(201);
+        res.sendStatus(201);
       })
       .catch(function(e) {
         console.log("Error: ", e);
