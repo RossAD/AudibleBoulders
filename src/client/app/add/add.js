@@ -1,6 +1,6 @@
 "use strict";
 angular.module('add', [])
-.controller('AddController', ['$scope', 'RequestFactory', '$http', 'Socket', '$location', '$timeout',function($scope, RequestFactory, $http, Socket, $location, $timeout){
+.controller('AddController', ['$scope', 'RequestFactory', '$http', 'Socket', '$location', '$timeout', '$cookies',function($scope, RequestFactory, $http, Socket, $location, $timeout, $cookies){
   $scope.subsc = [];
   $scope.loading = true;
   var linked = [];
@@ -106,8 +106,8 @@ angular.module('add', [])
 
   var emitJoinDash = function (repoObject) {
     var dashPath = repoObject.full_name;
-    Socket.emit('newJoin', {
-    });
+    console.log('inEmitJoinDash w/: ', repoObject);
+    Socket.emit('newJoin', repoObject);
     $location.path(dashPath);
   };
 
@@ -115,6 +115,8 @@ angular.module('add', [])
     var dashboardInfo = {org_name: repoObject.owner.login, repo_name: repoObject.name};
     RequestFactory.postDashboard(dashboardInfo)
     .then(function () {
+      var githubId = $cookies.get('githubId');
+      repoObject.githubId = githubId
       emitJoinDash(repoObject);
     });
   };

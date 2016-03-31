@@ -35,7 +35,7 @@
       </ul>
     </div>
 
-    <div class="dashboardUser" ng-repeat="user in users">
+    <div ng-model="users" class="dashboardUser" ng-repeat="user in users track by $index">
       <div ng-class="[users, { upToDate: user.last_pulled_commit_sha1 === dashboard.last_commit_sha1, outOfDate: user.last_pulled_commit_sha1 !== dashboard.last_commit_sha1, notSetUp: user.set_up === 0 }]">
         <div class="dashboardUserCommit">
           <div ng-show="user.last_pulled_commit_sha1 === dashboard.last_commit_sha1" class="status">

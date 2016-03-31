@@ -7,6 +7,8 @@ var users = require('../queries/users');
 var diffs = require('../queries/diffs');
 var github = require('../queries/github');
 
+var io = require('../server').io;
+
 module.exports = {
   handleGet: function (req, res, next) {
     // This request handler takes the orgname and reponame for a given dashboard and returns everything
@@ -82,6 +84,13 @@ module.exports = {
                     return dashboards.getOneAsync(orgName, repoName);
                   })
                   .then(function (dashboard) {
+                    io.on('connect', function (socket) {
+                      console.log('Sockets connected!');
+                      socket.on('disconnect', function () {
+                        console.log('Sockets disconnected');
+                      });
+                      socket.join(dashboard.id);
+                    });
                     responseObject.dashboard.last_commit_sha1 = dashboard.last_commit_sha1;
                     responseObject.dashboard.last_commit_msg = dashboard.last_commit_msg;
                     // get all users belonging to this dashboard

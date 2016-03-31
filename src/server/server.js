@@ -2,7 +2,7 @@
 "use strict";
 
 /** Create Server and Set Port **/
-var PORT = module.exports = process.env.PORT || 8080; // Set port
+var PORT = process.env.PORT || 8080; // Set port
 var express = require('express');
 var app = express();
 
@@ -20,7 +20,21 @@ var session = require('express-session');
 
 /** Socket Dependencies **/
 var http = require('http').Server(app);
+
 var io = require('socket.io')(http);
+
+module.exports = {
+    PORT: PORT,
+    io: io
+};
+
+/** Query files **/
+var User = require('./queries/users');
+var Diff = require('./queries/diffs');
+var Github = require('./queries/github');
+var Dashboard = require('./queries/dashboards');
+var UserDashboard = require('./queries/users_dashboards');
+
 
 app.use(cookieparser());
 
@@ -110,9 +124,51 @@ io.on('connect', function (socket) {
   });
 
   socket.on('newJoin', function (data) {
-    socket.join(data.dashboards_id);
+    var userObject = {};
+    var dashboardId;
+    console.log('got to the newJoin socket in server js with data: ', data);
+    var githubId = data.githubId;
+    console.log('got the githubId: ', githubId);
+    User.getOneAsync(githubId)
+      .then(function (user) {
+        userObject.github_id = user.github_id;
+        userObject.github_handle = user.github_handle;
+        userObject.github_name = user.github_name;
+        userObject.github_avatar = user.github_avatar;
+        console.log('checking....', data.name, data.owner.login);
+        return Dashboard.getOneAsync(data.name, data.owner.login);
+        })
+      .then(function (dashboard) {
+        dashboardId = dashboard.id;
+        console.log('joining the channel: ', dashboardId);
+        socket.join(dashboardId);
+        console.log('dashboard i: ', dashboardId, githubId);
+        return UserDashboard.getOneAsync(githubId, dashboardId);
+      })
+      .then(function (userdashboard) {
+        console.log('got the userdashboard back: ', userdashboard);
+        userObject.set_up = userdashboard.set_up;
+        userObject.last_pulled_commit_msg = userdashboard.last_pulled_commit_msg;
+        userObject.last_pulled_commit_sha1 = userdashboard.last_pulled_commit_sha1;
+        var signatureHash = userdashboard.signature_hash;
+        return Diff.getAllAsync(signatureHash);
+      })
+      .then(function (diff) {
+        console.log('got the diff back: ', diff);
+        userObject.diffs = diff;
+        console.log('about to emit to channel: ', dashboardId);
+        console.log('io sockets at this point: ', io.sockets);
+        io.sockets.to(dashboardId).emit('newUser', userObject);
+      });
+  });
+
+  socket.on('removeDash', function (data) {
+    var dashboardId = data.dashboardId;
+    socket.join(dashboardId);
+    io.sockets.to(dashboardId).emit('removeUser', data);
   });
 });
+
 
 http.listen(PORT, function() {
   console.log('Production Express server running at localhost:' + PORT);

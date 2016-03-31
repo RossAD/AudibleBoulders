@@ -9,6 +9,8 @@ angular.module('dashboard', [])
   $scope.added = false;
   $scope.removed = false;
   $scope.storage = {};
+  $scope.users = [];
+  $scope.dashboard = [];
   $scope.hasData = false;
 
   $scope.conflicts = [];
@@ -91,7 +93,23 @@ angular.module('dashboard', [])
   };
 
   Socket.on('newUser', function (data) {
-    // $scope.users.push(data);
+    console.log('newUser fired in dashboard js w/: ', data);
+    console.log('current users in scope.users: ', $scope.users);
+    $scope.$apply(function () {
+      $scope.users.push(data);
+      console.log('updated data looks like: ', $scope.users);
+      console.log('>>>>>>>>>>>>>>>scope.users: ', $scope.users);
+    });
+  });
+
+  Socket.on('removeUser', function (data) {
+    $scope.$apply(function () {
+      for (var i = 0; i < $scope.users.length; i++) {
+        if ($scope.users[i].github_id.toString() === data.githubId) {
+          $scope.users.splice(i, 1);
+        }
+      }
+    });
   });
 
   Socket.on('updateDiffs', function (data) {
@@ -99,6 +117,9 @@ angular.module('dashboard', [])
   });
 
   $scope.hasModified = function (diffs) {
+    if (diffs.length === 0 || diffs === undefined) {
+      return false;
+    }
     for (var i = 0; i < diffs.length; i++) {
       if (diffs[i].mod_type === 'M') {
         return true;
@@ -108,6 +129,9 @@ angular.module('dashboard', [])
   };
 
   $scope.hasAdded = function (diffs) {
+    if (diffs.length === 0 || diffs === undefined) {
+      return false;
+    }
     for (var i = 0; i < diffs.length; i++) {
       if (diffs[i].mod_type === 'A') {
         return true;
@@ -117,6 +141,9 @@ angular.module('dashboard', [])
   };
 
   $scope.hasDeleted = function (diffs) {
+    if (diffs.length === 0 || diffs === undefined) {
+      return false;
+    }
     for (var i = 0; i < diffs.length; i++) {
       if (diffs[i].mod_type === 'D') {
         return true;
