@@ -7,10 +7,6 @@
       <i class="fa fa-circle-o-notch fa-4x fa-spin"></i>
   </div>
 
-  <div ng-show="!loading && !hasData" class="dashboardTitle">
-    This dashboard does not exist, or you do not have authorization to access it.
-  </div>
-
   <div ng-show="!loading && hasData">
 
     <div class="dashboardTitle">
@@ -38,7 +34,7 @@
       </ul>
     </div>
 
-    <div ng-model="users" class="dashboardUser" ng-repeat="user in users track by $index">
+    <div class="dashboardUser" ng-repeat="user in users track by $index">
       <div ng-class="[users, { upToDate: user.last_pulled_commit_sha1 === dashboard.last_commit_sha1, outOfDate: user.last_pulled_commit_sha1 !== dashboard.last_commit_sha1, notSetUp: user.set_up === 0 }]">
         <div class="dashboardUserCommit">
           <div ng-show="user.last_pulled_commit_sha1 === dashboard.last_commit_sha1" class="status">

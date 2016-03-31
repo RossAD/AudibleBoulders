@@ -3,9 +3,7 @@
 
 var users_dashboards = require('../queries/users_dashboards.js');
 var diffs = require('../queries/diffs.js');
-
-var io = require('../server').io;
-// var socket = require('../server').socket;
+var io = require('../server');
 
 module.exports = {
   handlePost: function (req, res, next) {
@@ -26,15 +24,13 @@ module.exports = {
         return diffs.addAllAsync(signatureHash, commitDiffs);
       })
       .then(function () {
-        res.sendStatus(201);
-      })
-      .then(function () {
         return users_dashboards.getOneBySigHashAsync(signatureHash);
       })
       .then(function (userdashboard) {
-        console.log('in the handle post with: ', userdashboard);
-        console.log('dash id: ', userdashboard.dashboards_id);
         io.sockets.to(userdashboard.dashboards_id).emit('dashOutOfDate');
+      })
+      .then(function () {
+        res.sendStatus(201);
       })
       .catch(function(e) {
         console.log("Error: ", e);

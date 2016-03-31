@@ -106,7 +106,6 @@ angular.module('add', [])
 
   var emitJoinDash = function (repoObject) {
     var dashPath = repoObject.full_name;
-    console.log('inEmitJoinDash w/: ', repoObject);
     Socket.emit('newJoin', repoObject);
     $location.path(dashPath);
   };

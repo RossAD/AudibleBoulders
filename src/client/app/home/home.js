@@ -11,18 +11,15 @@ angular.module('home', [])
   };
 
   var emitRemovedDash = function (dashboard) {
-    console.log('emitRemovedDash called, removing: ', dashboard);
     Socket.emit('removeDash', dashboard);
   };
 
   $scope.removeUserDashboard = function(index) {
     var dashboardId = $scope.dashboards[index].id;
-    console.log('dashboards in remove: ', $scope.dashboards);
     $scope.dashboards.splice(index, 1);
     isEmpty();
     RequestFactory.deleteUserDashboard(githubId, dashboardId)
     .then(function () {
-      console.log('Attempting to remove with sockets... ');
       emitRemovedDash({githubId: githubId, dashboardId: dashboardId});
     });
   };

@@ -12,7 +12,6 @@ angular.module('dashboard', [])
   $scope.users = [];
   $scope.dashboard = [];
   $scope.hasData = false;
-  $scope.outOfDate = false;
 
   $scope.conflicts = [];
   // example $scope.conflicts
@@ -93,35 +92,36 @@ angular.module('dashboard', [])
     }
   };
 
-  Socket.on('newUser', function (data) {
-    console.log('newUser fired in dashboard js w/: ', data);
-    console.log('current users in scope.users: ', $scope.users);
+  Socket.on('newUser', function (newUser) {
     $scope.$apply(function () {
-      $scope.users.push(data);
-      console.log('updated data looks like: ', $scope.users);
-      console.log('>>>>>>>>>>>>>>>scope.users: ', $scope.users);
+      // var alreadyAdded = false;
+      // $scope.users.forEach(function (user) {
+      //   if (newUser.github_id === user.github_id) {
+      //     alreadyAdded = true;
+      //   }
+      // });
+      // if (!alreadyAdded) {
+      //   $scope.users.push(newUser);
+      // }
+      $scope.getDashboard();
     });
   });
 
   Socket.on('removeUser', function (data) {
     $scope.$apply(function () {
-      for (var i = 0; i < $scope.users.length; i++) {
-        if ($scope.users[i].github_id.toString() === data.githubId) {
-          $scope.users.splice(i, 1);
-        }
-      }
+      // for (var i = 0; i < $scope.users.length; i++) {
+      //   if ($scope.users[i].github_id.toString() === data.githubId) {
+      //     $scope.users.splice(i, 1);
+      //   }
+      // }
+      $scope.getDashboard();
     });
   });
 
   Socket.on('dashOutOfDate', function () {
     $scope.$apply(function () {
-      console.log('out of date socket fired from client side!!!! setting out of date to true');
       $scope.getDashboard();
     });
-  });
-
-  Socket.on('updateDiffs', function (data) {
-    // $scope.users[data.users_id].diffs.push(data);
   });
 
   $scope.hasModified = function (diffs) {
@@ -172,6 +172,7 @@ angular.module('dashboard', [])
           $scope.dashboard = data.dashboard;
           parseConflicts();
           $scope.outOfDate = false;
+          Socket.emit('joinDash', {dashboardId: $scope.dashboard.id});
         }
       });
   };
