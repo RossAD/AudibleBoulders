@@ -101,7 +101,6 @@ angular.module('add', [])
       $scope.nxt = true;
       $scope.prv = true;
     }
-    console.log('Any Links? ',linked);
     $scope.subsc = JSON.parse(res.data.body);
   });
 
