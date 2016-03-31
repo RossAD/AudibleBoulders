@@ -13,6 +13,10 @@ module.exports = {
       })
       .then(function(nextPage){
         res.json(nextPage);
+      })
+      .catch(function(e) {
+        console.log("Error: ", e);
+        res.sendStatus(400);
       });
   }
 };

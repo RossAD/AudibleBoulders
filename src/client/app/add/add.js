@@ -20,7 +20,7 @@ angular.module('add', [])
     $scope.nxt = false;
     $scope.prv = false;
   }
-  
+
   // Function to parse page information
   var linkParse = function(linkBody) {
     $scope.nxt = true;
@@ -53,7 +53,7 @@ angular.module('add', [])
   };
   // Function to get next page of results
   var pagePost = function(url){
-    RequestFactory.postPage(url, function(res){
+    RequestFactory.getPage(url, function(res){
       linked = res.data.headers.link;
       linkParse(linked);
       $scope.subsc = [];

@@ -16,13 +16,16 @@ helper.factory('RequestFactory', function($http, $location) {
     });
   };
 
-  var postPage = function(url, callback){
+  var getPage = function(url, callback){
     $http({
       method: 'POST',
       url: '/api/repos',
       data: url
     }).then(function(res){
       callback(res);
+    })
+    .catch(function(e) {
+      $location.path('/logout');
     });
   };
 
@@ -43,6 +46,9 @@ helper.factory('RequestFactory', function($http, $location) {
       url: '/api/dashboards/' + githubId
     }).then(function (res) {
       return res.data;
+    })
+    .catch(function(e) {
+      $location.path('/logout');
     });
   };
 
@@ -52,6 +58,9 @@ helper.factory('RequestFactory', function($http, $location) {
       url: '/api/setup/' + orgName + '/' + repoName + '/' + githubId
     }).then(function (res) {
       return res.data;
+    })
+    .catch(function(e) {
+      $location.path('/logout');
     });
   };
 
@@ -62,6 +71,9 @@ helper.factory('RequestFactory', function($http, $location) {
       data: dashboardInfo
     }).then(function (res) {
       return res.data;
+    })
+    .catch(function(e) {
+      $location.path('/logout');
     });
   };
 
@@ -79,7 +91,7 @@ helper.factory('RequestFactory', function($http, $location) {
     postDashboard: postDashboard,
     deleteUserDashboard: deleteUserDashboard,
     getRepos: getRepos,
-    postPage: postPage
+    getPage: getPage
   };
 });
 
