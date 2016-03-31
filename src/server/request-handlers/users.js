@@ -27,6 +27,7 @@ module.exports = {
       })
       .catch(function (err) {
         console.error(err);
+        res.sendStatus(400);
       });
   }
 };

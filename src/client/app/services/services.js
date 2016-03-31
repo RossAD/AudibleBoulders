@@ -3,23 +3,29 @@ var helper = angular.module("helper", []);
 
 // all GET/POST requests will return res.data in a promise
 // DELETE request does not return anything
-helper.factory('RequestFactory', function($http) {
+helper.factory('RequestFactory', function($http, $location) {
   var getRepos = function(callback){
     $http({
       method: 'GET',
       url: '/api/repos'
     }).then(function(res){
       callback(res);
+    })
+    .catch(function(e) {
+      $location.path('/logout');
     });
   };
 
-  var postPage = function(url, callback){
+  var getPage = function(url, callback){
     $http({
       method: 'POST',
       url: '/api/repos',
       data: url
     }).then(function(res){
       callback(res);
+    })
+    .catch(function(e) {
+      console.log("Error: ", e);
     });
   };
 
@@ -40,6 +46,9 @@ helper.factory('RequestFactory', function($http) {
       url: '/api/dashboards/' + githubId
     }).then(function (res) {
       return res.data;
+    })
+    .catch(function(e) {
+      console.log("Error: ", e);
     });
   };
 
@@ -49,6 +58,9 @@ helper.factory('RequestFactory', function($http) {
       url: '/api/setup/' + orgName + '/' + repoName + '/' + githubId
     }).then(function (res) {
       return res.data;
+    })
+    .catch(function(e) {
+      console.log("Error: ", e);
     });
   };
 
@@ -59,13 +71,19 @@ helper.factory('RequestFactory', function($http) {
       data: dashboardInfo
     }).then(function (res) {
       return res.data;
+    })
+    .catch(function(e) {
+      console.log("Error: ", e);
     });
   };
 
   var deleteUserDashboard = function(githubId, dashboardId) {
-    $http({
+    return $http({
       method: 'DELETE',
       url: '/api/users_dashboards/' + githubId + '/' + dashboardId
+    })
+    .catch(function(e) {
+      $location.path('/logout');
     });
   };
 
@@ -76,7 +94,7 @@ helper.factory('RequestFactory', function($http) {
     postDashboard: postDashboard,
     deleteUserDashboard: deleteUserDashboard,
     getRepos: getRepos,
-    postPage: postPage
+    getPage: getPage
   };
 });
 

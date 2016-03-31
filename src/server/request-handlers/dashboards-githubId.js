@@ -11,6 +11,7 @@ module.exports = {
       })
       .catch(function(e) {
         console.log("Error: ", e);
+        res.sendStatus(400);
       });
   }
 };
