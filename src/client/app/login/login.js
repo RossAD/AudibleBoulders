@@ -1,8 +1,8 @@
 "use strict";
 angular.module('login', [])
 .controller('LoginController', function($scope, $cookies, $window, $location, RequestFactory){
-  $scope.user = $cookies.get('githubName');
   $scope.isActivePage = function(viewLocation) {
+    $scope.welcomeString = "<span>Welcome, "+$cookies.get('githubName')+"!</span>"; 
     return viewLocation === $location.path();
   };
 });

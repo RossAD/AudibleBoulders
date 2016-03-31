@@ -8,6 +8,7 @@ angular.module('GitSpy', [
   'setup',
   'ngRoute',
   'ngCookies',
+  'ngSanitize',
   'ngAnimate',
   'helper',
   'logout',
