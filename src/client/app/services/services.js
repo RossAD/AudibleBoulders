@@ -25,7 +25,7 @@ helper.factory('RequestFactory', function($http, $location) {
       callback(res);
     })
     .catch(function(e) {
-      $location.path('/logout');
+      console.log("Error: ", e);
     });
   };
 
@@ -48,7 +48,7 @@ helper.factory('RequestFactory', function($http, $location) {
       return res.data;
     })
     .catch(function(e) {
-      $location.path('/logout');
+      console.log("Error: ", e);
     });
   };
 
@@ -60,7 +60,7 @@ helper.factory('RequestFactory', function($http, $location) {
       return res.data;
     })
     .catch(function(e) {
-      $location.path('/logout');
+      console.log("Error: ", e);
     });
   };
 
@@ -73,14 +73,17 @@ helper.factory('RequestFactory', function($http, $location) {
       return res.data;
     })
     .catch(function(e) {
-      $location.path('/logout');
+      console.log("Error: ", e);
     });
   };
 
   var deleteUserDashboard = function(githubId, dashboardId) {
-    $http({
+    return $http({
       method: 'DELETE',
       url: '/api/users_dashboards/' + githubId + '/' + dashboardId
+    })
+    .catch(function(e) {
+      $location.path('/logout');
     });
   };
 
