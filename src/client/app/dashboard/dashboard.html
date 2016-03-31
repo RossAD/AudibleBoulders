@@ -23,7 +23,9 @@
     </div>
 
     <div class="lastCommit">
-      Most recent commit at github.com/{{orgName}}/{{repoName}}: <span>{{dashboard.last_commit_sha1}}</span>
+      Most recent commit at github.com/{{orgName}}/{{repoName}}:
+      <br><span>{{dashboard.last_commit_msg}}</span>
+      <br><span>sha1: {{dashboard.last_commit_sha1}}</span>
     </div>
 
     <div class="potentialConflicts" ng-show="conflicts.length">
