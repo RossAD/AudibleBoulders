@@ -12,6 +12,7 @@ angular.module('dashboard', [])
   $scope.users = [];
   $scope.dashboard = [];
   $scope.hasData = false;
+  $scope.outOfDate = false;
 
   $scope.conflicts = [];
   // example $scope.conflicts
@@ -112,6 +113,13 @@ angular.module('dashboard', [])
     });
   });
 
+  Socket.on('dashOutOfDate', function () {
+    $scope.$apply(function () {
+      console.log('out of date socket fired from client side!!!! setting out of date to true');
+      $scope.getDashboard();
+    });
+  });
+
   Socket.on('updateDiffs', function (data) {
     // $scope.users[data.users_id].diffs.push(data);
   });
@@ -163,6 +171,7 @@ angular.module('dashboard', [])
           $scope.users = data.users;
           $scope.dashboard = data.dashboard;
           parseConflicts();
+          $scope.outOfDate = false;
         }
       });
   };

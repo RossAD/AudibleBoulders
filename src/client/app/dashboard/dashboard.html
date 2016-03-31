@@ -1,5 +1,8 @@
 <div class="dashboard" ng-controller='DashboardController' ng-animate-ref="dashboard">
 
+  <div ng-show="outOfDate">Dashboard is out of date. Please refresh.
+  </div>
+
   <div ng-show="loading" class="spinner">
       <i class="fa fa-circle-o-notch fa-4x fa-spin"></i>
   </div>

@@ -8,6 +8,7 @@ var diffs = require('../queries/diffs');
 var github = require('../queries/github');
 
 var io = require('../server').io;
+var socket = require('../server').socket;
 
 module.exports = {
   handleGet: function (req, res, next) {
