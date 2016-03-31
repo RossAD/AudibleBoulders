@@ -116,7 +116,7 @@ angular.module('add', [])
     RequestFactory.postDashboard(dashboardInfo)
     .then(function () {
       var githubId = $cookies.get('githubId');
-      repoObject.githubId = githubId
+      repoObject.githubId = githubId;
       emitJoinDash(repoObject);
     });
   };
