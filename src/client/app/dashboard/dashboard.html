@@ -43,7 +43,7 @@
           </div>
           <div ng-show="user.last_pulled_commit_sha1 !== dashboard.last_commit_sha1 && user.set_up" class="status">
             <span class="glyphicon glyphicon-exclamation-sign"></span> {{user.github_name}} needs to git pull
-            <br>Last pull: {{user.last_pulled_commit_msg}}
+            <br>Their latest pull: {{user.last_pulled_commit_msg}}
           </div>
           <div ng-show="!user.set_up" class="status">
             <span class="glyphicon glyphicon-exclamation-sign"></span> {{user.github_name}} needs to set up
@@ -57,6 +57,9 @@
         </div>
 
         <div class="diffsDiv">
+          <div ng-show="user.set_up && user.commit_branch">
+            Last seen on local branch: {{user.commit_branch}}
+          </div>
           <div class="modTypeTitle" ng-show="hasModified(user.diffs)">
             MODIFIED
           </div>

@@ -101,6 +101,7 @@ module.exports = {
                             set_up: thisUser.set_up,
                             last_pulled_commit_sha1: thisUser.last_pulled_commit_sha1,
                             last_pulled_commit_msg: thisUser.last_pulled_commit_msg,
+                            commit_branch: thisUser.commit_branch,
                             diffs: diffsArray
                           });
                           if (responseObject.users.length === usersWithSigHashes.length) {
