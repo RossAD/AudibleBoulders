@@ -68,7 +68,7 @@
               <i class="fa fa-file-text"></i> {{diff.file}}
           </div>
           <div class="modTypeTitle" ng-show="hasDeleted(user.diffs)">
-            REMOVED
+            DELETED
           </div>
           <div class="diffs" ng-repeat="diff in user.diffs" ng-show="diff.mod_type === 'D'">
               <i class="fa fa-file-text"></i> {{diff.file}}
