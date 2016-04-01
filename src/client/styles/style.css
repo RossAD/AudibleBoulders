@@ -146,7 +146,6 @@
     display:block;
     margin:auto;
     padding-top: 30%;
-    height: 30%;
     width: 30%;
   }
 
@@ -174,16 +173,20 @@
   }
 
   .learnMore {
-    display: inline;
-    text-align: center;
-    margin-top: 1em;
-    margin-left: 36.5%;
-    margin-right: 35%;
+    font-family: 'Montserrat', serif;
+    display:block;
+    font-size: 14px;
     font-weight: bold;
-    text-decoration: underline;
-    font-size: 1.25em;
-    line-height: 1.2em;
-    font-family: 'Montserrat', serif
+    margin: auto;
+    margin-top:0px;
+  }
+
+  .learnMore a {
+    color: gray;
+  }
+
+  .learnMore a:hover {
+    color: #ff8533;
   }
 
   /* ---- Home Page Styles ---- */
@@ -787,7 +790,7 @@
     display:block;
     margin:auto;
     padding-top: 30%;
-    width: 25%;
+    width: 30%;
   }
 
   .tagLine {
@@ -821,7 +824,7 @@
     margin-right: 35%;
     font-weight: bold;
     text-decoration: underline;
-    font-size: 1.25em;
+    font-size: 1.2em;
     line-height: 1.2em;
     font-family: 'Montserrat', serif
   }
@@ -1364,7 +1367,8 @@
     font-weight: bold;
     margin: auto;
     margin-top:15px;
-    width: 50%;
+    width: 30%;
+    text-align: center;
     height: 40px;
     border-radius: 10px;
   }
@@ -1377,25 +1381,25 @@
     font-weight: bold;
     margin-top: 15px;
     margin:auto;
-    width: 50%;
+    width: 30%;
+    text-align: center;
     height: 40px;
     border-radius: 10px;
   }
 
   .loginImg img{
-    display:block;
-    margin:auto;
-    padding-top: 30%;
     width: 30%;
+    display:block;
+    padding: 50px 0px 15px 0px;
+    margin:auto;
   }
 
   .tagLine {
-    display: table-cell;
-    text-align: center;
-    margin-left: 40%;
-    margin-right: 35%;
+    display: block;
+    margin-left: 10%;
+    margin-right: 10%;
     font-weight: bold;
-    font-size: 1.227em;
+    font-size: 1.7em;
     padding-top: 10px;
     padding-bottom: 20px;
     line-height: 1.2em;
@@ -1403,26 +1407,29 @@
   }
 
   .mission {
-    display: table-row;
+    display: block;
     text-align: center;
-    line-height: inherit;
-    margin-left: 10%;
-    padding-bottom: 20px;
     margin-right: 10%;
+    margin-left: 10%;
+    font-size: 1.25em;
     font-family: 'Montserrat', serif;
   }
 
   .learnMore {
-    display: inline;
-    text-align: center;
-    margin-top: 1em;
-    margin-left: 36.5%;
-    margin-right: 35%;
+    font-family: 'Montserrat', serif;
+    display:block;
+    font-size: 14px;
     font-weight: bold;
-    text-decoration: underline;
-    font-size: 1.25em;
-    line-height: 1.2em;
-    font-family: 'Montserrat', serif
+    margin: auto;
+    margin-top:15px;
+  }
+
+  .learnMore a {
+    color: gray;
+  }
+
+  .learnMore a:hover {
+    color: #ff8533;
   }
 
   /* ---- Home Page Styles ---- */
@@ -1981,7 +1988,7 @@
   }
 
   .loginImg img{
-    width: 25%;
+    width: 30%;
     display:block;
     padding: 50px 0px 15px 0px;
     margin:auto;
@@ -2002,7 +2009,6 @@
 
   .mission {
     display: block;
-
     text-align: center;
     margin-right: 35%;
     margin-left: 35%;
@@ -2011,16 +2017,20 @@
   }
 
   .learnMore {
-    display: inline-block;
-    text-align: center;
-    margin-top: 1em;
-    margin-left: 47.5%;
-    margin-right: 35%;
+    font-family: 'Montserrat', serif;
+    display:block;
+    font-size: 14px;
     font-weight: bold;
-    text-decoration: underline;
-    font-size: 1.25em;
-    line-height: 1.2em;
-    font-family: 'Montserrat', serif
+    margin: auto;
+    margin-top:15px;
+  }
+
+  .learnMore a {
+    color: gray;
+  }
+
+  .learnMore a:hover {
+    color: #ff8533;
   }
 
   /* ---- About Page Styles ---- */

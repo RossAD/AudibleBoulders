@@ -15,14 +15,15 @@ We are four passionate engineers who strive to create meaningful and innovative 
 <hr>
 
 ## Table of Contents
-1. [Introduction](#Introduction)
-1. [Requirements](#Requirements)
-1. [Screenshots](#Screenshots)
-1. [Development](#Development)
-1. [Architecture](#Architecture)
-1. [Technologies](#Technologies)
-1. [Roadmap](#Roadmap)
-1. [Contributing](#Contributing)
+
+1. [Introduction](#introduction)
+1. [Requirements](#requirements)
+1. [Screenshots](#screenshots)
+1. [Development](#development)
+1. [Architecture](#architecture)
+1. [Technologies](#technologies)
+1. [Roadmap](#roadmap)
+1. [Contributing](#contributing)
 
 <hr>
 
