@@ -7,6 +7,10 @@
       <i class="fa fa-circle-o-notch fa-4x fa-spin"></i>
   </div>
 
+  <div ng-show="!loading && !hasData">
+    This dashboard does not exist, or you do not have authorization to access it.
+  </div>
+
   <div ng-show="!loading && hasData">
 
     <div class="dashboardTitle">
