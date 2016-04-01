@@ -119,12 +119,13 @@
   .loginBtn a {
     background-color: #404040;
     color: #ff8533;
-    display:block;
-    font-size: 16px;
+    display: block;
+    font-size: 12px;
     font-weight: bold;
-    margin:auto;
+    margin: auto;
+    margin-top: 15px;
     width: 50%;
-    height: 40px;
+    height: 35px;
     border-radius: 10px;
   }
 
@@ -144,41 +145,44 @@
     display:block;
     margin:auto;
     padding-top: 30%;
-    height: 20%
-    width: 20%;
+    height: 30%;
+    width: 30%;
   }
 
   .tagLine {
-    display: block;
+    display: table-cell;
     text-align: center;
-    /*margin-left: 38%;
-    margin-right: 35%;*/
-    margin: center;
+    margin-left: 40%;
+    margin-right: 35%;
     font-weight: bold;
-    font-size: 1.777em;
+    font-size: 1.227em;
+    padding-top: 10px;
+    padding-bottom: 20px;
     line-height: 1.2em;
     font-family: 'Montserrat', serif;
   }
 
   .mission {
-    display:block;
+    display: table-row;
     text-align: center;
-    margin: auto;
-    /*margin-left: 35%;
-    margin-right: 35%;*/
+    line-height: inherit;
+    margin-left: 10%;
+    padding-bottom: 20px;
+    margin-right: 10%;
     font-family: 'Montserrat', serif;
   }
 
   .learnMore {
-    display: block;
+    display: inline;
+    text-align: center;
     margin-top: 1em;
-    margin-left: 47.5%;
+    margin-left: 36.5%;
     margin-right: 35%;
     font-weight: bold;
     text-decoration: underline;
     font-size: 1.25em;
     line-height: 1.2em;
-    font-family: 'Montserrat', serif;
+    font-family: 'Montserrat', serif
   }
 
   /* ---- Home Page Styles ---- */
@@ -758,7 +762,8 @@
     display:block;
     font-size: 12px;
     font-weight: bold;
-    margin:auto;
+    margin: auto;
+    margin-top:15px;
     width: 50%;
     height: 35px;
     border-radius: 10px;
@@ -784,38 +789,39 @@
   }
 
   .tagLine {
-    display: block;
+    display: table-cell;
     text-align: center;
-    margin-left: 38%;
+    margin-left: 40%;
     margin-right: 35%;
     font-weight: bold;
-    font-size: 1.777em;
+    font-size: 1.227em;
+    padding-top: 10px;
+    padding-bottom: 20px;
     line-height: 1.2em;
     font-family: 'Montserrat', serif;
   }
 
   .mission {
-    display:block;
+    display: table-row;
     text-align: center;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    margin-left: 35%;
-    margin-right: 35%;
+    line-height: inherit;
+    margin-left: 10%;
+    padding-bottom: 20px;
+    margin-right: 10%;
     font-family: 'Montserrat', serif;
   }
 
   .learnMore {
-    display: block;
+    display: inline;
+    text-align: center;
     margin-top: 1em;
-    margin-left: 47.5%;
+    margin-left: 36.5%;
     margin-right: 35%;
     font-weight: bold;
     text-decoration: underline;
     font-size: 1.25em;
     line-height: 1.2em;
-    font-family: 'Montserrat', serif;
+    font-family: 'Montserrat', serif
   }
 
   /* ---- Home Page Styles ---- */
@@ -1354,7 +1360,8 @@
     display:block;
     font-size: 16px;
     font-weight: bold;
-    margin:auto;
+    margin: auto;
+    margin-top:15px;
     width: 50%;
     height: 40px;
     border-radius: 10px;
@@ -1380,38 +1387,39 @@
   }
 
   .tagLine {
-    display: block;
+    display: table-cell;
     text-align: center;
-    margin-left: 38%;
+    margin-left: 40%;
     margin-right: 35%;
     font-weight: bold;
-    font-size: 1.777em;
+    font-size: 1.227em;
+    padding-top: 10px;
+    padding-bottom: 20px;
     line-height: 1.2em;
     font-family: 'Montserrat', serif;
   }
 
   .mission {
-    display:block;
+    display: table-row;
     text-align: center;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    margin-left: 35%;
-    margin-right: 35%;
+    line-height: inherit;
+    margin-left: 10%;
+    padding-bottom: 20px;
+    margin-right: 10%;
     font-family: 'Montserrat', serif;
   }
 
   .learnMore {
-    display: block;
+    display: inline;
+    text-align: center;
     margin-top: 1em;
-    margin-left: 47.5%;
+    margin-left: 36.5%;
     margin-right: 35%;
     font-weight: bold;
     text-decoration: underline;
     font-size: 1.25em;
     line-height: 1.2em;
-    font-family: 'Montserrat', serif;
+    font-family: 'Montserrat', serif
   }
 
   /* ---- Home Page Styles ---- */
@@ -1953,6 +1961,8 @@
     font-size: 16px;
     font-weight: bold;
     margin:auto;
+    margin: auto;
+    margin-top:15px;
     width: 210px;
   }
 
@@ -1976,25 +1986,30 @@
 
   .tagLine {
     display: block;
-    text-align: center;
-    margin-left: 38%;
+    text-align:  center;
+    margin-left: 37%;
     margin-right: 35%;
     font-weight: bold;
-    font-size: 1.777em;
+    font-size: 2em;
+    padding-top: 10px;
+    padding-bottom: 20px;
     line-height: 1.2em;
     font-family: 'Montserrat', serif;
   }
 
   .mission {
-    display:block;
+    display: block;
+
     text-align: center;
-    margin-left: 35%;
     margin-right: 35%;
+    margin-left: 35%;
+    font-size: 1.25em;
     font-family: 'Montserrat', serif;
   }
 
   .learnMore {
-    display: block;
+    display: inline-block;
+    text-align: center;
     margin-top: 1em;
     margin-left: 47.5%;
     margin-right: 35%;
@@ -2002,7 +2017,7 @@
     text-decoration: underline;
     font-size: 1.25em;
     line-height: 1.2em;
-    font-family: 'Montserrat', serif;
+    font-family: 'Montserrat', serif
   }
 
   /* ---- About Page Styles ---- */
