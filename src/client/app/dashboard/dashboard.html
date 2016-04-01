@@ -53,7 +53,7 @@
 
         <div class="diffsDiv">
           <div ng-show="user.set_up && user.commit_branch">
-            Last seen on local branch: {{user.commit_branch}}
+            <em>Last seen on local branch: {{user.commit_branch}}</em>
           </div>
           <div class="modTypeTitle" ng-show="hasModified(user.diffs)">
             MODIFIED
