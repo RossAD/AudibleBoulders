@@ -32,7 +32,7 @@ angular.module('GitSpy', [
     controller: 'AboutController'
   });
   $routeProvider.when('/learn-more', {
-    templateUrl: '/app/about/learnMore.html',
+    templateUrl: '/app/about/learn-more.html',
     controller: 'AboutController'
   });
   $routeProvider.when('/:orgName/:repoName', {
