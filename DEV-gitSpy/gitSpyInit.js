@@ -21,6 +21,9 @@ function main() {
   createFile(postReWritePath, runGitSpy);
   createFile(spyUpdate, runSpyUpdate);
 
+/** Add gitspy/* to .gitignore **/
+  fs.appendFileSync('./.gitignore', '\ngitSpy/*', encoding='utf8');
+
 /** Make files executable **/
   spawnSync('chmod', ['+x', '.git/hooks/post-commit']);
   spawnSync('chmod', ['+x', '.git/hooks/post-rewrite']);
