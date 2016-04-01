@@ -110,6 +110,9 @@ MySQL Database Schema
 - Karma
 - JSHint
 
+### Deployment
+- DigitalOcean
+
 <hr>
 
 ## Roadmap
