@@ -10,7 +10,7 @@ We are four passionate engineers who strive to create meaningful and innovative 
 
   - __Product Owner__: [**Alice Yu**](https://github.com/yaliceme)
   - __Scrum Master__: [**Diamond Wheeler**](https://github.com/Rhombus33)
-  - __Development Team Members__: [**Albert Huynh**](https://github.com/alberthuynh91), [**Ross Davis**](https://github.com/RossAD)1
+  - __Development Team Members__: [**Albert Huynh**](https://github.com/alberthuynh91), [**Ross Davis**](https://github.com/RossAD)
 
 <hr>
 
