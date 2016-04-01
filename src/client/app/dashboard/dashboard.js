@@ -44,6 +44,7 @@ angular.module('dashboard', [])
   // ];
 
   var parseConflicts = function () {
+    $scope.conflicts = [];  
     var fileMap = {};
     // example fileMap
     // ===============
