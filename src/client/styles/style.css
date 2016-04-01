@@ -119,12 +119,13 @@
   .loginBtn a {
     background-color: #404040;
     color: #ff8533;
-    display:block;
+    display: block;
     font-size: 16px;
     font-weight: bold;
-    margin:auto;
+    margin: auto;
+    margin-top: 15px;
     width: 50%;
-    height: 40px;
+    height: 35px;
     border-radius: 10px;
   }
 
@@ -135,6 +136,7 @@
     font-size: 16px;
     font-weight: bold;
     margin:auto;
+    margin-top: 15px;
     width: 50%;
     height: 40px;
     border-radius: 10px;
@@ -144,7 +146,44 @@
     display:block;
     margin:auto;
     padding-top: 30%;
-    width: 80%;
+    height: 30%;
+    width: 30%;
+  }
+
+  .tagLine {
+    display: table-cell;
+    text-align: center;
+    margin-left: 40%;
+    margin-right: 35%;
+    font-weight: bold;
+    font-size: 1.227em;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    line-height: 1.2em;
+    font-family: 'Montserrat', serif;
+  }
+
+  .mission {
+    display: table-row;
+    text-align: center;
+    line-height: inherit;
+    margin-left: 10%;
+    padding-bottom: 20px;
+    margin-right: 10%;
+    font-family: 'Montserrat', serif;
+  }
+
+  .learnMore {
+    display: inline;
+    text-align: center;
+    margin-top: 1em;
+    margin-left: 36.5%;
+    margin-right: 35%;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 1.25em;
+    line-height: 1.2em;
+    font-family: 'Montserrat', serif
   }
 
   /* ---- Home Page Styles ---- */
@@ -724,7 +763,8 @@
     display:block;
     font-size: 12px;
     font-weight: bold;
-    margin:auto;
+    margin: auto;
+    margin-top:15px;
     width: 50%;
     height: 35px;
     border-radius: 10px;
@@ -736,6 +776,7 @@
     display:block;
     font-size: 12px;
     font-weight: bold;
+    margin-top: 15px;
     margin:auto;
     width: 50%;
     height: 35px;
@@ -746,7 +787,43 @@
     display:block;
     margin:auto;
     padding-top: 30%;
-    width: 80%;
+    width: 25%;
+  }
+
+  .tagLine {
+    display: table-cell;
+    text-align: center;
+    margin-left: 40%;
+    margin-right: 35%;
+    font-weight: bold;
+    font-size: 1.227em;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    line-height: 1.2em;
+    font-family: 'Montserrat', serif;
+  }
+
+  .mission {
+    display: table-row;
+    text-align: center;
+    line-height: inherit;
+    margin-left: 10%;
+    padding-bottom: 20px;
+    margin-right: 10%;
+    font-family: 'Montserrat', serif;
+  }
+
+  .learnMore {
+    display: inline;
+    text-align: center;
+    margin-top: 1em;
+    margin-left: 36.5%;
+    margin-right: 35%;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 1.25em;
+    line-height: 1.2em;
+    font-family: 'Montserrat', serif
   }
 
   /* ---- Home Page Styles ---- */
@@ -1285,7 +1362,8 @@
     display:block;
     font-size: 16px;
     font-weight: bold;
-    margin:auto;
+    margin: auto;
+    margin-top:15px;
     width: 50%;
     height: 40px;
     border-radius: 10px;
@@ -1297,6 +1375,7 @@
     display:block;
     font-size: 16px;
     font-weight: bold;
+    margin-top: 15px;
     margin:auto;
     width: 50%;
     height: 40px;
@@ -1307,7 +1386,43 @@
     display:block;
     margin:auto;
     padding-top: 30%;
-    width: 80%;
+    width: 30%;
+  }
+
+  .tagLine {
+    display: table-cell;
+    text-align: center;
+    margin-left: 40%;
+    margin-right: 35%;
+    font-weight: bold;
+    font-size: 1.227em;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    line-height: 1.2em;
+    font-family: 'Montserrat', serif;
+  }
+
+  .mission {
+    display: table-row;
+    text-align: center;
+    line-height: inherit;
+    margin-left: 10%;
+    padding-bottom: 20px;
+    margin-right: 10%;
+    font-family: 'Montserrat', serif;
+  }
+
+  .learnMore {
+    display: inline;
+    text-align: center;
+    margin-top: 1em;
+    margin-left: 36.5%;
+    margin-right: 35%;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 1.25em;
+    line-height: 1.2em;
+    font-family: 'Montserrat', serif
   }
 
   /* ---- Home Page Styles ---- */
@@ -1848,7 +1963,8 @@
     height: 38px;
     font-size: 16px;
     font-weight: bold;
-    margin:auto;
+    margin: auto;
+    margin-top:15px;
     width: 210px;
   }
 
@@ -1859,15 +1975,52 @@
     font-size: 16px;
     font-weight: bold;
     height: 38px;
-    margin:auto;
+    margin: auto;
+    margin-top: 15px;
     width: 210px;
   }
 
   .loginImg img{
-    width: 40%;
+    width: 25%;
     display:block;
     padding: 50px 0px 15px 0px;
     margin:auto;
+  }
+
+  .tagLine {
+    display: block;
+    text-align:  center;
+    margin-left: 37%;
+    margin-right: 35%;
+    font-weight: bold;
+    font-size: 2em;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    line-height: 1.2em;
+    font-family: 'Montserrat', serif;
+  }
+
+  .mission {
+    display: block;
+
+    text-align: center;
+    margin-right: 35%;
+    margin-left: 35%;
+    font-size: 1.25em;
+    font-family: 'Montserrat', serif;
+  }
+
+  .learnMore {
+    display: inline-block;
+    text-align: center;
+    margin-top: 1em;
+    margin-left: 47.5%;
+    margin-right: 35%;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 1.25em;
+    line-height: 1.2em;
+    font-family: 'Montserrat', serif
   }
 
   /* ---- About Page Styles ---- */
