@@ -1,0 +1,23 @@
+#!/bin/bash -e
+function createFile {
+  if [ ! -e $1 ]
+  then
+    touch $1
+    cat $2 >> $1
+    chmod +xr $1
+  fi
+}
+
+# Add gitSpy/* to .gitignore if it doesn't exist
+if ! grep "gitSpy/*" .gitignore
+ then
+  echo "gitSpy/*" >> .gitignore
+else
+  echo "already added to .gitignore"
+fi
+
+createFile ./.git/hooks/post-rewrite ./DEV-gitSpy/scripts/gitspy
+createFile ./.git/hooks/post-commit ./DEV-gitSpy/scripts/gitspy
+createFile /usr/local/bin/spyupdate ./DEV-gitSpy/scripts/spyupdate
+
+echo "GitSpy hooks added and spyUpdate executable added ʕ•ᴥ•ʔ"

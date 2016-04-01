@@ -1,0 +1,8 @@
+#!/bin/sh
+if [ -a gitSpy/gitSpy.js ]
+  then
+  node gitSpy/gitSpy.js
+  echo "GitSpy Updated Successfully"
+  else
+  echo "spyUpdate Does Not Exist in This Folder"
+fi
