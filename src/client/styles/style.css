@@ -53,7 +53,7 @@
    width: 1em;
    border-radius: 5px;
  }
- 
+
  .pages ul .end{
    float: center;
    font-family: 'Montserrat', serif;
@@ -63,7 +63,7 @@
    height: 1em;
    width: 1em;
  }
- 
+
  .pages ul li:hover{
    box-sizing: border-box;
    -moz-box-sizing: border-box;
@@ -75,7 +75,7 @@
    z-index: 1;
    cursor: pointer;
  }
- 
+
  .pages ul li:active{
    transition: all .2s ease;
    font-weight: normal;
@@ -2385,4 +2385,8 @@
 /* ===== == = === 81.25em (1300px) === = == ===== */
 @media only screen and (min-width : 81.25em) {
 
+}
+
+.bold {
+  font-weight: bolder;
 }
