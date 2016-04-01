@@ -18,7 +18,7 @@
     <!-- Nav Bar -->
     <header>
       <div ng-controller="LoginController" >
-        <nav class="navbar navbar-light" ng-hide="isActivePage('/login')">
+        <nav class="navbar navbar-light" ng-hide="isActivePage('/login') || isActivePage('/learn-more')">
           <div class="container-fluid">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">

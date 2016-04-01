@@ -1,0 +1,73 @@
+<div class="about" ng-animate-ref="about">
+  <div class="aboutTitle">About <a href="#/"><span class="glyphicon glyphicon-circle-arrow-left" title="Go back home"></span></a></div>
+
+  <div class="aboutSubTitles">What is GitSpy?</div>
+  <div class="missionDesc">
+    GitSpy is a free passive-communication tool for fast-moving software development teams. It gives you a real-time view of what your developer teammates are working on locally, and what files they are affecting.
+    <br><br>
+    Just login, add your team’s shared project repo, and run the GitSpy setup instructions on your local computer. Once everyone on your team has done that, you’ll have a shared dashboard that shows each developer’s status &mdash; their most recent rebase, and what files they’ve touched since. Your status will update immediately upon commit &mdash; you don’t even have to push to GitHub first!
+    <br><br>
+    With GitSpy, you’ll never again have to ask “What files are you touching?” and you’ll never again be surprised by a merge conflict.
+  </div>
+
+  <div class="aboutSubTitles">Can I use GitSpy with my workflow?</div>
+  <div class="missionDesc">
+    GitSpy makes these key assumptions about your workflow:
+    <br>
+    <br>
+    <ul>
+      <li> Your team has a shared <span class="bold">public repo</span> whose <span class="bold">master branch</span> acts as your project’s “source of truth.” All teammates have at least <span class="bold">collaborator</span> permissions on the repo. </li>
+      <br>
+      <li> Collaborators <span class="bold">git pull --rebase</span> to get the latest code from this “source of truth.” GitSpy currently <span class="bold">only works</span> with a <a target-tab href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing/conceptual-overview">rebase-based workflow</a>.</li>
+      <br>
+      <li>New changes are <span class="bold">always</span> incorporated into the “source of truth” repo by merging a <span class="bold">pull request</span>. Code is <span class="bold">never</span> directly pushed to the team repo master branch.</li>
+    </ul>
+    <br>
+    To use GitSpy effectively, it’s very important that your team’s workflow conforms with these assumptions. If you would like to see support for other workflows, feel free to <a href="mailto:gitSpyApp@gmail.com">send us your feedback</a>.
+  </div>
+
+  <div class="aboutSubTitles">How do I get started with GitSpy?</div>
+  <div class="missionDesc">
+    <span class="bold">Step One:</span> <a href="http://gitspy.com/login/github">Login with GitHub</a>. On the “Authorize application” page, be sure there are green checkmarks next to any organizations/teams whose repos you want to use GitSpy with.
+    <br><br>
+    <span class="bold">Step two:</span> <a href="http://gitspy.com/#/add">Add a GitSpy dashboard</a> for your team repo. Be sure to select your team’s shared “source of truth” repo, NOT your individual GitHub fork of this repo.
+    <br><br>
+    <span class="bold">Step three:</span> From the new dashboard page, click “setup instructions.” Follow the instructions to start reporting your local file activity to GitSpy. This setup only needs to be run once per person per dashboard.
+    <br><br>
+    <span class="bold">Step four:</span> Ask all your teammates to set up GitSpy, so you can see their activity on your GitSpy dashboard!
+  </div>
+
+  <div class="aboutSubTitles">Who built GitSpy?</div>
+  <div class="whoAreWeDesc">
+    We are four passionate engineers who strive to create meaningful and innovative applications. GitSpy was fueled by our desire to optimize git workflow while also giving back to the open source community. Learn more about an individual team member by clicking on their photo!
+  </div>
+    <div target-tab class="aboutPhotoTable">
+      <table class="table">
+        <tr>
+          <td><a href="https://github.com/RossAD"><img src="https://c2.staticflickr.com/2/1602/25996033875_903d856792_q.jpg" title="Rock n Roll!"></a></td>
+          <td><a href="https://github.com/alberthuynh91"><img src="https://c2.staticflickr.com/2/1684/25695479930_f9de871708_q.jpg" title="Yo!"></a></td>
+          <td><a href="https://github.com/yaliceme"><img src="https://c2.staticflickr.com/2/1688/25970114566_0d2758ec96_q.jpg"></a></td>
+          <td><a href="https://github.com/Rhombus33"><img src="https://c2.staticflickr.com/2/1451/25875249232_6b0e6342a8_q.jpg"></a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/RossAD">Ross</a></td>
+          <td><a href="https://github.com/alberthuynh91">Albert</a></td>
+          <td><a href="https://github.com/yaliceme">Alice</a></td>
+          <td><a href="https://github.com/Rhombus33">Diamond</a></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="aboutSubTitles">Contact Us</div>
+    <div class="contactDesc">
+      <table class="contactTable">
+        <tr>
+          <td target-tab><a href="https://github.com/AudibleBoulders/AudibleBoulders"><span class="fa fa-github-alt"></span></a></td>
+          <td><a href="mailto:gitSpyApp@gmail.com"><span class="glyphicon glyphicon-envelope"></span></a></td>
+        </tr>
+        <tr>
+         <td></td>
+        </tr>
+      </table>
+    </div>
+</div>
