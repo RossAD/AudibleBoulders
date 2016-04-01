@@ -3,9 +3,11 @@
 
 var users_dashboards = require('../queries/users_dashboards.js');
 var diffs = require('../queries/diffs.js');
+var io = require('../server');
 
 module.exports = {
   handlePost: function (req, res, next) {
+
     var signatureHash = req.body.signature_hash;
     var commitDiffs = req.body.diffs;
     var newParams = {
@@ -15,13 +17,19 @@ module.exports = {
     };
 
     users_dashboards.updateOneAsync(signatureHash, newParams)
-      .then(function() {
+      .then(function () {
         return diffs.deleteAllAsync(signatureHash);
       })
-      .then(function() {
+      .then(function () {
         return diffs.addAllAsync(signatureHash, commitDiffs);
       })
-      .then(function() {
+      .then(function () {
+        return users_dashboards.getOneBySigHashAsync(signatureHash);
+      })
+      .then(function (userdashboard) {
+        io.sockets.to(userdashboard.dashboards_id).emit('dashOutOfDate');
+      })
+      .then(function () {
         res.sendStatus(201);
       })
       .catch(function(e) {

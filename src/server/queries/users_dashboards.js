@@ -15,6 +15,11 @@ var users_dashboards = module.exports = promise.promisifyAll({
       }
     });
   },
+  getOneBySigHash: function (signatureHash, callback) {
+    pool.query('SELECT * FROM users_dashboards WHERE signature_hash=?', [signatureHash], function (err, results) {
+        callback(err, results[0]);
+    });
+  },
   addOne: function (githubId, dashboardId, callback) {
     // use simple githubId + dashboardId concatenation for 'hash' for now, guarantees uniqueness. substitute a proper hash later
     var signatureHash = githubId.toString() + '@' + dashboardId.toString();

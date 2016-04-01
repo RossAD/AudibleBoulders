@@ -9,6 +9,8 @@ angular.module('dashboard', [])
   $scope.added = false;
   $scope.removed = false;
   $scope.storage = {};
+  $scope.users = [];
+  $scope.dashboard = [];
   $scope.hasData = false;
 
   $scope.conflicts = [];
@@ -90,15 +92,42 @@ angular.module('dashboard', [])
     }
   };
 
-  Socket.on('newUser', function (data) {
-    // $scope.users.push(data);
+  Socket.on('newUser', function (newUser) {
+    $scope.$apply(function () {
+      // var alreadyAdded = false;
+      // $scope.users.forEach(function (user) {
+      //   if (newUser.github_id === user.github_id) {
+      //     alreadyAdded = true;
+      //   }
+      // });
+      // if (!alreadyAdded) {
+      //   $scope.users.push(newUser);
+      // }
+      $scope.getDashboard();
+    });
   });
 
-  Socket.on('updateDiffs', function (data) {
-    // $scope.users[data.users_id].diffs.push(data);
+  Socket.on('removeUser', function (data) {
+    $scope.$apply(function () {
+      // for (var i = 0; i < $scope.users.length; i++) {
+      //   if ($scope.users[i].github_id.toString() === data.githubId) {
+      //     $scope.users.splice(i, 1);
+      //   }
+      // }
+      $scope.getDashboard();
+    });
+  });
+
+  Socket.on('dashOutOfDate', function () {
+    $scope.$apply(function () {
+      $scope.getDashboard();
+    });
   });
 
   $scope.hasModified = function (diffs) {
+    if (diffs.length === 0 || diffs === undefined) {
+      return false;
+    }
     for (var i = 0; i < diffs.length; i++) {
       if (diffs[i].mod_type === 'M') {
         return true;
@@ -108,6 +137,9 @@ angular.module('dashboard', [])
   };
 
   $scope.hasAdded = function (diffs) {
+    if (diffs.length === 0 || diffs === undefined) {
+      return false;
+    }
     for (var i = 0; i < diffs.length; i++) {
       if (diffs[i].mod_type === 'A') {
         return true;
@@ -117,6 +149,9 @@ angular.module('dashboard', [])
   };
 
   $scope.hasDeleted = function (diffs) {
+    if (diffs.length === 0 || diffs === undefined) {
+      return false;
+    }
     for (var i = 0; i < diffs.length; i++) {
       if (diffs[i].mod_type === 'D') {
         return true;
@@ -136,6 +171,8 @@ angular.module('dashboard', [])
           $scope.users = data.users;
           $scope.dashboard = data.dashboard;
           parseConflicts();
+          $scope.outOfDate = false;
+          Socket.emit('joinDash', {dashboardId: $scope.dashboard.id});
         }
       });
   };

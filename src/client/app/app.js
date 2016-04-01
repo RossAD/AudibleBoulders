@@ -46,12 +46,14 @@ angular.module('GitSpy', [
   $routeProvider.otherwise({redirectTo: '/'});
 }])
 
-.run(function($rootScope, $location, AuthFactory) {
+.run(function($rootScope, $location, AuthFactory, Socket) {
   $rootScope.$on('$routeChangeStart', function(event, toState) {
+    // Socket.emit('leaveRooms', {});
     var route = toState.originalPath;
     if (AuthFactory.authRoutes.indexOf(route) >= 0 && !AuthFactory.isAuth()) {
       $location.path('/login');
     }
+
   });
 })
 .directive('targetTab', function(){

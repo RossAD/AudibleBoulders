@@ -1,11 +1,10 @@
 <div class="dashboard" ng-controller='DashboardController' ng-animate-ref="dashboard">
 
-  <div ng-show="loading" class="spinner">
-      <i class="fa fa-circle-o-notch fa-4x fa-spin"></i>
+  <div ng-show="outOfDate">Dashboard is out of date. Please refresh.
   </div>
 
-  <div ng-show="!loading && !hasData" class="dashboardTitle">
-    This dashboard does not exist, or you do not have authorization to access it.
+  <div ng-show="loading" class="spinner">
+      <i class="fa fa-circle-o-notch fa-4x fa-spin"></i>
   </div>
 
   <div ng-show="!loading && hasData">
@@ -35,7 +34,7 @@
       </ul>
     </div>
 
-    <div class="dashboardUser" ng-repeat="user in users">
+    <div class="dashboardUser" ng-repeat="user in users track by $index">
       <div ng-class="[users, { upToDate: user.last_pulled_commit_sha1 === dashboard.last_commit_sha1, outOfDate: user.last_pulled_commit_sha1 !== dashboard.last_commit_sha1, notSetUp: user.set_up === 0 }]">
         <div class="dashboardUserCommit">
           <div ng-show="user.last_pulled_commit_sha1 === dashboard.last_commit_sha1" class="status">
