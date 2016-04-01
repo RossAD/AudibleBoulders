@@ -99,7 +99,7 @@ helper.factory('RequestFactory', function($http, $location) {
 });
 
 helper.factory('AuthFactory', function($cookies, $http, $location) {
-  var authRoutes = ['/', '/add', '/:orgName/:repoName', '/:orgName/:repoName/setup'];
+  var authRoutes = ['/', '/add', '/:orgName/:repoName', '/:orgName/:repoName/setup', '/about'];
 
   var isAuth = function () {
     return $cookies.get('githubId');
