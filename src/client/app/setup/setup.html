@@ -10,10 +10,10 @@
   <div class="setupBody">
       <div><b>1)</b> Download, unzip, and move the
       <strong><a href="/gitSpy.zip" download="gitSpy">gitSpy</a></strong>
-      folder into the root directory of your local {{orgName + '/' + repoName}} repository</div>
-      <div><b>2)</b> In your terminal, run the command `npm install --save fs` from your project's root folder.</div>
-      <div><b>3)</b> In your terminal, run the command `<strong>node gitSpy/gitSpyInit.js</strong>` from your project's root folder.</br>This will add GitSpy post-commit hooks to your repo, enable a `spyUpdate` terminal command, and add gitSpy/* to your .gitignore file.</div>
-      <div><b>4)</b> Replace the placeholder text in the SIGNATURE_HASH.js file with the one below. This signature hash will be different for each of your GitSpy dashboards:
+      folder into the root directory of your local {{orgName + '/' + repoName}} repository.</div>
+      <div><b>2)</b> If you don't have node installed on your computer, run `brew install node` from your terminal.</div>
+      <div><b>3)</b> In your terminal, run the command `<strong>sh gitSpy/gitSpyInit</strong>` from your project's root folder.</br>This will add GitSpy post-commit hooks to your repo, enable a `spyUpdate` terminal command, and add gitSpy/* to your project's .gitignore file.</div>
+      <div><b>4)</b> Replace the placeholder text in `gitSpy/SIGNATURE_HASH.js` with the one below. If you have multiple GitSpy dashboards, this signature hash will be different for each repo:
         <ul><strong>signature_hash</strong>: "{{signature_hash}}"</ul>
       </div>
       <div><b>5)</b> You are now set up with GitSpy! GitSpy will be updated any time you commit or run the `spyUpdate` command.</div>

@@ -1,6 +1,6 @@
 "use strict";
 angular.module('dashboard', [])
-.controller('DashboardController', function ($scope, $routeParams, RequestFactory, Socket) {
+.controller('DashboardController', function ($scope, $routeParams, RequestFactory, Socket, $cookies) {
   $scope.orgName = $routeParams.orgName;
   $scope.repoName = $routeParams.repoName;
   $scope.repoLink = 'https://github.com/' + $routeParams.orgName + '/' + $routeParams.repoName;
@@ -12,6 +12,7 @@ angular.module('dashboard', [])
   $scope.users = [];
   $scope.dashboard = [];
   $scope.hasData = false;
+  $scope.loggedInUser = $cookies.get('githubName');
 
   $scope.conflicts = [];
   // example $scope.conflicts
