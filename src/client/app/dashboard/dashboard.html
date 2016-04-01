@@ -1,8 +1,5 @@
 <div class="dashboard" ng-controller='DashboardController' ng-animate-ref="dashboard">
 
-  <div ng-show="outOfDate">Dashboard is out of date. Please refresh.
-  </div>
-
   <div ng-show="loading" class="spinner">
       <i class="fa fa-circle-o-notch fa-4x fa-spin"></i>
   </div>
@@ -17,18 +14,13 @@
       {{orgName}} / <a target-tab href="{{repoLink}}">{{repoName}}</a><a href="#/"><span class="glyphicon glyphicon-circle-arrow-left" title="Go back home"></span></a>
     </div>
 
-    <div class="dashboardBranch">
-        master branch
-    </div>
-
     <div class="dashboardSetupBtn">
-      <a href="#/{{orgName}}/{{repoName}}/setup"><button type="button" class="btn btn-info btn-sm">Setup instructions</button></a>
+      <a href="#/{{orgName}}/{{repoName}}/setup"><button type="button" class="btn btn-info btn-sm">Setup instructions for {{loggedInUser}}</button></a>
     </div>
 
     <div class="lastCommit">
-      Most recent commit at github.com/{{orgName}}/{{repoName}}:
-      <br><span>{{dashboard.last_commit_msg}}</span>
-      <br><span>sha1: {{dashboard.last_commit_sha1}}</span>
+      <span class="bold">Most recent commit at <a target-tab href="{{repoLink}}/commits/master">github.com/{{orgName}}/{{repoName}}/commits/master</a>:</span>
+      <br><span>{{dashboard.last_commit_msg}} (commit {{dashboard.last_commit_sha1.substring(0,7)}})</span>
     </div>
 
     <div class="potentialConflicts" ng-show="conflicts.length">
@@ -42,11 +34,11 @@
       <div ng-class="[users, { upToDate: user.last_pulled_commit_sha1 === dashboard.last_commit_sha1, outOfDate: user.last_pulled_commit_sha1 !== dashboard.last_commit_sha1, notSetUp: user.set_up === 0 }]">
         <div class="dashboardUserCommit">
           <div ng-show="user.last_pulled_commit_sha1 === dashboard.last_commit_sha1" class="status">
-            <span class="glyphicon glyphicon-ok-sign"></span> {{user.github_name}} has pulled {{dashboard.last_commit_sha1}}
+            <span class="glyphicon glyphicon-ok-sign"></span> {{user.github_name}} has pulled commit {{dashboard.last_commit_sha1.substring(0,7)}}
           </div>
           <div ng-show="user.last_pulled_commit_sha1 !== dashboard.last_commit_sha1 && user.set_up" class="status">
             <span class="glyphicon glyphicon-exclamation-sign"></span> {{user.github_name}} needs to git pull
-            <br>Their latest pull: {{user.last_pulled_commit_msg}}
+            <br>Their latest pull: {{user.last_pulled_commit_msg}} (commit {{user.last_pulled_commit_sha1.substring(0,7)}})
           </div>
           <div ng-show="!user.set_up" class="status">
             <span class="glyphicon glyphicon-exclamation-sign"></span> {{user.github_name}} needs to set up
@@ -61,7 +53,7 @@
 
         <div class="diffsDiv">
           <div ng-show="user.set_up && user.commit_branch">
-            Last seen on local branch: {{user.commit_branch}}
+            <em>Last seen on local branch: {{user.commit_branch}}</em>
           </div>
           <div class="modTypeTitle" ng-show="hasModified(user.diffs)">
             MODIFIED
@@ -76,7 +68,7 @@
               <i class="fa fa-file-text"></i> {{diff.file}}
           </div>
           <div class="modTypeTitle" ng-show="hasDeleted(user.diffs)">
-            REMOVED
+            DELETED
           </div>
           <div class="diffs" ng-repeat="diff in user.diffs" ng-show="diff.mod_type === 'D'">
               <i class="fa fa-file-text"></i> {{diff.file}}
