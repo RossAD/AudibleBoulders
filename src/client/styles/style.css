@@ -1,4 +1,8 @@
 /* ===== == = === Base Styles === = == ===== */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none;
+}
+
 .fade {
     position: relative;
     /*top: 0;
