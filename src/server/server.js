@@ -78,8 +78,8 @@ io.on('connect', function (socket) {
 });
 
 require('./config/middleware.js')(app, express);
-require('./config/routes.js')(app);
 require('./config/auth.js')(app);
+require('./config/routes.js')(app);
 
 http.listen(PORT, function() {
   console.log('Production Express server running at localhost:' + PORT);
