@@ -6,7 +6,7 @@ var users = require('../queries/users.js');
 
 module.exports = {
   userSub: function (req, res, next) {
-    var githubId  = req.cookies.githubId;
+    var githubId = req.cookies.githubId;
     users.getOneAsync(githubId)
       .then(function (userObject) {
         var options = {
