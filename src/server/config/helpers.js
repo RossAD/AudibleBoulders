@@ -15,10 +15,5 @@ module.exports = {
     // send error message to client
     // message for gracefull error handling on app
     res.send(500, {error: error.message});
-  },
-
-  // Dummy function to test routes
-  testy: function (req, res, next) {
-    res.json("Route Succesful");
   }
 };
