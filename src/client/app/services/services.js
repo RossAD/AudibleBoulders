@@ -52,10 +52,10 @@ helper.factory('RequestFactory', function($http, $location) {
     });
   };
 
-  var getSetupInfo = function(orgName, repoName, githubId) {
+  var getSetupInfo = function(orgName, repoName) {
     return $http({
       method: 'GET',
-      url: '/api/setup/' + orgName + '/' + repoName + '/' + githubId
+      url: '/api/setup/' + orgName + '/' + repoName
     }).then(function (res) {
       return res.data;
     })

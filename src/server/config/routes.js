@@ -4,7 +4,6 @@
 var helpers = require('./helpers.js');
 
 // request handlers
-var users = require('../request-handlers/users');
 var dashboards = require('../request-handlers/dashboards');
 var dashboardsGithubId = require('../request-handlers/dashboards-githubId');
 var dashboardsOrgRepo = require('../request-handlers/dashboards-org-repo');
@@ -20,14 +19,14 @@ module.exports = function (app) {
   app.get('/api/dashboards/:orgName/:repoName', dashboardsOrgRepo.handleGet); // for getting all information needed to render a particular #/:orgName/:repoName dashbaorad
   app.delete('/api/users_dashboards/:githubId/:dashboardId', usersDashboards.handleDelete); // for when user removes themselves from a dashboard by clicking x on #/
 
-  // Get signature hash etc for setup page
-  app.get('/api/setup/:orgName/:repoName/:githubId', setup.handleGet);
+  // Get signature hash for setup page
+  app.get('/api/setup/:orgName/:repoName', setup.handleGet);
 
   // 'Commit' interaction
   app.post('/api/commits/', commits.handlePost);
 
   // Get user GitHub Subscriptions
-  app.get('/api/repos/', users.userSub);
+  app.get('/api/repos/', repos.handleGet);
   app.post('/api/repos/', repos.handlePost);
 
   // Error handling
