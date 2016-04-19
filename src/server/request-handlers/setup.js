@@ -7,7 +7,7 @@ module.exports = {
   handleGet: function (req, res, next) {
     var orgName = req.params.orgName;
     var repoName = req.params.repoName;
-    var githubId = req.params.githubId;
+    var githubId = req.cookies.githubId;
     var responseObject = {};
 
     dashboards.getOneAsync(orgName, repoName)

@@ -19,8 +19,8 @@ module.exports = function (app) {
   app.get('/api/dashboards/:orgName/:repoName', dashboardsOrgRepo.handleGet); // for getting all information needed to render a particular #/:orgName/:repoName dashbaorad
   app.delete('/api/users_dashboards/:githubId/:dashboardId', usersDashboards.handleDelete); // for when user removes themselves from a dashboard by clicking x on #/
 
-  // Get signature hash etc for setup page
-  app.get('/api/setup/:orgName/:repoName/:githubId', setup.handleGet);
+  // Get signature hash for setup page
+  app.get('/api/setup/:orgName/:repoName', setup.handleGet);
 
   // 'Commit' interaction
   app.post('/api/commits/', commits.handlePost);
