@@ -4,7 +4,6 @@
 var helpers = require('./helpers.js');
 
 // request handlers
-var users = require('../request-handlers/users');
 var dashboards = require('../request-handlers/dashboards');
 var dashboardsGithubId = require('../request-handlers/dashboards-githubId');
 var dashboardsOrgRepo = require('../request-handlers/dashboards-org-repo');
@@ -27,7 +26,7 @@ module.exports = function (app) {
   app.post('/api/commits/', commits.handlePost);
 
   // Get user GitHub Subscriptions
-  app.get('/api/repos/', users.userSub);
+  app.get('/api/repos/', repos.handleGet);
   app.post('/api/repos/', repos.handlePost);
 
   // Error handling
