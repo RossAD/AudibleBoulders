@@ -1184,7 +1184,7 @@ body a:hover {
   }
 
   .outOfDate {
-    /*background-color: #ffb3b3;*/
+    background-color: #ffb3b3;
     border-style: solid;
     border-width: 2px;
     border-color: #A9A9A9;
@@ -1193,7 +1193,7 @@ body a:hover {
   }
 
   .notSetUp {
-    background-color: gray;
+    background-color: grey;
     border-style: solid;
     border-width: 2px;
     border-color: #A9A9A9;
@@ -1760,6 +1760,7 @@ body a:hover {
   }
 
   .outOfDate {
+    background-color: #ffb3b3;
     border-style: solid;
     border-width: 2px;
     border-color: #A9A9A9;
@@ -1768,7 +1769,7 @@ body a:hover {
   }
 
   .notSetUp {
-    background-color: gray;
+    background-color: grey;
     border-style: solid;
     border-width: 1px;
     border-color: #A9A9A9;
