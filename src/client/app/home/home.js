@@ -18,7 +18,7 @@ angular.module('home', [])
     var dashboardId = $scope.dashboards[index].id;
     $scope.dashboards.splice(index, 1);
     isEmpty();
-    RequestFactory.deleteUserDashboard(githubId, dashboardId)
+    RequestFactory.deleteUserDashboard(dashboardId)
     .then(function () {
       emitRemovedDash({githubId: githubId, dashboardId: dashboardId});
     });

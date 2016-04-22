@@ -6,9 +6,8 @@ var usersDashboards = require('../queries/users_dashboards.js');
 var diffs = require('../queries/diffs.js');
 
 module.exports = {
-
   handleDelete: function(req, res, next) {
-    var githubId = req.params.githubId;
+    var githubId = req.cookies.githubId;
     var dashboards_id = req.params.dashboardId;
 
     usersDashboards.getOneAsync(githubId, dashboards_id)
