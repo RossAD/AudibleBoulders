@@ -35,5 +35,16 @@ module.exports = {
             });
         }
       });
+  },
+  handleGet: function (req, res, next) {
+    var githubId = req.cookies.githubId;
+    dashboards.getAllByGithubIdAsync(githubId)
+      .then(function(dashboards) {
+        res.json(dashboards);
+      })
+      .catch(function(e) {
+        console.log("Error: ", e);
+        res.sendStatus(400);
+      });
   }
 };

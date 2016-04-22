@@ -25,7 +25,7 @@ angular.module('home', [])
   };
 
   var initializeDashboardList = function() {
-    RequestFactory.getAllDashboards(githubId)
+    RequestFactory.getAllDashboards()
     .then(function (dashboards) {
       $scope.loading = false;
       $scope.dashboards = dashboards;

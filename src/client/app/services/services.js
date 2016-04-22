@@ -40,10 +40,10 @@ helper.factory('RequestFactory', function($http, $location) {
     });
   };
 
-  var getAllDashboards = function(githubId) {
+  var getAllDashboards = function() {
     return $http({
       method: 'GET',
-      url: '/api/dashboards/' + githubId
+      url: '/api/dashboards/'
     }).then(function (res) {
       return res.data;
     })
