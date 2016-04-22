@@ -40,10 +40,10 @@ helper.factory('RequestFactory', function($http, $location) {
     });
   };
 
-  var getAllDashboards = function(githubId) {
+  var getAllDashboards = function() {
     return $http({
       method: 'GET',
-      url: '/api/dashboards/' + githubId
+      url: '/api/dashboards/'
     }).then(function (res) {
       return res.data;
     })
@@ -77,10 +77,10 @@ helper.factory('RequestFactory', function($http, $location) {
     });
   };
 
-  var deleteUserDashboard = function(githubId, dashboardId) {
+  var deleteUserDashboard = function(dashboardId) {
     return $http({
       method: 'DELETE',
-      url: '/api/users_dashboards/' + githubId + '/' + dashboardId
+      url: '/api/dashboards/' + dashboardId
     })
     .catch(function(e) {
       $location.path('/logout');
