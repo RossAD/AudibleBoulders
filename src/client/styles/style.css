@@ -51,7 +51,7 @@ body a:hover {
 }
 
 /*-----------Logged In User Styling-------*/
-.loggedIn span{
+.loggedIn span {
   position: absolute;
   margin-top:20px;
   z-index:1;
@@ -60,7 +60,7 @@ body a:hover {
 }
 
 /*------------Add Pagination Buttons------*/
-.pages ul li{
+.pages ul li {
   display: table-cell;
   padding-left: 0.2em;
   padding-right: 0.2em;
@@ -81,7 +81,7 @@ body a:hover {
   width: 1em;
 }
 
-.pages ul li:hover{
+.pages ul li:hover {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -93,7 +93,7 @@ body a:hover {
   cursor: pointer;
 }
 
-.pages ul li:active{
+.pages ul li:active {
   transition: all .2s ease;
   font-weight: normal;
 }
@@ -691,31 +691,33 @@ body a:hover {
 
 /* ===== == = === 30em - 56.25em (480px - 900px) === = == ===== */
 
-@media only screen and (min-width : 30em) and (max-width: 56.25em){
+@media only screen and (min-width : 30em) and (max-width: 56.25em) {
   .loginBtn a {
     background-color: #404040;
     color: #ff8533;
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     margin: auto;
     margin-top: 25px;
-    width: 230px;
+    width: 50%;
     height: 38px;
     text-align: center;
+    border-radius: 10px;
   }
 
   .loginBtn a:hover {
     background-color: #595959;
     color: #ff8533;
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     margin: auto;
     margin-top: 25px;
-    width: 230px;
+    width: 50%;
     height: 38px;
     text-align: center;
+    border-radius: 10px;
   }
 
   .loginImg img{
@@ -1291,6 +1293,7 @@ body a:hover {
     width: 250px;
     height: 38px;
     text-align: center;
+    border-radius: 10px;
   }
 
   .loginBtn a:hover {
@@ -1304,6 +1307,7 @@ body a:hover {
     width: 250px;
     height: 38px;
     text-align: center;
+    border-radius: 10px;
   }
 
   .loginImg img{
